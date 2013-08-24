@@ -1,0 +1,59 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Knockout Tutorial - observable</title>
+    <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/Scripts/jquery-1.8.0.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script src="/Scripts/underscore.js"></script>
+</head>
+<body>
+    <div id="div_message"></div>
+    <div class="page">
+        <div class="header"></div>
+
+        <div class="main">
+            <p>The name is <span data-bind="text:personName"></span></p>
+            <p><input type="button" id="button_DoIt" value="Client Click" /></p>
+        </div>
+
+
+        <script type="text/javascript">
+
+            // 用户自定义函数
+            var myViewModel = {
+                personName: ko.observable('ZhangJin'),
+                personAge: ko.observable(25)
+            };
+
+            var subscription= myViewModel.personName.subscribe(function (newValue) {
+                alert('New Value is: ' + newValue);
+            });
+
+            //subscription.dispose();  // 解除对属性更改的订阅
+
+            ko.applyBindings(myViewModel);
+
+            // 页面加载时执行
+            $(function () {
+                // 加载导航条
+                $(".header").load("/navigator.htm .header #div_nav", function () { });
+
+            });
+
+            // Event Bind
+            $(function () {
+
+                $("#button_DoIt").bind("click", function () {
+                    myViewModel.personName('张进' + _.random(10));
+                    myViewModel.personAge(26);
+                });
+
+            });
+
+        </script>
+
+    </div>
+</body>
+</html>

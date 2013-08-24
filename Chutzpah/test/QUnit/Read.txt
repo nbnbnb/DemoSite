@@ -1,0 +1,70 @@
+﻿Callbacks
+	用于与CI Servers（持续集成服务器）进行集成;同样QUnit的两个集成插件束JUnit logger 和 PhantomJS runner也实现这些回调接口
+	
+	QUnit.begin(callback)	在测试套件开始前触发
+		无参数
+	QUnit.done(callback)	在测试套件结束时触发
+		failed:失败总计
+		passed:成功总计
+		total :总计
+		runtime:计时(毫秒)		
+	QUnit.log()		在完成断言后触发
+		result: 布尔值，表示断言成功或失败
+		actual: 实际值,对于ok()为undefined
+		expected: 期望值,对于ok()为undefined
+		message: 测试的描述
+		source: 对测试异常或成功时的源信息字符串表示，对于不同的浏览器显示可能不一样(如异常堆栈信息)
+	QUnit.moduleStart() 在测试段开始前触发
+		name:	下一个测试段的名称
+	QUnit.moduleDone()	在测试段完成后触发	
+		name:	当前测试段的名称
+		failed:	失败总计
+		passed: 成功总计
+		total:	总计
+	QUnit.testStart()	在单个测试开始前触发
+		name:	当前的测试名称
+		module:	当前的测试段名称
+	QUnit.testDone()	在单个测试完成后触发
+		name:	下一个测试的名称
+		module:	当前测试段的名称
+		failed:	失败总计
+		passed: 成功总计
+		total:	总计
+		duration:	测试用时(毫秒),包括测试段中的 setup() 和 teardown()
+	
+Configuartion
+	对QUnit进行全局配置
+
+	QUnit.init()
+		当测试套件正在运行时调用此方法，将会重新初始化测试套件，对于在QUnit中很少用;
+		对于有多个测试分支动态加载测试的时候，可以使用到(载入一个分支，测试，记录结果，重新初始化，载入新的分支，测试)			
+	QUnit.reset()
+		对每个测试执行完成后，将会调用此方法，用于在 QUnit 使用的 DOM 元素进行初始化
+		当QUnit在浏览器中运行，将会查找id为#quit-fixture的DOM元素，如果找到，将会在
+		每次测试前存储起来用于DOM测试，在测试完成后将会进行重置；所以说，可以在区域中测试多个
+		DOM元素，而不相互影响
+	QUnit.config
+		.artertitle 
+			布尔值，默认为true，当QUnit测试成功时，当前的document.title前加上✔,如果测试失败加上✖
+			如果需要对document.title进行测试或其它原因，可以禁用此特性
+		.autostart
+			布尔值，默认true,在window.load()事件中，将会开始执行测试套件
+			如果对于异步环境，可以设置为false,当环境加载完成后，然后调用QUnit.start()开始测试
+		.current
+			这个属性不应该属性配置属性，它仅仅表示当前的Quit.config对象
+		.reorder
+			布尔值，默认为true,默认情况下,QUnit将会优先测试前一个测试中失败的用例，如果用例为
+			非原子性的，将会出现一些无法遇见的错误，此时，可以将此参数设置为false
+		.requireExpects
+			布尔值，默认为false,是否强制必须在用例中指定 expect(number)
+		.testImteout
+			数值，默认为undefined,用于执行测试套件执行完成的超时时间，特别适用于异步环境下
+			由于无法执行回调函数而导致无法调用start()通知测试用例继续
+		.urlConfig
+			数组类型,用于在checkbox控制栏上添加自定义checkbox;每个对象原型为
+			{
+				id: 将会用于查询字符串的key
+				label:	文本显示
+				tooltip: 鼠标悬停时的显示(可以添加一些功能描述)
+			}
+			如果设置id为min，当在测试套件中时，可以通过 QUnit.urlConfig.min来进行访问

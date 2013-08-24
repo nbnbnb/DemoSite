@@ -1,0 +1,30 @@
+﻿Important: 2.0 is not backwards compatible with the previous versions. Changes in version 2.0 are described below. 
+This plugin makes it simple to convert to and from JSON: 
+var thing = {plugin: 'jquery-json', version: 2.3};
+
+var encoded = $.toJSON( thing );   // 将json对象转换为字符串
+// '{"plugin":"jquery-json","version":2.3}'
+var name = $.evalJSON( encoded ).plugin;  // 将字符串对象转换为json对象
+// "jquery-json"
+var version = $.evalJSON(encoded).version;
+// 2.3
+Most people asked me why I would want to do such a thing, which boggles my mind. JavaScript makes it relatively easy to convert from JSON, thanks to eval(), but converting to JSON is supposedly an edge requirement. 
+This plugin exposes four new functions onto the $, or jQuery object: 
+•	toJSON: Serializes a javascript object, number, string, or array into JSON. 
+•	evalJSON: Converts from JSON to Javascript, quickly, and is trivial. 
+•	secureEvalJSON: Converts from JSON to Javascript, but does so while checking to see if the source is actually JSON, and not with other Javascript statements thrown in. 
+•	quoteString: Places quotes around a string, and intelligently escapes any quote, backslash, or control characters. 
+Changes in Version 2.3 
+•	Direct reference established to the native browser API if available. If the native browser API is available $.toJSON, $.evalJSON and $.secureEvalJSON link directly to the native JSON.stringify and JSON.parse, no longer checks on every call ( issue 49 ) 
+•	Several minor performance improvements ( issue 48 ) 
+•	Several bug fixes (such as  issue 27 ) 
+•	Reorganized testing environment (now using QUnit) 
+•	Code clean up and JSHint validation (Yay!) 
+Changes in Version 2.0 
+•	The code has been re-written. It is now easier to read and follow; less of a mish-mash. 
+•	Support for native JSON has been included. This means that if you are using a browser that supports JSON.stringify, it will be used. Also evalJSON and secureEvalJSON will use JSON.parse if available. 
+•	Changes were made in the JSON output to move in line with the JSON object standard. This means 2.0 is not backwards compatible with the previous versions. 
+•	toJSON now renders like compactJSON used to and compactJSON does not exist anymore. As per the JSON object standard, needless spaces are now removed. This makes it less readable; if someone wants to send me a prettyJSON patch, it will be welcome. 
+•	Differences between output when JSON.stringify is available and when it is not could exist. I am unable to test all strings. Be aware when testing your apps. 
+Coding style is inherited from jQuery core: http://docs.jquery.com/JQuery_Core_Style_Guidelines 
+by Brantley Harris 

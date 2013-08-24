@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>EditInPlaceField</title>
+    <script src="extend.js"></script>
+    <script src="clone.js"></script>
+    <script src="augment.js"></script>
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script src="EditInPlaceField.js"></script>
+    <script src="EditInPlaceArea.js"></script>
+    <script src="EditInPlaceFieldWithPrototype.js"></script>
+    <script src="EditInPlaceWithMixin.js"></script>
+</head>
+<body>
+    <div id="doc"></div>
+
+    <script type="text/javascript">
+
+        $(function () {
+            var titleClassical = new EditInPlaceField('titleClassical', document.getElementById('doc'), 'Title Here');
+            var infoClassical = new EditInPlaceArea('infoClassical', document.getElementById('doc'), 'Info Here');
+            var titleClassicalWithPrototype = clone(EditInPlaceFieldWithPrototype);
+            titleClassicalWithPrototype.configure('titleClassicalWithPrototype', document.getElementById('doc'), 'Prototype Title Here');
+
+            var mixinClassical = new EditInPlaceWithMixin('mixinClassical', document.getElementById('doc'), 'Mixin Title Here');
+        });
+
+    </script>
+</body>
+</html>

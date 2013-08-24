@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="Chain.js"></script>
+    <title>Chain</title>
+</head>
+<body>
+    
+    <input type="text" id="text_name" />
+    <input type="button" id="button_click" value="click" />
+
+    <script type="text/javascript">
+
+        window.installHelper(window, 'Chain');
+
+        Chain(window).addEvent('load', function () {
+            Chain(document.getElementById('text_name'), 'button_click')
+                .addEvent('mouseover', function () { this.style.color = 'green'; })
+                .addEvent('mouseleave', function () { this.style.color = 'red';})
+                .setStyle('fontSize', '20px');
+        });
+
+    </script>
+</body>
+</html>

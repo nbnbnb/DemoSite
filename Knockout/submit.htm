@@ -1,0 +1,70 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Knockout Tutorial</title>
+    <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        .red {
+            color: red;
+        }
+    </style>
+
+    <script type="text/javascript" src="/Scripts/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script src="/Scripts/underscore.js"></script>
+</head>
+
+
+<body>
+    <div id="div_message"></div>
+    <div class="page">
+        <div class="header"></div>
+
+        <div class="main">
+            <form data-bind="submit: doSomething">
+                <input name="userName" value="ZhangJin" />
+                <select name="country">
+                    <option>China</option>
+                    <option>RUSSA</option>
+                    <option>USA</option>
+                </select>
+                <input type="submit" value="Submit Button" />
+            </form>
+        </div>
+
+
+        <script type="text/javascript">
+
+            //  如果在form中绑定了submit事件，默认将会阻止浏览器中次form默认的submit事件
+            //  如果需要触发默认的提交事件，返回true即可
+            //  为什么在form中绑定submit事件，而不是在submit button上绑定submit事件
+            //  因为在form上绑定submit事件，将会含有一些高级功能，如在textbox中回车时，将会触发提交事件
+
+            // 用户自定义函数
+            ko.applyBindings({
+                doSomething: function (formElement) {
+                    for (var i = 0, j = formElement.length; i < j; i++) {
+                        alert(formElement[i].value);
+                    }
+                }
+            });
+
+            // 页面加载时执行
+            $(function () {
+                // 加载导航条
+                $(".header").load("/navigator.htm .header #div_nav", function () { });
+
+            });
+
+            // Event Bind
+            $(function () {
+
+            });
+
+        </script>
+
+    </div>
+</body>
+</html>

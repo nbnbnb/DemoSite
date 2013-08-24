@@ -1,0 +1,56 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Knockout Tutorial -  extender</title>
+    <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="/Scripts/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script src="/Scripts/underscore.js"></script>
+</head>
+
+
+<body>
+    <div id="div_message"></div>
+    <div class="page">
+        <div class="header"></div>
+
+        <div class="main">
+            <input data-bind="value:userName,valueUpdate:'afterkeydown'" type="text" />
+            <span data-bind="text:userName"></span>
+        </div>
+
+
+        <script type="text/javascript">
+
+            ko.extenders.logChange = function (target,options) {
+                target.subscribe(function (newValue) {
+                    console.log(options + ": " + newValue);
+                });
+
+                return target; //always return the original observables value
+            };
+
+            // 用户自定义函数
+            ko.applyBindings({
+                userName: ko.observable('ZhangJin').extend({ logChange: 'New Name:' })
+            });
+
+            // 页面加载时执行
+            $(function () {
+                // 加载导航条
+                $(".header").load("/navigator.htm .header #div_nav", function () { });
+
+            });
+
+            // Event Bind
+            $(function () {
+               
+            });
+
+        </script>
+
+    </div>
+</body>
+</html>

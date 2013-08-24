@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jQuery Deferred</title>
+    <script type="text/javascript" src="/Scripts/jquery-1.7.2.js"></script>
+
+    <style type="text/css">
+
+        #div_message
+        {
+            border:1px solid red;
+            width:300px;
+            height:400px;
+            right:0;
+            top:0;
+            position:absolute;
+            overflow-y:auto;
+        }
+
+        .square
+        {
+            float:left;
+            width:100px;
+            height:100px;
+            margin-left:3px;
+            background-color:green;
+            display:none;
+        }
+        
+    </style>
+
+</head>
+<body>
+
+    <div>
+
+        <input type="button" value="基本Deferred创建" id="button_do01" />
+        <input type="button" value="使用构造函数创建Deferred" id="button_do02" />
+        <input type="button" value="创建Deferred对象接口" id="button_do03" />
+        <input type="button" value="使用多个Deferred对象" id="button_do04" />
+        <br /><br />
+        <input type="button" value="Deferred.pipe" id="button_do05" />
+        <input type="button" value="Deferred.progress,notify" id="button_do06" />
+        <input type="button" value="jQuery.promise" id="button_do07" />
+
+        <br /><br />
+        
+
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+
+    </div>
+    <div id="div_message"></div>
+    <script type="text/javascript">
+        // 自定义函数
+        function log(msg) {
+            $("#div_message").append(msg + "<br />");
+        }
+
+        function wait01() {
+            var def = $.Deferred();
+
+            var task = function () {
+                log("I am working in Task 01");
+
+                // 此方法，必须要在 resolve() 或 reject() 方法前执行
+                // 注意，此处使用这种方法还是会阻塞线程
+                // 如果进行无阻塞调用？待解决
+                for (var i = 1; i < 10000; i++) {
+                    def.notify(i);
+                }
+                
+                def.resolve();
+            }
+
+            setTimeout(task, 1000);
+
+            return def.promise();
+        }
+
+        function wait02(def) {
+
+            var task = function () {
+                log("I am working in Task 02");
+                def.resolve();
+            }
+
+            setTimeout(task, 2000);
+        }
+
+        function wait03(def) {
+
+            var task = function () {
+                log("I am working in Task 03");
+                def.resolve();
+            }
+
+            setTimeout(task, 3000);
+        }
+
+        // 页面加载时执行
+
+        // 事件绑定
+        $(function () {
+
+            $("#button_do01").bind("click", function () {
+                $.when(wait01())
+                    .done(function () { log("Working Succeed in Task 01"); })
+                    .fail(function () { log("Working Failed in Task 01"); });
+            });
+
+            $("#button_do02").bind("click", function () {
+                $.Deferred(wait02)
+                    .done(function () { log("Working Succeed in Task 02"); })
+                    .fail(function () { log("Working Failed in Task 02"); });
+            });
+
+            $("#button_do03").bind("click", function () {
+
+                var def = $.Deferred();
+
+                // 获得 Defereed 对象的接口
+                def.promise(wait03);
+
+                wait03.done(function () { log("Working Succeed in Task 03"); })
+                    .fail(function () { log("Working Failed in Task 03"); });
+
+                // 注意，此处需要手动传递 Defereed 对象
+                // 并且此对象还必须是可以进行状态操作的
+                // 通过 promise 方法返回的 Deferred 对象无法进行 状态操作
+                wait03(def);
+            });
+
+            $("#button_do04").bind("click", function () {
+
+                var def01 = wait01();
+                var def02 = $.Deferred(wait02);
+                var def03 = $.Deferred();
+                wait03(def03);
+
+                $.when(def01, def02, def03)
+                    .done(
+                        function () { log("Working Succeed in Task 01"); },
+                        function () { log("Working Succeed in Task 02"); },
+                        function () { log("Working Succeed in Task 03"); }
+                    )
+                    .fail(
+                        function () { log("Working Failed in Task 01"); },
+                        function () { log("Working Failed in Task 02"); },
+                        function () { log("Working Failed in Task 03"); }
+                    );
+            });
+
+            $("#button_do05").bind("click", function () {
+
+                // 使用新式的 Ajax 方法
+                // 此处将会返回一个Promise对象
+                var request = $.get("GetID.ashx");
+
+                // 此处又返回一个Promise对象(类似与Deferred对象)
+                var chained = request.pipe(function (data) {
+                    // 此Ajax调用，将会返回一个Promise对象
+                    return $.post("GetName.ashx", { UserID: data });
+                });
+
+                chained.done(function (data) { log("You Name is " + data); });
+
+                // 注意，此Demo是如果演示 Ajax连续任务的
+                // 等待第一个Ajax请求返回的值，然后接着第二个Ajax请求,并返回一个Promise对象
+                // 最后在Promise对象上添加完成时的回调函数
+            });
+
+            $("#button_do06").bind("click", function () {
+
+                // 添加的 process 函数，将在 调用 nofity 方法时执行
+                // 最佳实践为，Deferred的创建者，才应该调用此方法
+                // 这与.NET 中的事件类似
+                // 由于wait01()方法中返回的是一个 Promise对象，将不会有 notify方法
+                // 所以下面的变量 defer，是无法进行调用的
+
+                var defer = wait01();
+                defer.progress(
+                    function (args) { log("I am process call back 01 --> " + args); }
+                    );
+            });
+
+            $("#button_do07").bind("click", function () {
+
+                log("Start Animation...");
+
+                
+                $(".square").each(function (i, ele) {
+                    $(this).fadeIn().fadeOut((i + 1) * 2000);
+                });
+
+                $(".square").promise().done(function () {
+                    log("Animation Ended...");
+                });
+                
+                // 可以使用下面的方法
+
+                /*
+                // With a jQuery Collections
+                var effect = function () {
+                    // 可以说，此处返回的就是一个 Promise 对象集合 (master Promise)
+                    return $(".square").fadeIn(800).fadeOut(1200);
+                };
+
+                $.when(effect()).done(function () {
+                    log("Animation Ended...");
+                });
+                */
+            });
+        });
+
+        /*  P.S
+         Deferred 和 Promise 对象的区别
+
+         Promise is a subset of Deferred 
+
+         Promise 对象不可以执行一下的改变状态函数
+         resolve,reject,notify,notifyWith,rejectWith,notifyWith
+         但可以执行下面 用于附加回调函数 和 获取状态(state)  的方法
+         then,done,fail,always,pipe,progress,state
+
+         调用 Ajax 方法，返回的都是 Promise 对象
+         the jqXHR object returned by jQuery.ajax is a Deferred
+         如
+        
+        $.when($.ajax("test.aspx")).then(function (ajaxArgs) {
+            // ajaxArgs is [ "success", statusText, jqXHR ] 
+            alert(ajaxArgs[1]); 
+        });
+
+        jQuery.promise([type][,target])
+        Return a Promise object to observe when all actions of a certain
+        type bound to the collection,queued or not,have finished.
+
+        type: The type of queue that need to be observed
+        target: Object onto which the promise methods have to be attached
+
+        The .promise() method returns a dynamically generated Promise that is resolved once 
+        all actions of a certain type bound to the collection,queue or not, have ended.
+
+        By default , the type is 'fx',which means the returned Promise is resolved when all the 
+        animations of the selected elements have completed.
+
+        if target is provider, .promise() with attach the methods onto it and then return this object 
+        rather than create a new one. This can be useful to attach the Promise behavior to an object
+        that already exists.
+
+        */
+
+    </script>
+</body>
+</html>
