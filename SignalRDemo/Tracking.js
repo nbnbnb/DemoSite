@@ -11,6 +11,19 @@ connection.received(function (data) {
     var domElementId = "id" + data.id;
     var elem = createElementIfNotExists(domElementId);
     $(elem).css({ left: data.x, top: data.y }).text(data.id);
+
+    // chunked 数据标记在 <script />标签中
+    // 可以通过计数来查看获得了多少chunked数据
+    //console.log($("script").length + '-' + new Date().getTime());
+
+    //var foreverFrame=$('iframe[data-signalr-connection-id="'+connection.id+'"]');
+    
+    //if (foreverFrame) {
+          // 在调用此回调函数之前，数据已经被清除了
+    //    //console.log($("script", foreverFrame).length);
+    //    console.log($(foreverFrame).attr("src"));
+    //}
+
 });
 
 
