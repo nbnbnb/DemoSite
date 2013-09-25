@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Temp.aspx.cs" Inherits="WebFormDemo_Temp" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Temp.aspx.cs" Inherits="WebFormDemo.WebFormDemo_Temp" %>
 
 <!DOCTYPE html>
 
@@ -13,7 +13,7 @@
         <h2>This is Temp Page!</h2>
         <asp:Label runat="server" ID="Label_Message" />
         <asp:Button runat="server" ID="Button_Click" Text="Click" />
-        <asp:GridView runat="server" ID="GridView_Events" />
+        <asp:Image runat="server" ID="Image_Window" />
     </div>
     </form>
 </body>

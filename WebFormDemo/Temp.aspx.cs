@@ -9,22 +9,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class WebFormDemo_Temp:System.Web.UI.Page
+namespace WebFormDemo
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class WebFormDemo_Temp : System.Web.UI.Page
     {
-        NameValueCollection nvc = ConfigurationManager.GetSection("T01") as NameValueCollection;
-        Hashtable ht = ConfigurationManager.GetSection("T02") as Hashtable;
-        Hashtable ht2 = ConfigurationManager.GetSection("T03") as Hashtable;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Button_Click.Click += Button_Click_Click;
+        }
 
-        Label_Message.Text = ht2["Key2"].ToString() + ht2["Key1"].ToString();
-
-        Button_Click.Click += Button_Click_Click;
-    }
-
-    void Button_Click_Click(object sender, EventArgs e)
-    {
-        EventLog logs = new EventLog();
-
+        void Button_Click_Click(object sender, EventArgs e)
+        {
+            Label_Message.Text = GetLocalResourceObject("Window", typeof(System.Drawing.Bitmap), "Width").ToString();
+        }
     }
 }

@@ -35,7 +35,7 @@
                 算法：判断是否有正确的资源文件，则使用此资源，否则判断是否有 UICulture="auto:kkk"指定的 kkk区域资源
                 如果有，则显示，如果没有，则加载无区域设置的资源文件。
             </p>
-
+            <asp:Label runat="server" ID="Label_Message" />
         </div>
     </form>
 </body>
