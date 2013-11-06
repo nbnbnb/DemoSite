@@ -93,8 +93,7 @@
             </WebServiceSettings>
         </HeaderContextMenu>
     </telerik:RadGrid>
-    <asp:LinqDataSource ID="LinqDataSource1" runat="server" 
-        ContextTypeName="NorthwindDataContext" EntityTypeName="" TableName="Customers">
+    <asp:LinqDataSource ID="LinqDataSource1"  runat="server"  ContextTypeName="DemoSite.Northwind.LinqToSQL.NorthwindDataContext" EntityTypeName="" TableName="Customers">
     </asp:LinqDataSource>
     
 </asp:Content>

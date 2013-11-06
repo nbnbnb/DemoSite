@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoSite.Northwind.LinqToSQL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,7 +8,7 @@ using System.Web.UI.WebControls;
 
 public partial class Telerik_RadGrid_VirtualScrolling : System.Web.UI.Page
 {
-    NorthwindDataContext db = MainDB.GetNorthwindDB();
+    private NorthwindDataContext db = MainDB.GetNorthwindDB();
 
     protected void Page_Load(object sender, EventArgs e)
     {

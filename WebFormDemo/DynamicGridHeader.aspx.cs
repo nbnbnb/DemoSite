@@ -33,6 +33,19 @@ public partial class WebFormDemo_DynamicGridHeader : System.Web.UI.Page
         {
             e.Row.BackColor = System.Drawing.Color.Red;
         }
+
+         if (e.Row.RowType == DataControlRowType.DataRow)
+         {
+             foreach (TableCell cell in e.Row.Cells)
+             {
+                 DateTime dt;
+                 if (DateTime.TryParse(cell.Text,out dt))
+                 {
+                     cell.Text = dt.ToString("d");  // 格式化自动列生成的日期格式
+                 }
+             }
+         }
+        
     }
 
     private void BindSource()
@@ -94,5 +107,7 @@ public partial class WebFormDemo_DynamicGridHeader : System.Web.UI.Page
         public string Address { get; set; }
 
         public int Age { get; set; }
+
+        public DateTime Birth { get; set; }
     }
 }

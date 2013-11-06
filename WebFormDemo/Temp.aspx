@@ -13,7 +13,6 @@
         <h2>This is Temp Page!</h2>
         <asp:Label runat="server" ID="Label_Message" />
         <asp:Button runat="server" ID="Button_Click" Text="Click" />
-        <asp:Image runat="server" ID="Image_Window" />
     </div>
     </form>
 </body>

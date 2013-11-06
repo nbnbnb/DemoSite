@@ -23,13 +23,13 @@
     </script>
 
 </head>
-<body>
+<body onunload="alert(123)">
     <div id="div_message"></div>
     <div class="page">
         <div class="header"></div>
 
         <div class="main">
-            <input type="button" id="button_DoIt" value="DoIt" />
+            <input type="button" id="button_DoIt" value="DoIt"/>
 
             <p id="p_info">Hello Javascript!</p>
 
@@ -54,11 +54,14 @@
             // Event Bind
             $(function () {
                 $("#button_DoIt").bind("click", function () {
-                    DemoSite.JSTemp.sayName();
+                   
                 });
             });
 
         </script>
+        
+
+
     </div>
 </body>
 </html>

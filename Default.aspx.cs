@@ -12,23 +12,18 @@ using System.Net;
 using System.Threading;
 using System.Globalization;
 using System.Diagnostics;
-using DemoLib;
 
 public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Button_Transfor.Click += Button_Transfor_Click;
-
-        Message = "Button Transfor";
-
-        Context.Items.Add("Name", "ZhangJin");
+        Button_Click.Click += Button_Click_Click;
     }
 
-    void Button_Transfor_Click(object sender, EventArgs e)
+    void Button_Click_Click(object sender, EventArgs e)
     {
-        Server.Transfer("Transfor.aspx", true);       
+        throw new NotImplementedException();
     }
 
-    public string Message { get; set; }
+
 }

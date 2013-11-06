@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
-using System.Diagnostics;
+
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -20,7 +20,7 @@ namespace WebFormDemo
 
         void Button_Click_Click(object sender, EventArgs e)
         {
-            Label_Message.Text = GetLocalResourceObject("Window", typeof(System.Drawing.Bitmap), "Width").ToString();
+            throw new NullReferenceException();
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿<%@ Page Title="主页" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeFile="Default.aspx.cs" Inherits="_Default" Culture="auto" UICulture="auto" %>
 
-
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
     <input type="button" value="Click(Client)" id="button_doIt" />
-    <asp:Button runat="server" Text="Transfor" ID="Button_Transfor" />
 
     <input type="text" value="26" name="age" />
 
@@ -14,12 +12,16 @@
             $(function () {
 
                 $("#button_doIt").bind("click", function () {
-                    alert(new Date().toLocaleDateString());
+                    
                 });
+
             });
         </script>
     </telerik:RadScriptBlock>
 
-    <%= this.GetType() %>
+    <asp:Label runat="server" ID="Label_Message" />
 
+    <asp:Button runat="server" ID="Button_Click" Text="Server Click" />
+
+    <a href="kkk.aspx">无法找到此页</a>
 </asp:Content>

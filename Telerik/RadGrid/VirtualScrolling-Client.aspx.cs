@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Services;
+using DemoSite.Northwind.LinqToSQL;
 
 public partial class Telerik_RadGrid_VirtualScrolling_Client : System.Web.UI.Page
 {
