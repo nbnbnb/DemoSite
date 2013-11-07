@@ -12,6 +12,7 @@
 
         DemoSite.SignalRDemo.InitManager.InitRoute();
 
+        log4net.Config.XmlConfigurator.Configure();
     }
 
     void Application_End(object sender, EventArgs e) 

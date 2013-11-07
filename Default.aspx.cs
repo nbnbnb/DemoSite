@@ -12,6 +12,7 @@ using System.Net;
 using System.Threading;
 using System.Globalization;
 using System.Diagnostics;
+using log4net;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -22,7 +23,13 @@ public partial class _Default : System.Web.UI.Page
 
     void Button_Click_Click(object sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        throw new NotImplementedException("未实现此方法");
+    }
+
+    protected override void OnError(EventArgs e)
+    {
+        ILog log = LogManager.GetLogger("Error");
+        log.Error(Server.GetLastError().GetBaseException());
     }
 
 

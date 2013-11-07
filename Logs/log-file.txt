@@ -1,0 +1,8 @@
+2013-11-07 23:37:06,021 [14] ERROR Error [(null)] - System.NotImplementedException: 未实现此方法
+   在 _Default.Button_Click_Click(Object sender, EventArgs e) 位置 d:\IISSite\DemoSite\Default.aspx.cs:行号 26
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
