@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>控制光标位置</title>
+    <script type="text/javascript">
+        function insertText(obj, str) {
+            if (document.selection) {
+                obj.focus();
+                // 注意，此处使用的是 document 对象，表示将字符串插入到指定的位置
+                // 如果光标选择了多个字符，则将会替换选择的字符
+                document.selection.createRange().text = str;
+
+            } else if (typeof obj.selectionStart === 'number') {  // firefox
+
+                var startPos = obj.selectionStart; // 通过此属性可以获得光标的开始位置
+                var endPos = obj.selectionEnd;  // 通过此属性可以获得光标的结束位置
+                var cursorPos = startPos;
+                var tmpStr = obj.value;
+
+                obj.value = tmpStr.substring(0, startPos) + str + tmpStr.substring(endPos, tmpStr.length);
+                cursorPos += str.length;
+                obj.selectionStart = obj.selectionEnd = cursorPos;   // 设置光标为插入状态，而不是选择文本状态
+            } else {
+                obj.value += str;  // 不支持控制光标功能，直接将字符串加到结尾
+            }
+        }
+
+        function moveEnd(obj) {
+            var len = obj.value.length;
+
+            if (document.selection) {
+                obj.focus();
+
+                var sel = obj.createTextRange();
+                sel.moveStart('character', len); // 将开始光标置于字符数组中指定的位置
+                sel.collapse();// 必须要调用此方法 将插入点移动到当前范围的开始或结尾。
+                sel.select();// 必须要调用此方法 将当前选中区置为当前对象。
+            } else if (typeof obj.selectionStart === 'number') {  // firefox
+                obj.selectionStart = obj.selectionEnd = len;
+            }
+        }
+
+
+        function seqMove(obj) {
+
+            if (document.selection) {
+
+                obj.focus();
+
+                var oS = document.selection.createRange();
+
+                // 为了使 oR 与 oS 在同一等级上比较，请勿使用：oR = textarea.createTextRange()
+                var oR = document.body.createTextRange();
+                oR.moveToElementText(obj);
+
+                // 我们比较 oR与oS的选区起始位置
+                // 如果oR的起始位置在oS之前，我们向前移动起始位置一个字符
+                // 一直当oS的起始位置在oR之前停止
+                // 移动的位置，则是选区的起始位置
+                for (var i = 0; oR.compareEndPoints('StartToStart', oS) < 0 && oS.moveStart("character", -1) !== 0; i++) {
+                    // Why? You can alert(textarea.value.length)
+                    if (obj.value.charAt(i) == '\n') {
+                        i++;
+                    }
+                }
+
+                oR.move('character', i + 1);  // 将光标移动到指定位置
+                oR.select();  // 必须要调用此方法
+
+            } else if (typeof obj.selectionStart === 'number') {  // firefox
+                obj.selectionStart = obj.selectionEnd = obj.selectionStart + 1;
+            }
+        }
+
+        function showPosition(ele) {
+            var position = getCursorPosition(ele);
+            alert(position.start);
+            alert(position.end);
+            alert(position.text);
+        }
+
+        function deleteAChar(obj) {
+            // 首先获得光标在文本框中的位置
+            // 然后得到前部分和后一部分
+            // 最后设置正确的光标位置
+
+            var originValue = obj.value;
+            var index;
+
+            if (document.selection) {
+                obj.focus();
+
+                var oS = document.selection.createRange();
+
+                // 为了使 oR 与 oS 在同一等级上比较，请勿使用：oR = textarea.createTextRange()
+                var oR = document.body.createTextRange();
+                oR.moveToElementText(obj);
+
+                
+
+                // 我们比较 oR与oS的选区起始位置
+                // 如果oR的起始位置在oS之前，我们向前移动起始位置一个字符
+                // 一直当oS的起始位置在oR之前停止
+                // 移动的位置，则是选区的起始位置
+                for (var index = 0; oR.compareEndPoints('StartToStart', oS) < 0 && oS.moveStart("character", -1) !== 0; index++) {
+                    // Why? You can alert(textarea.value.length)
+                    if (obj.value.charAt(index) == '\n') {
+                        index++;
+                    }
+                }
+
+                
+
+                // 设置删除后的值
+                obj.value = originValue.substring(0, index - 1) + originValue.substring(index);
+
+                // 设置正确的光标位置
+                oR.move('character', index - 1);  // 将光标移动到指定位置
+                oR.select();  // 必须要调用此方法
+            } else if (typeof obj.selectionStart === 'number') {  // firefox
+                obj.focus();
+                index = obj.selectionStart; // 通过此属性可以获得光标的开始位置
+                // 设置删除后的值
+                obj.value = originValue.substring(0, index - 1) + originValue.substring(index);
+                obj.selectionStart = obj.selectionEnd = index - 1;
+            }
+        }
+
+        // 获取光标位置
+        function getCursorPosition(textarea) {
+            var rangeData = { text: "", start: 0, end: 0 };
+            textarea.focus();
+            if (textarea.setSelectionRange) { // W3C
+                rangeData.start = textarea.selectionStart;
+                rangeData.end = textarea.selectionEnd;
+                rangeData.text = (rangeData.start != rangeData.end) ? textarea.value.substring(rangeData.start, rangeData.end) : "";
+            } else if (document.selection) { // IE
+                var i,
+                    oS = document.selection.createRange(),
+                    // Don't: oR = textarea.createTextRange()
+                    oR = document.body.createTextRange();
+                oR.moveToElementText(textarea);
+
+                rangeData.text = oS.text;
+                rangeData.bookmark = oS.getBookmark();
+
+                // object.moveStart(sUnit [, iCount])
+                // Return Value: Integer that returns the number of units moved.
+                for (i = 0; oR.compareEndPoints('StartToStart', oS) < 0 && oS.moveStart("character", -1) !== 0; i++) {
+                    // Why? You can alert(textarea.value.length)
+                    if (textarea.value.charAt(i) == '\n') {
+                        i++;
+                    }
+                }
+                rangeData.start = i;
+                rangeData.end = rangeData.text.length + rangeData.start;
+            }
+
+            return rangeData;
+        }
+
+        // 设置光标位置
+        function setCursorPosition(textarea, rangeData) {
+            if (!rangeData) {
+                alert("You must get cursor position first.")
+            }
+            if (textarea.setSelectionRange) { // W3C
+                textarea.focus();
+                textarea.setSelectionRange(rangeData.start, rangeData.end);
+            } else if (textarea.createTextRange) { // IE
+                var oR = textarea.createTextRange();
+                // Fixbug :
+                // In IE, if cursor position at the end of textarea, the setCursorPosition function don't work
+                if (textarea.value.length === rangeData.start) {
+                    oR.collapse(false)
+                    oR.select();
+                } else {
+                    oR.moveToBookmark(rangeData.bookmark);
+                    oR.select();
+                }
+            }
+        }
+
+        // 参考：http://www.planabc.net/2010/11/17/get_textarea_cursor_position/
+    </script>
+</head>
+<body>
+    <textarea rows="20" cols="100" id="txt">wefwef zhangjin efw efwef wefwe fwe fzhangjin</textarea>
+    <br />
+    <input type="button" value="移动到结尾" onclick='moveEnd(document.getElementById("txt"));' />
+    <input type="button" value="插入值" onclick='insertText(document.getElementById("txt"), "zhangjin");' />
+    <input type="button" value="向后移动" onclick='seqMove(document.getElementById("txt"));' />
+    <input type="button" value="信息位置信息" onclick='showPosition(document.getElementById("txt"));' />
+    <input type="button" value="删除前一个字符" onclick='deleteAChar(document.getElementById("txt"));' />
+</body>
+</html>
