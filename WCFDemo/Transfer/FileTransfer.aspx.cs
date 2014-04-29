@@ -27,42 +27,56 @@ public partial class WCFDemo_FileTransfer : System.Web.UI.Page
 
     private void Download()
     {
+
+        // 如果文件在服务器上，可以直接使用下面的方法，进行文件下载
+        // 直接向 HTTP 流输出响应，而不在内存中缓存它
+        // Response.TransmitFile("file");
         try
         {
             TransferServiceClient proxy = new TransferServiceClient("basicHttpUpload");
-            DownloadRequestInfoClient requestInfo = new DownloadRequestInfoClient { FileName = "output.rar" };
 
-            RemoteFileInfoClient fileInfo = proxy.DownloadFileClient(requestInfo);
+            String fileName = TextBox_FileName.Text;
+
+            DownloadRequestInfoClient requestInfo =
+                new DownloadRequestInfoClient
+                {
+                    FilePath = Path.Combine(Server.MapPath("~/TempFiles"), fileName)
+                };
+
+            UploadRequestInfoClient fileInfo = proxy.DownloadFileClient(requestInfo);
 
             Response.BufferOutput = false;   // to prevent buffering 
+            
             Response.Clear();
             Response.ClearHeaders();
             Response.ContentType = "application/octet-stream";
-            Response.AddHeader("Content-Disposition","attachment; filename=" + requestInfo.FileName);
+            // 注意：需要编码文件名，避免乱码问题
+            // 但是 Firefox 会乱码！！！
+            Response.AddHeader("Content-Disposition", "attachment; filename=" + Server.UrlEncode(fileName));
+ 
+            int size = 1024 * 10;  // 10 KB
+            byte[] buffer = new byte[size];
 
-
-            byte[] buffer = new byte[6500];
-            int bytesRead = fileInfo.FileByteStream.Read(buffer, 0, buffer.Length);
-  
-            while (bytesRead > 0)
+            while (size > 0)
             {
+                // 此次读取了多少字节
+                size = fileInfo.FileByteStream.Read(buffer, 0, buffer.Length);
+
                 // Verify that the client is connected.
                 if (Response.IsClientConnected)
                 {
+                    Response.OutputStream.Write(buffer, 0, size);
 
-                    Response.OutputStream.Write(buffer, 0, bytesRead);
-                    // Flush the data to the HTML output.
                     Response.Flush();
-
-                    buffer = new byte[6500];
-                    bytesRead = fileInfo.FileByteStream.Read(buffer, 0, buffer.Length);
-
                 }
                 else
                 {
-                    bytesRead = -1;
+                    break;
                 }
             }
+
+            Response.End();
+
         }
         catch (Exception ex)
         {
@@ -80,11 +94,10 @@ public partial class WCFDemo_FileTransfer : System.Web.UI.Page
     {
         if (FileUpload1.HasFile)
         {
-
             TransferServiceClient clientUpload = new TransferServiceClient("basicHttpUpload");
-            RemoteFileInfoClient uploadRequestInfo = new RemoteFileInfoClient
+            UploadRequestInfoClient uploadRequestInfo = new UploadRequestInfoClient
             {
-                FileName = FileUpload1.FileName,
+                FilePath = Path.Combine(Server.MapPath("~/TempFiles"), FileUpload1.FileName),
                 Length = FileUpload1.PostedFile.InputStream.Length,
                 FileByteStream = FileUpload1.PostedFile.InputStream
             };

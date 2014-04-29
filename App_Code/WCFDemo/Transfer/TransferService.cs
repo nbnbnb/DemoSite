@@ -12,48 +12,61 @@ namespace WCFDemo
 {
     public class TransferService : ITransferService
     {
-        public RemoteFileInfo DownloadFile(DownloadRequestInfo request)
+        public UploadRequestInfo DownloadFile(DownloadRequestInfo request)
         {
-            RemoteFileInfo result = new RemoteFileInfo();
+            UploadRequestInfo result = new UploadRequestInfo();
             try
             {
-                string filePath = Path.Combine(@"G:\", request.FileName);
+                string filePath = request.FilePath;
                 FileInfo fileInfo = new FileInfo(filePath);
 
                 if (!fileInfo.Exists)
                 {
-                    throw new FileNotFoundException("File not found", request.FileName);
+                    throw new FileNotFoundException("File not found", request.FilePath);
                 }
 
-                FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                //using (FileStream stream = File.OpenRead(filePath))
+                //{
+                //    result.FileName = request.FilePath;
+                //    result.Length = fileInfo.Length;
+                //    result.FileByteStream = stream;
+                //}
 
-                result.FileName = request.FileName;
+                // 注意：此处不能使用上面的方式进行
+                // 因为流在客户端接收完成前，不能够关闭
+
+                FileStream stream = File.OpenRead(filePath);
+
+                result.FilePath = request.FilePath;
                 result.Length = fileInfo.Length;
+
+                // 客户端将会读取此流对象
                 result.FileByteStream = stream;
             }
             catch (UnauthorizedAccessException ex)
             {
                 throw new Exception("Download File Error", ex);
             }
+
             return result;
         }
 
-        public void UploadFile(RemoteFileInfo request)
+        public void UploadFile(UploadRequestInfo request)
         {
-
-            string filePath = Path.Combine(@"G:\", request.FileName);
-
-            using (FileStream targetStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (FileStream targetStream = File.OpenWrite(request.FilePath))
             {
-                int bufferLen = 65000;
-                byte[] buffer = new byte[bufferLen];
-                int count = 0;
-                while ((count = request.FileByteStream.Read(buffer, 0, bufferLen)) > 0)
-                {
-                    // save to output stream
-                    targetStream.Write(buffer, 0, count);
-                }
-                request.Dispose();
+                // int size = 1024 * 10;
+                //byte[] buf=new byte[size];
+                //size = request.FileByteStream.Read(buf, 0, size);
+                //while (size > 0)
+                //{
+                //    targetStream.Write(buf, 0, size);
+                //    size = request.FileByteStream.Read(buf, 0, size);
+                //}
+
+                // 此算法与上面的代码相同
+                // 推荐
+                request.FileByteStream.CopyTo(targetStream, 4096);
             }
         }
     }

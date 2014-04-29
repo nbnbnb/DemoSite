@@ -1,0 +1,159 @@
+﻿<error errorId="01dd5b6b-893e-4960-8c47-abc8b92dedbc" application="/LM/W3SVC/1/ROOT" host="FOUNDER-PC" type="System.IO.Compression.ZLibException" message="基础压缩例程的流状态不一致。" source="System" detail="System.IO.Compression.ZLibException: 基础压缩例程的流状态不一致。&#xD;&#xA;   在 System.IO.Compression.DeflaterZLib.Deflate(FlushCode flushCode)&#xD;&#xA;   在 System.IO.Compression.DeflaterZLib.ReadDeflateOutput(Byte[] outputBuffer, FlushCode flushCode, Int32&amp; bytesRead)&#xD;&#xA;   在 System.IO.Compression.DeflaterZLib.System.IO.Compression.IDeflater.GetDeflateOutput(Byte[] outputBuffer)&#xD;&#xA;   在 System.IO.Compression.DeflateStream.WriteDeflaterOutput(Boolean isAsync)&#xD;&#xA;   在 System.IO.Compression.DeflateStream.InternalWrite(Byte[] array, Int32 offset, Int32 count, Boolean isAsync)&#xD;&#xA;   在 System.IO.Compression.DeflateStream.Write(Byte[] array, Int32 offset, Int32 count)&#xD;&#xA;   在 System.IO.Compression.GZipStream.Write(Byte[] array, Int32 offset, Int32 count)&#xD;&#xA;   在 Telerik.Web.UI.RadCompression.RadGZipStreamNet40.Write(Byte[] array, Int32 offset, Int32 count)&#xD;&#xA;   在 System.Web.HttpWriter.FilterIntegrated(Boolean finalFiltering, IIS7WorkerRequest wr)&#xD;&#xA;   在 System.Web.HttpResponse.UpdateNativeResponse(Boolean sendHeaders)&#xD;&#xA;   在 System.Web.HttpResponse.Flush(Boolean finalFlush, Boolean async)&#xD;&#xA;   在 System.Web.HttpResponse.Flush()&#xD;&#xA;   在 System.Web.HttpWriter.WriteFromStream(Byte[] data, Int32 offset, Int32 size)&#xD;&#xA;   在 System.Web.HttpResponseStream.Write(Byte[] buffer, Int32 offset, Int32 count)&#xD;&#xA;   在 System.Web.HttpResponseStreamFilterSink.Write(Byte[] buffer, Int32 offset, Int32 count)&#xD;&#xA;   在 System.IO.Compression.DeflateStream.PurgeBuffers(Boolean disposing)&#xD;&#xA;   在 System.IO.Compression.DeflateStream.Dispose(Boolean disposing)&#xD;&#xA;   在 System.IO.Stream.Close()&#xD;&#xA;   在 System.IO.Compression.GZipStream.Dispose(Boolean disposing)&#xD;&#xA;   在 System.IO.Stream.Close()&#xD;&#xA;   在 System.Web.HttpWriter.FilterIntegrated(Boolean finalFiltering, IIS7WorkerRequest wr)&#xD;&#xA;   在 System.Web.HttpResponse.FilterOutput()&#xD;&#xA;   在 System.Web.HttpApplication.CallFilterExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" time="2014-01-09T14:02:13.9274611Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_TRANSFER_ENCODING:chunked&#xD;&#xA;HTTP_CONTENT_TYPE:text/xml; charset=utf-8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_EXPECT:100-continue&#xD;&#xA;HTTP_HOST:localhost&#xD;&#xA;HTTP_SOAPACTION:&quot;http://tempuri.org/ITransferService/UploadFile&quot;&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Transfer-Encoding: chunked&#xD;&#xA;Content-Type: text/xml; charset=utf-8&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Expect: 100-continue&#xD;&#xA;Host: localhost&#xD;&#xA;SOAPAction: &quot;http://tempuri.org/ITransferService/UploadFile&quot;&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\IISSite\DemoSite\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="text/xml; charset=utf-8" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/WCFDemo/Transfer/TransferService.svc" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\IISSite\DemoSite\WCFDemo\Transfer\TransferService.svc" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="6877" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/WCFDemo/Transfer/TransferService.svc" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="80" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/7.5" />
+    </item>
+    <item name="URL">
+      <value string="/WCFDemo/Transfer/TransferService.svc" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_TRANSFER_ENCODING">
+      <value string="chunked" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="text/xml; charset=utf-8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_EXPECT">
+      <value string="100-continue" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost" />
+    </item>
+    <item name="HTTP_SOAPACTION">
+      <value string="&quot;http://tempuri.org/ITransferService/UploadFile&quot;" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="ASP.NET_SessionId">
+      <value string="upcl3xeoaykuxmexpmrjynsv" />
+    </item>
+  </cookies>
+</error>

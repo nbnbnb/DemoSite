@@ -11,16 +11,33 @@ using System.Web.UI.WebControls;
 
 namespace WebFormDemo
 {
-    public partial class WebFormDemo_Temp : System.Web.UI.Page
+    public partial class WebFormDemo_Temp : System.Web.UI.Page,ICallbackEventHandler
     {
+        private string callbackValue = String.Empty; 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Button_Click.Click += Button_Click_Click;
+
+            //string callBack =
+            //    Page.ClientScript.GetCallbackEventReference(this, "product", "ReceiveServerData", null, true);
+
+
         }
 
         void Button_Click_Click(object sender, EventArgs e)
         {
-            throw new NullReferenceException();
+            
+        }
+
+        public string GetCallbackResult()
+        {
+            return callbackValue + "OK";
+        }
+
+        public void RaiseCallbackEvent(string eventArgument)
+        {
+            this.callbackValue = eventArgument;
         }
     }
 }
