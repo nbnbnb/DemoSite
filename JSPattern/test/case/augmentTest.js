@@ -1,4 +1,6 @@
-﻿module('ZLib.augment 参元方法测试');
+﻿/// <reference path="../../src/augment.js" />
+
+module('ZLib.augment 参元方法测试');
 
 test('扩展全部方法', function () {
     var Serialize = function () { };

@@ -1,4 +1,6 @@
-﻿module('原型继承 ZLib.clone 函数测试');
+﻿/// <reference path="../../src/clone.js" />
+
+module('原型继承 ZLib.clone 函数测试');
 
 test('原型链继承 clone函数', function () {
     // Arrange

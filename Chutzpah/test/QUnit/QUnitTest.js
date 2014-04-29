@@ -42,25 +42,27 @@ test('ok test', function () {
     ok(true, 'true succeeds');
     ok('non-empty', 'non-empty stirng succeeds');
 
-    ok(false, 'false fails');
-    ok(0, '0 fails');
-    ok(NaN, 'NaN fails');
-    ok('', 'empty string fails');
-    ok(null, 'null fails');
-    ok(undefined, 'undefined fails');
+    ok(!false, 'false fails');
+    ok(!0, '0 fails');
+    ok(!NaN, 'NaN fails');
+    ok(!'', 'empty string fails');
+    ok(!null, 'null fails');
+    ok(!undefined, 'undefined fails');
 });
 
 test('equal test', function () {
     equal(0, 0, 'Zero; equal succeeds');
     equal('', 0, 'Empty, Zero; equal succeeds');
+    // 空字符串和0是相等的【非严格模式下】
+    equal(' ', 0, 'Empty String, Zero; equal succeeds');
     equal('', '', 'Empty, Empty; equal succeeds');
     equal(0, 0, 'Zero, Zero; equal succeeds');
 
-    equal('three', 3, 'Three, 3; equal fails');
-    equal(null, false, 'null, false; equal fails');
+    notEqual('three', 3, 'Three, 3; equal fails');
+    notEqual(null, false, 'null, false; equal fails');
 
     // equal 使用的是 == 而 strictEqual 使用的是  ===
-    strictEqual(0, '', 'Zero, Empty; strict equal fails');
+    notStrictEqual(0, '', 'Zero, Empty; strict equal fails');
 });
 
 test('deepEqual test', function () {

@@ -1,4 +1,7 @@
-﻿module('Interface 接口测试');
+﻿/// <reference path="../../src/Interface.js" />
+
+
+module('Interface 接口测试');
 
 test('正确创建实例', function () {
 

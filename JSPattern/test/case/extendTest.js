@@ -1,4 +1,7 @@
-﻿module('extend 函数测试(让子类继承父类)');
+﻿/// <reference path="../../src/extend.js" />
+
+
+module('extend 函数测试(让子类继承父类)');
 
 test('使用 extend 函数，让子类继承父类', function () {
     // Assert

@@ -7,6 +7,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost", "http://
 		SccAuxPath = ""
 		SccLocalPath = ""
 		SccProvider = ""
+		Frontpage = "false"
 		UseIISExpress = "false"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost"
@@ -33,6 +34,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{6397E0F4-E60E-41CA-91B3-C6B960376011}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogInit", "App\DogInit\DogInit.csproj", "{000598E7-9D37-45B0-A8CE-F3B4B9722ED2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CE24B45A-D899-440B-BD0C-71E22054BE3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
