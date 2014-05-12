@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="f50210d8-e770-4453-936e-32eaff6296c3"
+  name="Package1" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <suppliersInternal>
+    <dependency
+      Id="da500587-c391-4533-a756-da50ae6ee04f">
+      <interfaceMoniker
+        Id="99560f33-55d9-4318-9538-5f6c085f4ebe"
+        LastKnownName="Composite"
+        LastKnownLocation="ModelingProject.uml" />
+    </dependency>
+    <dependency
+      Id="da8b6e39-47bf-4a76-addc-e9cfb3f01713">
+      <interfaceMoniker
+        Id="b7eb7957-92ce-4d88-9af7-dd5c3d6e5de7"
+        LastKnownName="FormItem"
+        LastKnownLocation="ModelingProject.uml" />
+    </dependency>
+  </suppliersInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="2c6e8c58-96d1-4b92-9e89-3ea5bf5059b7"
+        name="CompositeForm"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="ee66870c-d0fc-4345-8b0f-cee92b8349ea"
+            name="add"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="e9251b01-2e62-40c6-974f-d6736a75a6da"
+            name="remove"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="b11771d1-3430-4fdc-b998-7403bba8561f"
+            name="getChild"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="e0635102-dacb-4e13-8e5a-d483a9da080c"
+            name="save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="70285ce5-750c-4ab5-ac37-134edb90ef99"
+            name="getElement"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a4f61a42-2f6b-49a0-a4d8-015f927e636c"
+        name="Field"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="c9cd93e2-86c2-4e0c-b81b-b2cb4896d8e8"
+            name="add"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="1293594f-bd39-4754-97ce-544b1655764c"
+            name="remove"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="80698e72-e28a-429d-a7e4-00c93154ab06"
+            name="getChild"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="84d7672d-c772-448e-902a-f268ce66327d"
+            name="save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="c67a1f01-b3b4-4659-ba7c-d4cb8da33704"
+            name="getElement"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="486bb5ba-0a07-4d95-89fb-0fb54679faad"
+            name="getValue"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="cfc4a1bd-2942-45e8-857e-7311ef3cf456"
+        name="InputField"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="5e5fedff-9008-43a3-80cc-a007cd731c45"
+            isSubstitutable="false">
+            <classMoniker
+              Id="a4f61a42-2f6b-49a0-a4d8-015f927e636c"
+              LastKnownName="Field"
+              LastKnownLocation="Package_0102.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="b377957f-a172-40d2-9359-554ad8151363"
+            name="add"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="40d1f483-6717-413d-a161-0925ac57d617"
+            name="remove"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="36e90964-2606-496f-8a0d-57bdec025819"
+            name="getChild"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="ae8a4ddf-8e90-4bb8-81b6-93574bd6cfe2"
+            name="save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="1e2f2453-df25-4602-9deb-716b61a4d58d"
+            name="getElement"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="32a25a9a-e18f-476b-aacb-37b61b09ef33"
+            name="getValue"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="0ecef1ea-c255-4239-bfbd-5afc876865f0"
+        name="TextareaField"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="85ccd88b-11d5-4ecf-b3c8-0b3ce8885949"
+            isSubstitutable="false">
+            <classMoniker
+              Id="a4f61a42-2f6b-49a0-a4d8-015f927e636c"
+              LastKnownName="Field"
+              LastKnownLocation="Package_0102.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="0ad97d10-3173-4eb5-88a9-479299ab303b"
+            name="add"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="6ed51be5-8b3e-48fb-9697-41570d32bd7c"
+            name="remove"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="07d41699-9c20-4eca-a643-4e958f7aa85d"
+            name="getChild"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="891ced0a-cb4d-48f0-b470-66135b67b6aa"
+            name="save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="07e25805-b47e-4cf7-8acd-36702b3c380b"
+            name="getElement"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="967ffefb-4c8d-45a9-a0d1-d1200c54a92c"
+            name="getValue"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="0dcb54d3-d390-4184-911b-6aadd41cdaaa"
+        name="SelectField"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="f51c1570-8b6b-4ad2-930e-2e36a2a17e0b"
+            isSubstitutable="false">
+            <classMoniker
+              Id="a4f61a42-2f6b-49a0-a4d8-015f927e636c"
+              LastKnownName="Field"
+              LastKnownLocation="Package_0102.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="767087e0-7ba1-4648-96e2-07ad6187a8ea"
+            name="add"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="d253901b-7342-42db-94bc-2c0dddb73516"
+            name="remove"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="87722232-fa4a-45cb-a6ff-4a788f63fe94"
+            name="getChild"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="a2ef857a-a781-4185-9b2d-11455acc18b8"
+            name="save"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="e0b9d106-f051-4328-ab15-5a92a10f7f2b"
+            name="getElement"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="af0932a2-382a-4eb1-98ee-ce2642b8c241"
+            name="getValue"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
