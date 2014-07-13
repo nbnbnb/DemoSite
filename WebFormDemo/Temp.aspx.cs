@@ -11,9 +11,9 @@ using System.Web.UI.WebControls;
 
 namespace WebFormDemo
 {
-    public partial class WebFormDemo_Temp : System.Web.UI.Page,ICallbackEventHandler
+    public partial class WebFormDemo_Temp : System.Web.UI.Page, ICallbackEventHandler
     {
-        private string callbackValue = String.Empty; 
+        private string callbackValue = String.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,7 +27,7 @@ namespace WebFormDemo
 
         void Button_Click_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         public string GetCallbackResult()

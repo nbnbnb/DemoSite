@@ -8,7 +8,7 @@
     <title>Temp Page</title>
     <script type="text/javascript">
         function showTime() {
-            var product = '测试';
+            var product = "测试"; // 只能传递字符串
             <%= Page.ClientScript.GetCallbackEventReference(this, "product", "receiveServerData", null,null, true) %>;
         }
 

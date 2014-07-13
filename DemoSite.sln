@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost", "http://localhost", "{3CEAEDC2-A4A3-4824-B080-C4F3CFD8AB67}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -38,9 +38,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogInit", "App\DogInit\DogI
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CE24B45A-D899-440B-BD0C-71E22054BE3E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UML", "UML", "{B22056F3-F249-4D63-BB89-060FCCE8A898}"
-EndProject
-Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject", "ModelingProject\ModelingProject.modelproj", "{14208EC8-FBE5-491D-AAAC-C810C1EA7DAF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebSite", "WebSite", "{32776C26-74EC-46AA-96C3-A075FF2CA00A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,17 +58,13 @@ Global
 		{000598E7-9D37-45B0-A8CE-F3B4B9722ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{000598E7-9D37-45B0-A8CE-F3B4B9722ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{000598E7-9D37-45B0-A8CE-F3B4B9722ED2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14208EC8-FBE5-491D-AAAC-C810C1EA7DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14208EC8-FBE5-491D-AAAC-C810C1EA7DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14208EC8-FBE5-491D-AAAC-C810C1EA7DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14208EC8-FBE5-491D-AAAC-C810C1EA7DAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{3CEAEDC2-A4A3-4824-B080-C4F3CFD8AB67} = {32776C26-74EC-46AA-96C3-A075FF2CA00A}
 		{140267BA-71AD-4BF5-9D5D-A7FF00891A4A} = {22681964-67AA-41CA-97E3-AC4D2C5C1B9B}
 		{000598E7-9D37-45B0-A8CE-F3B4B9722ED2} = {6397E0F4-E60E-41CA-91B3-C6B960376011}
-		{14208EC8-FBE5-491D-AAAC-C810C1EA7DAF} = {B22056F3-F249-4D63-BB89-060FCCE8A898}
 	EndGlobalSection
 EndGlobal
