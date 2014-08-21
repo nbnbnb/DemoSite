@@ -8,20 +8,34 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost:9999", "ht
 		UseIISExpress = "false"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_9999"
-		Debug.AspNetCompiler.PhysicalPath = "..\DemoSite\"
+		Debug.AspNetCompiler.PhysicalPath = "Site\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_9999\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_9999"
-		Release.AspNetCompiler.PhysicalPath = "..\DemoSite\"
+		Release.AspNetCompiler.PhysicalPath = "Site\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_9999\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\DemoSite\"
+		SlnRelativePath = "Site\"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Site", "Site", "{9F9FB30D-E60F-4DF1-9886-38EB4D675DF5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{288F9433-B258-42C8-80E5-541B789D3983}"
+	ProjectSection(SolutionItems) = preProject
+		Doc\Lodop6.1技术手册.doc = Doc\Lodop6.1技术手册.doc
+		Doc\禁用缓存.txt = Doc\禁用缓存.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{23C0A072-9084-4D6D-B7A9-28CA89D1B1FD}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\Telerik.Web.UI.dll = Lib\Telerik.Web.UI.dll
+		Lib\Telerik.Web.UI.Skins.dll = Lib\Telerik.Web.UI.Skins.dll
 	EndProjectSection
 EndProject
 Global
@@ -37,5 +51,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{95D37B1F-8248-4F32-BB9F-79036EAFE8A5} = {9F9FB30D-E60F-4DF1-9886-38EB4D675DF5}
 	EndGlobalSection
 EndGlobal

@@ -10,8 +10,6 @@
         // 在执行某次查询之前，必须调用此方法，才会使SQL 缓存失效期作用(放在Application_Start中比较合适)
         // System.Data.SqlClient.SqlDependency.Start(ConfigurationManager.ConnectionStrings["TestDBConnectionString"].ConnectionString);
 
-        DemoSite.SignalRDemo.InitManager.InitRoute();
-
         log4net.Config.XmlConfigurator.Configure();
     }
 
