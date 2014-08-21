@@ -1,0 +1,86 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Knockout Tutorial</title>
+    <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="/Scripts/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script src="/Scripts/underscore.js"></script>
+</head>
+
+
+<body>
+    <div id="div_message"></div>
+    <div class="page">
+        <div class="header"></div>
+
+        <div class="main">
+            <h3>All tasks (<span data-bind="text: tasks().length"> </span>)</h3>
+            <ul data-bind="foreach: tasks">
+                <li>
+                    <label>
+                        <input type="checkbox" data-bind="checked: done" />
+                        <span data-bind="text: title"></span>
+                    </label>
+                </li>
+            </ul>
+
+            <h3>Done tasks (<span data-bind="text: doneTasks().length"> </span>)</h3>
+            <ul data-bind="foreach: doneTasks">
+                <li data-bind="text: title"></li>
+            </ul>
+        </div>
+
+
+        <script type="text/javascript">
+
+            ko.observableArray.fn.filterByProperty = function (propName, matchValue) {
+                return ko.computed(function () {
+                    var allItems = this(), matchingItems = [];
+                    for (var i = 0; i < allItems.length; i++) {
+                        var current = allItems[i];
+                        if (ko.utils.unwrapObservable(current[propName]) === matchValue)
+                            matchingItems.push(current);
+                    }
+                    return matchingItems;
+                }, this);
+            }
+
+            function Task(title, isDone) {
+                this.title = ko.observable(title);
+                this.done = ko.observable(isDone);
+            }
+
+            function AppViewModel() {
+                this.tasks = ko.observableArray([
+                    new Task('Find new desktop background', true),
+                    new Task('Put shiny stickers on laptop', false),
+                    new Task('Request more reggae music in the office', true)
+                ]);
+
+                // 类似与.NET中的扩展方法
+                // Here's where we use the custom function
+                this.doneTasks = this.tasks.filterByProperty("done", true);
+            }
+
+            ko.applyBindings(new AppViewModel());
+
+            // 页面加载时执行
+            $(function () {
+                // 加载导航条
+                $(".header").load("/navigator.htm .header #div_nav", function () { });
+
+            });
+
+            // Event Bind
+            $(function () {
+
+            });
+
+        </script>
+
+    </div>
+</body>
+</html>

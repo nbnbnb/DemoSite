@@ -1,0 +1,54 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Knockout Tutorial</title>
+    <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        .red {
+            color: red;
+        }
+    </style>
+
+    <script type="text/javascript" src="/Scripts/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script src="/Scripts/underscore.js"></script>
+</head>
+
+
+<body>
+    <div id="div_message"></div>
+    <div class="page">
+        <div class="header"></div>
+
+        <div class="main">
+            <label>Should Display <input type="checkbox" data-bind="checked: shouldDisplay" /></label>
+            <input type="text" data-bind="enable: shouldDisplay" />
+        </div>
+
+
+        <script type="text/javascript">
+
+            // 用户自定义函数
+            ko.applyBindings({
+                shouldDisplay:ko.observable(false)
+            });
+
+            // 页面加载时执行
+            $(function () {
+                // 加载导航条
+                $(".header").load("/navigator.htm .header #div_nav", function () { });
+
+            });
+
+            // Event Bind
+            $(function () {
+
+            });
+
+        </script>
+
+    </div>
+</body>
+</html>

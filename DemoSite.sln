@@ -1,26 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost", "http://localhost", "{3CEAEDC2-A4A3-4824-B080-C4F3CFD8AB67}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost:9999", "http://localhost:9999", "{95D37B1F-8248-4F32-BB9F-79036EAFE8A5}"
 	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = ""
-		SccAuxPath = ""
-		SccLocalPath = ""
-		SccProvider = ""
 		UseIISExpress = "false"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		Debug.AspNetCompiler.VirtualPath = "/localhost"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_9999"
 		Debug.AspNetCompiler.PhysicalPath = "..\DemoSite\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_9999\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost"
+		Release.AspNetCompiler.VirtualPath = "/localhost_9999"
 		Release.AspNetCompiler.PhysicalPath = "..\DemoSite\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_9999\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
@@ -28,43 +24,18 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost", "http://
 		SlnRelativePath = "..\DemoSite\"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogCheck", "Lib\DogCheck\DogCheck.csproj", "{140267BA-71AD-4BF5-9D5D-A7FF00891A4A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{22681964-67AA-41CA-97E3-AC4D2C5C1B9B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{6397E0F4-E60E-41CA-91B3-C6B960376011}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogInit", "App\DogInit\DogInit.csproj", "{000598E7-9D37-45B0-A8CE-F3B4B9722ED2}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CE24B45A-D899-440B-BD0C-71E22054BE3E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebSite", "WebSite", "{32776C26-74EC-46AA-96C3-A075FF2CA00A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3CEAEDC2-A4A3-4824-B080-C4F3CFD8AB67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3CEAEDC2-A4A3-4824-B080-C4F3CFD8AB67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3CEAEDC2-A4A3-4824-B080-C4F3CFD8AB67}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{3CEAEDC2-A4A3-4824-B080-C4F3CFD8AB67}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{140267BA-71AD-4BF5-9D5D-A7FF00891A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{140267BA-71AD-4BF5-9D5D-A7FF00891A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{140267BA-71AD-4BF5-9D5D-A7FF00891A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{140267BA-71AD-4BF5-9D5D-A7FF00891A4A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{000598E7-9D37-45B0-A8CE-F3B4B9722ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{000598E7-9D37-45B0-A8CE-F3B4B9722ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{000598E7-9D37-45B0-A8CE-F3B4B9722ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{000598E7-9D37-45B0-A8CE-F3B4B9722ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95D37B1F-8248-4F32-BB9F-79036EAFE8A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95D37B1F-8248-4F32-BB9F-79036EAFE8A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95D37B1F-8248-4F32-BB9F-79036EAFE8A5}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{95D37B1F-8248-4F32-BB9F-79036EAFE8A5}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{3CEAEDC2-A4A3-4824-B080-C4F3CFD8AB67} = {32776C26-74EC-46AA-96C3-A075FF2CA00A}
-		{140267BA-71AD-4BF5-9D5D-A7FF00891A4A} = {22681964-67AA-41CA-97E3-AC4D2C5C1B9B}
-		{000598E7-9D37-45B0-A8CE-F3B4B9722ED2} = {6397E0F4-E60E-41CA-91B3-C6B960376011}
 	EndGlobalSection
 EndGlobal
