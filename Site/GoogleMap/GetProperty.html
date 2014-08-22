@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>GetProperty</title>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map_canvas {
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+        function initialize() {
+            var myLatLng = new google.maps.LatLng(-25.363882, 131.044922);
+            var mapOptions = {
+                center: myLatLng,
+                zoom: 4,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+            // 创建一个提示窗口
+            // 指定文字与位置
+            var infoWindow = new google.maps.InfoWindow({
+                content: 'Change the zoom level',
+                position: myLatLng
+            });
+
+            // 在指定的地图中打开信息窗口
+            infoWindow.open(map);
+
+            google.maps.event.addListener(map, 'zoom_changed', function () {
+                var zoomLevel = map.getZoom(); // 使用 GetProperty 模式此处的 Property 是 Zoom
+                map.setCenter(myLatLng);
+                infoWindow.setContent('Zoom: ' + zoomLevel);
+            });
+        }
+
+        function loadScript() {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "http://ditu.google.cn/maps/api/js?sensor=TRUE&callback=initialize&v.3.17";
+            document.body.appendChild(script);
+        }
+
+        window.onload = loadScript;
+
+    </script>
+</head>
+<body>
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+</body>
+</html>
+

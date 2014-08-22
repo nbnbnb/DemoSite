@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>CustomControlState </title>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map_canvas {
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+
+        function HomeControl(map, div, home) {
+            var controlDiv = div;
+            var self = this;
+            self.home_ = home;
+            controlDiv.style.padding = '5px';
+
+            var goHomeUI = document.createElement('div');
+            goHomeUI.title = 'Click to set the map to home';
+            goHomeUI.style.backgroundColor = 'white';
+            goHomeUI.style.borderStyle = 'solid';
+            goHomeUI.style.borderWidth = '2px';
+            goHomeUI.style.cursor = 'pointer';
+            goHomeUI.style.textAlign = 'center';
+            controlDiv.appendChild(goHomeUI);
+
+            var goHomeText = document.createElement('div');
+            goHomeText.innerHTML = '<strong>Home</strong>';
+            goHomeUI.appendChild(goHomeText);
+
+            var setHomeUI = document.createElement('div');
+            setHomeUI.style.backgroundColor = 'white';
+            setHomeUI.style.borderStyle = 'solid';
+            setHomeUI.style.borderWidth = '2px';
+            setHomeUI.style.cursor = 'pointer';
+            setHomeUI.style.textAlign = 'center';
+            setHomeUI.title = 'Click to set Home to the current center';
+            controlDiv.appendChild(setHomeUI);
+
+            var setHomeText = document.createElement('div');
+            setHomeText.innerHTML = '<strong>Set Home</strong>';
+            setHomeUI.appendChild(setHomeText);
+
+            google.maps.event.addDomListener(goHomeUI, 'click', function () {
+                var currentHome = self.getHome();
+                map.setCenter(currentHome);
+            });
+
+            google.maps.event.addDomListener(setHomeUI, 'click', function () {
+                var newHome = map.getCenter();
+                self.setHome(newHome);
+            });
+
+        }
+
+        HomeControl.prototype.home_ = null;
+        HomeControl.prototype.getHome = function () {
+            return this.home_;
+        };
+        HomeControl.prototype.setHome = function (home) {
+            this.home_ = home;
+        };
+
+        function initialize() {
+
+            var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+            var mapDiv = document.getElementById("map_canvas");
+
+            var mapOptions = {
+                center: chicago,
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(mapDiv, mapOptions);
+
+            var homeControlDiv = document.createElement('div');
+            var homeControl = new HomeControl(map, homeControlDiv, chicago);
+            homeControlDiv.index = 1;
+            map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+        }
+
+        function loadScript() {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "http://ditu.google.cn/maps/api/js?sensor=TRUE&callback=initialize&v.3.17";
+            document.body.appendChild(script);
+        }
+
+        window.onload = loadScript;
+
+    </script>
+</head>
+<body>
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+</body>
+</html>
+
