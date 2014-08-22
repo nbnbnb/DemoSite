@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Picture Area</title>
+    <script>
+        function btking() {
+            alert(123);
+        }
+    </script>
+</head>
+<body>
+    <!--此处的 usemap 指定热点地图，由于浏览器解析差异 此处将热点地图的name和id设置为一致 -->
+    <img src="Windows.png" border="0" usemap="#planetmap" alt="Planets" border="0" width="500" height="500" />
+    
+    <map name="planetmap" id="planetmap">
+        <!--右下角三角型-->
+        <area shape="poly" coords="400,400,400,500,500,500,400,400" href="#" style="cursor: pointer; " alt="Venus" />
+
+        <!--右上角三园型-->
+        <area shape="circle" coords="475,25,25" href="#" alt="Mercury" style="cursor:pointer" />
+
+        <!--左上角正方形型-->
+        <area shape="rect" coords="0,0,50,50" href="#" alt="Sun" style="cursor: pointer" />
+    </map>
+
+    <!--
+        rect: x1,y1,x2,y2 - 规定矩形左上角和右下角的坐标。
+        circle: x,y,radius - 规定圆心的坐标和半径。
+        poly: x1,y1,x2,y2,..,xn,yn - 规定多边形各边的坐标。如果第一个坐标和最后一个坐标不一致，那么为了关闭多边形，浏览器必须添加最后一对坐标。
+    -->
+</body>
+</html>
