@@ -19,9 +19,6 @@
         }
     </style>
     <script type="text/javascript">
-
-
-
         function initialize() {
             var mapOptions = {
                 zoom: 10,
@@ -51,7 +48,7 @@
             // Origins, anchor positions and coordinates of the marker
             // increase in the X direction to the right and in
             // the Y direction down.
-            var image = new google.maps.MarkerImage('images/beachflag.png',
+            var image = new google.maps.MarkerImage('Windows.png',
                 // This marker is 20 pixels wide by 32 pixels tall.
                 new google.maps.Size(20, 32),
                 // The origin for this image is 0,0.
@@ -59,7 +56,7 @@
                 // The anchor for this image is the base of the flagpole at 0,32.
                 new google.maps.Point(0, 32));
 
-            var shadow = new google.maps.MarkerImage('images/beachflag_shadow.png',
+            var shadow = new google.maps.MarkerImage('Windows.png',
                 // The shadow image is larger in the horizontal dimension
                 // while the position and offset are the same as for the main image.
                 new google.maps.Size(37, 32),
@@ -71,7 +68,7 @@
             // coordinate closes the poly by connecting to the first
             // coordinate.
             var shape = {
-                coord: [1, 1, 1, 20, 18, 20, 18, 1],
+                coord: [1, 1, 1, 20, 18, 20, 18, 1, 1, 1],  // 以左上角 0,0 为起始坐标原点
                 type: 'poly'
             };
             for (var i = 0; i < locations.length; i++) {
@@ -82,14 +79,13 @@
                 new google.maps.Marker({
                     position: myLatLng,
                     map: map,
-                    shadow: shadow,
-                    icon: image,
-                    shape: shape,
+                    shadow: shadow, // 设置阴影
+                    icon: image,  // 设置图片
+                    shape: shape, // 设置标记形状 对应于 HTML 的 Area 标记，可以设置可点击区域
                     title: beach[0],
                     zIndex: beach[3]
                 });
             }
-
         }
 
         function loadScript() {
@@ -107,4 +103,3 @@
     <div id="map_canvas" style="width:100%; height:100%"></div>
 </body>
 </html>
-

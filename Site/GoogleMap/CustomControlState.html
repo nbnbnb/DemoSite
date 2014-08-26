@@ -64,7 +64,6 @@
 
         }
 
-        HomeControl.prototype.home_ = null;
         HomeControl.prototype.getHome = function () {
             return this.home_;
         };
@@ -86,9 +85,16 @@
             var map = new google.maps.Map(mapDiv, mapOptions);
 
             var homeControlDiv = document.createElement('div');
-            var homeControl = new HomeControl(map, homeControlDiv, chicago);
+
+            // 创建两个对象
+            new HomeControl(map, homeControlDiv, chicago);
+            new HomeControl(map, homeControlDiv, chicago);
+
             homeControlDiv.index = 1;
+
             map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+
+
         }
 
         function loadScript() {

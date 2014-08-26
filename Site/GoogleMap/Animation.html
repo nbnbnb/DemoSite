@@ -39,16 +39,18 @@
             marker = new google.maps.Marker({
                 map: map,
                 draggable: true,
-                animation: google.maps.Animation.DROP,
+                animation: google.maps.Animation.DROP,  // 设置动画样式
                 position: parliament
             });
             google.maps.event.addListener(marker, 'click', toggleBounce);
         }
 
         function toggleBounce() {
+            // 如果有动画在运行，则停止动画【将动画设置为 null】
             if (marker.getAnimation() != null) {
                 marker.setAnimation(null);
             } else {
+                // 如果没有动画，则设置动画为上下跳动
                 marker.setAnimation(google.maps.Animation.BOUNCE);
             }
         }

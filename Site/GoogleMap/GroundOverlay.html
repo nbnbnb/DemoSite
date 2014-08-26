@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <title>DrawingManager</title>
+    <title>GroundOverlay</title>
     <style type="text/css">
         html {
             height: 100%;
@@ -20,13 +20,36 @@
     </style>
     <script type="text/javascript">
         function initialize() {
+            var newark = new google.maps.LatLng(40.740, -74.18);
+            var imageBounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(40.716216, -74.213393),
+                new google.maps.LatLng(40.765641, -74.139235));
+
             var mapOptions = {
-                center: new google.maps.LatLng(-34.397, 150.644),
-                zoom: 8,
+                zoom: 13,
+                center: newark,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
+            }
 
             var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+            new google.maps.Marker({
+                position: new google.maps.LatLng(40.716216, -74.213393),  // 左下角
+                map: map,
+                title:'左下角'
+            });
+
+            new google.maps.Marker({
+                position: new google.maps.LatLng(40.765641, -74.139235), // 右上角
+                map: map,
+                title:'右上角'
+            });
+           
+            var oldmap = new google.maps.GroundOverlay(
+                "http://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg",
+                imageBounds);
+
+            oldmap.setMap(map);
 
             var drawingManager = new google.maps.drawing.DrawingManager({
                 drawingMode: google.maps.drawing.OverlayType.CIRCLE,  // 设置默认的绘图模式
@@ -47,15 +70,18 @@
                     strokeWeight: 5,
                     clickable: false,
                     zIndex: 1,
-                    editable: false
+                    editable: true
                 }
             });
 
             // 将自定义控件添加到地图中
             drawingManager.setMap(map);
+
         }
 
-        // 由于绘图库默认没有加载，需要进行特别的设置
+        // 防火墙问题，将 google js 地址切换到国内
+        // 国内 http://ditu.google.cn/maps/api/js
+        // 国外 http://maps.googleapis.com/maps/api/js
         function loadScript() {
             var script = document.createElement("script");
             script.type = "text/javascript";

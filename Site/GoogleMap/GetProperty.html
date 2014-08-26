@@ -39,7 +39,7 @@
             infoWindow.open(map);
 
             google.maps.event.addListener(map, 'zoom_changed', function () {
-                var zoomLevel = map.getZoom(); // 使用 GetProperty 模式此处的 Property 是 Zoom
+                var zoomLevel = map.getZoom(); // 使用 GetProperty 模式，此处的 Property 是 Zoom
                 map.setCenter(myLatLng);
                 infoWindow.setContent('Zoom: ' + zoomLevel);
             });

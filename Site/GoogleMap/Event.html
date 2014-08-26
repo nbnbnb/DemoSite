@@ -31,15 +31,34 @@
             var marker = new google.maps.Marker({
                 position: map.getCenter(),
                 map: map,
-                title:'Click to zoom'
+                title: 'Click to zoom'
             });
 
-            google.maps.event.addListener(map, 'center_changed', function () {
-                setTimeout(function () {
-                    map.panTo(marker.getPosition());
-                }, 3000);
-            });
-                        
+            var throttle = function (fun, timeOut) {
+                var timeId = null;
+                var args, context;
+                return function () {
+                    args = arguments;
+                    context = this;
+                    if (!timeId) {
+                        timeId = setTimeout(function () {
+                            timeId = null;
+                            fun.apply(context, args);
+                        }, timeOut);
+                    } else {
+                        clearTimeout(timeId);
+                        timeId = setTimeout(function () {
+                            timeId = null;
+                            fun.apply(context, args);
+                        }, timeOut);
+                    }
+                };
+            };
+
+            var cg = throttle(function () { map.panTo(marker.getPosition()); }, 1000);
+
+            // 注意添加 MVC 事件的格式
+            google.maps.event.addListener(map, 'center_changed', cg);
         }
 
         function loadScript() {
@@ -50,7 +69,6 @@
         }
 
         window.onload = loadScript;
-
     </script>
 </head>
 <body>

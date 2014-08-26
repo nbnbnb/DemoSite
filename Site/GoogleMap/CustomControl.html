@@ -35,6 +35,10 @@
             controlUI.style.cursor = 'pointer';
             controlUI.style.textAlign = 'center';
             controlUI.title = 'Click to set the map to Home';
+
+            controlUI.style.height = '100px';
+            controlUI.style.width = '100px';
+
             controlDiv.appendChild(controlUI);
 
             // Set CSS for the control interior.
@@ -67,6 +71,8 @@
             var homeControlDiv = document.createElement('div');
             var homeControl = new HomeControl(homeControlDiv, map, chicago);
             homeControlDiv.index = 1;
+            // 添加自定义控件
+            // 格式中同时包含了位置和控件内容
             map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
         }
 
