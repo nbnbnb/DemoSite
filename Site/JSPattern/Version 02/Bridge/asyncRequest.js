@@ -11,6 +11,7 @@
         }, 50);
     }
 
+    // 注意，在函数中对象的重写功能
     var getXHR = function () {
         var http;
         try {
@@ -78,7 +79,7 @@ if (!Array.prototype.filter) {
     })
 }
 
-window.DED = window.DEB || {};
+window.DED = window.DED || {};
 
 DED.util = DED.util || {};
 
@@ -92,9 +93,8 @@ DED.util.Observer.prototype = {
     },
     unsubscribe: function (fn) {
         this.fns = this.fns.filter(function (el) {
-            if (el !== fn) {
-                return el;
-            }
+            // 过滤掉相等的
+            return el !== fn;
         });
     },
     fire: function (o) {
@@ -115,7 +115,7 @@ DED.Queue = function () {
     this.currentRetry = 0;
     this.paused = false;
     this.timeout = 5000;
-    this.conn = {};
+    this.conn = {}; // 保存的是一个 XHR 对象
     this.timer = {};
 };
 
@@ -124,26 +124,29 @@ DED.Queue
         if (!this.queue.length > 0) {
             return;
         }
-        if (this.paused) {
-            this.paused = false;
+        if (this.paused) {  // 如果队列的状态为暂停，则返回
+            this.paused = false;   // 设置为非暂停状态【连续两次调用 pause 时，第二次将会触发 flush】
             return;
         }
         var that = this;
         this.currentRetry++;
+
+
         var abort = function () {
             that.conn.abort();
             // 检查是否达到指定的重试次数
             if (that.currentRetry == that.retryCount) {
-                that.onFailure.fire();
+                that.onFailure.fire();  // 触发错误回调
                 that.currentRetry = 0;
             } else {
-                that.flush();
+                that.flush();  // 未达到重试次数，再试一次
             }
         };
-        // 如果经过指定的时间没有清除定时器，将会执行abort函数
+        // 超时，将会执行abort函数
         this.timer = window.setTimeout(abort, this.timeout);
+
         var callback = function (o) {
-            window.clearTimeout(that.timer);
+            window.clearTimeout(that.timer); // 清除延时发生时的计时器
             that.currentRetry = 0;
             // 执行回调成功后，弹出一个元素
             that.queue.shift();
@@ -154,6 +157,8 @@ DED.Queue
             }
             that.flush();
         };
+
+        // conn 是一个 xhr 对象
         this.conn = asyncRequest(
                 this.queue[0]['method'],
                 this.queue[0]['uri'],
@@ -178,4 +183,4 @@ DED.Queue
     })
     .method('clear', function () {
         this.queue = [];
-    })
+    });

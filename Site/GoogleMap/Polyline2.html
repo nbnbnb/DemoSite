@@ -42,7 +42,7 @@
             poly = new google.maps.Polyline(polyOptions);
             poly.setMap(map);
 
-            // Add a listener for the click event
+            // 添加地图的 click 事件
             google.maps.event.addListener(map, 'click', addLatLng);
         }
 
@@ -56,7 +56,7 @@
 
             // Because path is an MVCArray, we can simply append a new coordinate
             // and it will automatically appear
-            path.push(event.latLng);
+            path.push(event.latLng);  // 当将第二个点push 到 path 中时，才会显示线条
 
             // Add a new marker at the new plotted point on the polyline.
             new google.maps.Marker({
@@ -74,7 +74,7 @@
         function loadScript() {
             var script = document.createElement("script");
             script.type = "text/javascript";
-            script.src = "http://ditu.google.cn/maps/api/js?sensor=TRUE&callback=initialize&v.3.17";
+            script.src = "http://ditu.google.cn/maps/api/js?sensor=TRUE&callback=initialize&v.3.18";
             document.body.appendChild(script);
         }
 

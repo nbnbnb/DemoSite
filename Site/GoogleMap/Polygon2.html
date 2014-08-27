@@ -41,6 +41,7 @@
               new google.maps.LatLng(32.321384, -64.75737)
             ];
 
+            // 设置多边形的样式
             bermudaTriangle = new google.maps.Polygon({
                 paths: triangleCoords,
                 strokeColor: "#FF0000",
@@ -64,6 +65,7 @@
 
             // Since this Polygon only has one path, we can call getPath()
             // to return the MVCArray of LatLngs
+            // 此处的 this 对象就是 Polygon
             var vertices = this.getPath();
 
             var contentString = "<b>Bermuda Triangle Polygon</b><br />";
