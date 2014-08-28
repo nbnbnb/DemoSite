@@ -14,11 +14,14 @@ public partial class WebFormDemo_AsyncModel : System.Web.UI.Page
 {
     WebRequest request = HttpWebRequest.Create("http://www.sina.com.cn");
 
+    // 此模型需要在页面上设置 Async="true"
+    // 此模型无法设置超时回调
+    // 参考 http://www.cnblogs.com/scy251147/archive/2011/11/25/2263628.html
+
     protected void Page_Load(object sender, EventArgs e)
     {
         // Page 类的方法
-        // 为异步页注册不需要"状态信息"的开始和结束事件处理程序委托。
-        // 此处的 状态信息 是 视图状态 还是 Session???
+        // 使用线程同步模型，将回调方法包装在 “同步器” 中
         AddOnPreRenderCompleteAsync(BeginProcess, SyncContextCallback(EndProcess));
     }
 
@@ -30,12 +33,10 @@ public partial class WebFormDemo_AsyncModel : System.Web.UI.Page
 
         // 此处一定要将 cb 参数传递过去
         // 表示当异步读取响应后，将会执行cb回调
-        // 执行cb回调时，其实就是对EndProcess包装了一层
-        // 此时就开始执行EndProcess了        
+        // 执行cb回调时，实际就会触发 EndProcess
         return request.BeginGetResponse(cb, extraData);
     }
 
-    // 此方法将会使用线程池中另一个线程来执行(在WebRequest完成请求后)
     private void EndProcess(IAsyncResult ar)
     {
         WebResponse response = request.EndGetResponse(ar);        
@@ -46,10 +47,7 @@ public partial class WebFormDemo_AsyncModel : System.Web.UI.Page
         }
     }
 
-    
-    // 由于线程池生成一个异步操作时，这个异步操作将由另一个线程池完成，该线程处理异步操作的结果
-    // 虽然这个工作是代表原始客户端执行的，但语言文化和标识信息默认不会流向新的线程池线程
-    // 解决方案
+    // 语言文化和标识信息默认不会流向新的线程池线程
     // 使用 SynchronizationContext 将一个应用程序模型连接到线程处理模型
     private EndEventHandler SyncContextCallback(EndEventHandler callback)
     {
@@ -58,6 +56,9 @@ public partial class WebFormDemo_AsyncModel : System.Web.UI.Page
         {
             return callback;
         }
+
+        // EndEventHandler 委托的函数签名 Action<IAsyncResult>
+
         return asyncResult =>
         {
             sc.Post((o) =>
@@ -66,5 +67,5 @@ public partial class WebFormDemo_AsyncModel : System.Web.UI.Page
             }, asyncResult);
         };
     }
-    // 参考 http://www.cnblogs.com/scy251147/archive/2011/11/25/2263628.html
+
 }
