@@ -648,7 +648,7 @@
   test('size', function() {
     equal(_.size({one : 1, two : 2, three : 3}), 3, 'can compute the size of an object');
     equal(_.size([1, 2, 3]), 3, 'can compute the size of an array');
-    equal(_.size({length: 3, 0: 0, 1: 0, 2: 0}), 3, 'can compute the size of Array-likes');
+    equal(_.size({length: 3, 0: 0, 1: 0, 2: 0}), 3, 'can compute the size of Array-likes');  // 包含一个 length 属性
 
     var func = function() {
       return _.size(arguments);

@@ -1,11 +1,11 @@
-﻿<!DOCTYPE HTML>
+﻿<!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <title>Knockout Tutorial Custom-Binding</title>
     <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Scripts/jquery-1.8.0.js"></script>
-    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout.js"></script>
 
 </head>
 <body>
@@ -20,19 +20,16 @@
             <p>Name: <input data-bind="hasFocus: editingName" /></p>
             <!-- Showing that we can both read and write the focus state -->
             <div data-bind="visible: editingName">You're editing the name</div>
-            <button data-bind="enable: !editingName(), click:function() { editingName(true) }">Edit name</button>
- 
-
+            <button data-bind="enable: !editingName(), click:function() { editingName(true); }">Edit name</button>
         </div>
 
 
         <script type="text/javascript">
-
-            // init 中可以设置DOM元素的初始化状态，并且绑定事件
-
             // 用户自定义函数
             ko.bindingHandlers.slideVisible = {
                 init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+                    // init 中可以设置DOM元素的初始化状态，并且绑定事件
+
                     // This will be called when the binding is first applied to an element
                     // Set up any initial state, event handlers, etc. here
                 },
@@ -45,8 +42,10 @@
                     var value = valueAccessor(), allBindings = allBindingsAccessor();
 
                     // Next, whether or not the supplied model property is observable, get its current value
+                    // 使用帮助方法获得实际值
                     var valueUnwrapped = ko.utils.unwrapObservable(value);
 
+                    // 获得所有的绑定参数
                     // Grab some more data from another binding property
                     var duration = allBindings.slideDuration || 400; // 400ms is default duration unless otherwise specified
 
@@ -55,14 +54,14 @@
                         $(element).slideDown(duration); // Make the element visible
                     else
                         $(element).slideUp(duration);   // Make the element invisible
-
                 }
             };
 
             ko.bindingHandlers.hasFocus = {
                 init: function (element, valueAccessor) {
+                    // 设置光标进入和离开时的事件回调
                     $(element).focus(function () {
-                        var value = valueAccessor();
+                        var value = valueAccessor();  // 此处的 value 是一个 observable
                         value(true);
                     });
                     $(element).blur(function () {
@@ -73,30 +72,22 @@
                 update: function (element, valueAccessor) {
                     var value = valueAccessor();
                     if (ko.utils.unwrapObservable(value))
-                        element.focus();
+                        element.focus();  // 触发 DOM 事件
                     else
                         element.blur();
                 }
             };
 
-            var viewModel = {
+            ko.applyBindings({
                 giftWrap: ko.observable(true),
                 editingName: ko.observable()
-            };
-            ko.applyBindings(viewModel);
+            });
 
             // 页面加载时执行
             $(function () {
                 // 加载导航条
                 $(".header").load("/navigator.htm .header #div_nav", function () { });
-
             });
-
-            // Event Bind
-            $(function () {
-
-            });
-
         </script>
 
     </div>

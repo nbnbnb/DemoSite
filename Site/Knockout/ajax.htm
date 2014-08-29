@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+﻿<!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" src="/Scripts/jquery-1.8.3.js"></script>
-    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout.js"></script>
     <script src="/Scripts/underscore.js"></script>
 </head>
 
@@ -27,16 +27,18 @@
             // 用户自定义函数
 
             function MyViewModel() {
+
                 this.message = ko.observable('');
                 this.result = ko.observable('');
+                this.abc = ko.observable('');
 
+                // 当 observable 中的可观察对象改变时，将会触发 computed 函数的调用
+                // 使用 throttle 进行限流
                 ko.computed(function () {
-                    var self = this;
                     $.get("GetMessage.ashx", { msg: self.message() })
                         .done(function (data) { self.result(data); })
                         .fail(function () { alert('Error'); });
                 }, this).extend({ throttle: 500 });
-
             }
 
             ko.applyBindings(new MyViewModel());
@@ -45,7 +47,6 @@
             $(function () {
                 // 加载导航条
                 $(".header").load("/navigator.htm .header #div_nav");
-
             });
 
             // Event Bind

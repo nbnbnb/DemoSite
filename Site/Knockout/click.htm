@@ -12,7 +12,7 @@
     </style>
 
     <script type="text/javascript" src="/Scripts/jquery-1.8.3.js"></script>
-    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout.js"></script>
     <script src="/Scripts/underscore.js"></script>
 </head>
 
@@ -23,12 +23,13 @@
         <div class="header"></div>
 
         <div class="main">
-            <input data-bind="uniqueName:true,value: userName,click: clientClick.bind($data,'a','b',$element)" />
+            <!--注意此处 uniqueName 标记的应用 此处生成的 name=ko_unique_1 -->
+            <input id="kkking" data-bind="uniqueName:true,value: userName,click: clientClick.bind($data,'a','b',$element)" />
 
-            <button data-bind="click: myFunction.bind($data,'param1', 'param2',$element)">
+            <button data-bind="click: myFunction.bind($data,'param1','param2',$element)">
                 Click me
             </button>
-
+            <!--总会传递两个参数 data 和 event-->
             <button data-bind="click: function(data, event) { myFunction('param1', 'param2', $element, data, event) }">
                 Click me
             </button>
@@ -51,7 +52,7 @@
 
             ko.applyBindings({
                 userName: ko.observable('zhangjin'),
-                clientClick: function (a, b, element, data, event) {
+                clientClick: function (a, b, element, data, event) {  // 注意此处参数的顺序 【最后两个参数总是 data 和 event】
                     alert(a);
                     alert(b);
                     alert(JSON.stringify(ko.toJS(data)));

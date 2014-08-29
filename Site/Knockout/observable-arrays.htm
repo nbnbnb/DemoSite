@@ -1,11 +1,11 @@
-﻿<!DOCTYPE HTML>
+﻿<!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <title>Knockout Tutorial - observable arrays</title>
     <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Scripts/jquery-1.8.0.js"></script>
-    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout.js"></script>
     <script src="/Scripts/underscore.js"></script>
 </head>
 <body>
@@ -20,7 +20,6 @@
             <p><input type="button" value="Client Click" data-bind="click:clientClick" /></p>
         </div>
 
-
         <script type="text/javascript">
 
             // 用户自定义函数
@@ -31,8 +30,8 @@
                 { name: "Zippy", type: "Unknown" }
             ]);
 
-            var myModelView={
-                clientClick:function(){
+            var myModelView = {
+                clientClick: function () {
                     infos.push({ name: 'ZhangJin', type: 'good day!' });
                 }
             };
@@ -42,13 +41,7 @@
             // 页面加载时执行
             $(function () {
                 // 加载导航条
-                $(".header").load("/navigator.htm .header #div_nav", function () { });
-
-            });
-
-            // Event Bind
-            $(function () {
-
+                $(".header").load("/navigator.htm .header #div_nav");
             });
 
         </script>

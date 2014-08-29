@@ -21,8 +21,6 @@ namespace WebFormDemo
 
             //string callBack =
             //    Page.ClientScript.GetCallbackEventReference(this, "product", "ReceiveServerData", null, true);
-
-
         }
 
         void Button_Click_Click(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+﻿<!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
     </style>
 
     <script type="text/javascript" src="/Scripts/jquery-1.8.3.js"></script>
-    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout.js"></script>
     <script src="/Scripts/underscore.js"></script>
 </head>
 
@@ -29,7 +29,6 @@
             </p>
         </div>
 
-
         <script type="text/javascript">
 
             // 用户自定义函数
@@ -38,22 +37,15 @@
                 city: "London",
                 coords: {
                     latitude: 51.3435,
-                    longitude:-0.5455
+                    longitude: -0.5455
                 }
             });
 
             // 页面加载时执行
             $(function () {
                 // 加载导航条
-                $(".header").load("/navigator.htm .header #div_nav", function () { });
-
+                $(".header").load("/navigator.htm .header #div_nav");
             });
-
-            // Event Bind
-            $(function () {
-
-            });
-
         </script>
 
     </div>

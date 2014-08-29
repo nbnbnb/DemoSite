@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+﻿<!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
     </style>
 
     <script type="text/javascript" src="/Scripts/jquery-1.8.3.js"></script>
-    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout.js"></script>
     <script src="/Scripts/underscore.js"></script>
 </head>
 
@@ -36,7 +36,7 @@
 
             // "keyup" - updates your view model when the user releases a key
             // "keypress" - updates your view model when the user has typed a key. Unlike keyup, this updates repeatedly while the user holds a key down
-            // "afterkeydown" - updates your view model as soon as the user begins typing a character. 
+            // "afterkeydown" - updates your view model as soon as the user begins typing a character.
             //  This works by catching the browser’s keydown event and handling the event asynchronously.
 
             // "afterkeydown" is the best choice if you want to keep your view model updated in real-time.
@@ -49,13 +49,7 @@
             // 页面加载时执行
             $(function () {
                 // 加载导航条
-                $(".header").load("/navigator.htm .header #div_nav", function () { });
-
-            });
-
-            // Event Bind
-            $(function () {
-
+                $(".header").load("/navigator.htm .header #div_nav");
             });
 
         </script>

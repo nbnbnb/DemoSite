@@ -12,10 +12,9 @@
     </style>
 
     <script type="text/javascript" src="/Scripts/jquery-1.8.3.js"></script>
-    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout.js"></script>
     <script src="/Scripts/underscore.js"></script>
 </head>
-
 
 <body>
     <div id="div_message"></div>
@@ -26,6 +25,7 @@
             <ul data-bind="foreach: users">
                 <li>Name: <span data-bind="text:name"></span>
                     Age:<span data-bind="text:age"></span>
+                    <!--注意此处传递的参数-->
                     <a data-bind="click:$parent.remove.bind($data,$parent)" href="#">remove <span data-bind="text:$index"></span></a>
                 </li>
                 <li>
@@ -54,8 +54,8 @@
                     { name: 'ZhangJin4', age: 28, scores: ko.observableArray([94, 13, 56, 46]) },
                     { name: 'ZhangJin5', age: 29, scores: ko.observableArray([64, 66, 54, 23]) },
                 ]),
-                remove: function (context, data, event) {
-                    context.users.remove(data);
+                remove: function (context, data, event) {  // 注意此处参数的顺序，在bind中的参数顺序与此处是不一致的
+                    context.users.remove(data);  // 此函数中的 this 不是
                 }
             });
 
@@ -63,7 +63,6 @@
             $(function () {
                 // 加载导航条
                 $(".header").load("/navigator.htm .header #div_nav", function () { });
-
             });
 
             // Event Bind

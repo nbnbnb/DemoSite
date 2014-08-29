@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+﻿<!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
@@ -6,10 +6,9 @@
     <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" src="/Scripts/jquery-1.8.3.js"></script>
-    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout.js"></script>
     <script src="/Scripts/underscore.js"></script>
 </head>
-
 
 <body>
     <div id="div_message"></div>
@@ -21,14 +20,19 @@
             <span data-bind="text:userName"></span>
         </div>
 
-
         <script type="text/javascript">
 
-            ko.extenders.logChange = function (target,options) {
+            ko.extenders.logChange = function (target, options) {
+
+                // target 是 observable 对象
+
+                // options 是传递过来的自定义参数
                 target.subscribe(function (newValue) {
+                    // newValue 是 observable 对象监视的值
                     console.log(options + ": " + newValue);
                 });
 
+                // 总是返回原始的 observable 对象
                 return target; //always return the original observables value
             };
 
@@ -41,12 +45,6 @@
             $(function () {
                 // 加载导航条
                 $(".header").load("/navigator.htm .header #div_nav", function () { });
-
-            });
-
-            // Event Bind
-            $(function () {
-               
             });
 
         </script>

@@ -1,15 +1,13 @@
-﻿<!DOCTYPE HTML>
+﻿<!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <title>Knockout Tutorial</title>
     <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
-
     <script type="text/javascript" src="/Scripts/jquery-1.8.3.js"></script>
-    <script type="text/javascript" src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout.js"></script>
     <script src="/Scripts/underscore.js"></script>
 </head>
-
 
 <body>
     <div id="div_message"></div>
@@ -33,20 +31,24 @@
             </ul>
         </div>
 
-
         <script type="text/javascript">
 
             ko.observableArray.fn.filterByProperty = function (propName, matchValue) {
+
+                // 返回的一个可观察的对象【数组】
                 return ko.computed(function () {
-                    var allItems = this(), matchingItems = [];
+                    var allItems = this();  // 此处使用 this() 来获得可观察对象的值
+                    var matchingItems = [];
                     for (var i = 0; i < allItems.length; i++) {
                         var current = allItems[i];
-                        if (ko.utils.unwrapObservable(current[propName]) === matchValue)
+                        if (ko.utils.unwrapObservable(current[propName]) === matchValue) {
                             matchingItems.push(current);
+                        }
                     }
+                    // 返回的是一个【数组】
                     return matchingItems;
                 }, this);
-            }
+            };
 
             function Task(title, isDone) {
                 this.title = ko.observable(title);
@@ -71,14 +73,7 @@
             $(function () {
                 // 加载导航条
                 $(".header").load("/navigator.htm .header #div_nav", function () { });
-
             });
-
-            // Event Bind
-            $(function () {
-
-            });
-
         </script>
 
     </div>
