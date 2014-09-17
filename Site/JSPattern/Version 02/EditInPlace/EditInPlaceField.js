@@ -4,11 +4,8 @@ function EditInPlaceField(id, parent, value) {
     this.id = id;
     this.value = value || 'default value';
     this.parentElement = parent;
-
     this.createElement(this.id);
-
     this.attactEvent();
-
 }
 
 EditInPlaceField.prototype = {
@@ -67,7 +64,6 @@ EditInPlaceField.prototype = {
         this.fieldElement.css('display', 'none');
         this.saveButton.css('display', 'none');
         this.cancelButton.css('display', 'none');
-
         this.setValue(this.value);
     },
     setValue: function (val) {

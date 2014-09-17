@@ -21,6 +21,12 @@ namespace WebFormDemo
 
             //string callBack =
             //    Page.ClientScript.GetCallbackEventReference(this, "product", "ReceiveServerData", null, true);
+
+            if (Request.Form["infos"] != null)
+            {
+                Label_Message.Text = Request.Form["infos"];
+            }
+
         }
 
         void Button_Click_Click(object sender, EventArgs e)

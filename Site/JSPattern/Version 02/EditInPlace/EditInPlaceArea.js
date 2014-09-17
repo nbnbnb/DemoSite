@@ -3,7 +3,7 @@
 /// <reference path="lib/ZLib.js" />
 
 function EditInPlaceArea(id, parent, value) {
-    // 调用就基类的构造函数
+    // 调用基类的构造函数
     EditInPlaceArea.superclass.constructor.call(this, id, parent, value);
 }
 

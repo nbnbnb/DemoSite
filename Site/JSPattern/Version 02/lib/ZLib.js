@@ -28,7 +28,7 @@
                 receivingClass.prototype[arguments[i]] = givingClass.prototype[arguments[i]];
             }
         } else {
-            for (var methodName in givingClass.prototype) {
+            for (var methodName in givingClass.prototype) {  // 仅仅只对原型方法进行掺合
                 if (!receivingClass.prototype[methodName]) {
                     receivingClass.prototype[methodName] = givingClass.prototype[methodName];
                 }

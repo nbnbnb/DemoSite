@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>DrawLib</title>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map_canvas {
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+
+        var map
+
+        function initialize() {
+            var mapOptions = {
+                center: new google.maps.LatLng(31.2300068507687, 121.481460034847),
+                zoom: 18,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+            // var drawing = new google.maps.drawing.DrawingManager(); 全部使用默认参数，将会包含所有的绘图模式
+            var drawing = new google.maps.drawing.DrawingManager({
+                drawingMode: google.maps.drawing.OverlayType.MARKER,  // 设置默认的绘图模式，可选的绘图模式 CIRCLE MARKER POLYGON POLYLINE RECTANGLE
+                drawingControl: true,
+                drawingControlOptions: {
+                    position: google.maps.ControlPosition.TOP_CENTER,  // 设置位置
+                    drawingModes: [google.maps.drawing.OverlayType.MARKER,
+                        google.maps.drawing.OverlayType.RECTANGLE,
+                        google.maps.drawing.OverlayType.POLYGON]
+                },
+                markerOptions: {  // 设置图标的绘图选项
+
+                },
+                rectangleOptions: {
+                    fillColor: '#ffff00',
+                    fillOpacity: 1,
+                    strokeWeight: 5,
+                    clickable: true,
+                    zIndex: 1,
+                    editable: true,
+                    draggable: true
+                },
+                polygonOptions: {
+                    fillColor: '#ffff00',
+                    fillOpacity: 1,
+                    strokeWeight: 5,
+                    clickable: true,
+                    zIndex: 1,
+                    editable: true,
+                    draggable: true
+                }
+
+            });
+
+            var showArrays = function (vertices) {
+                for (var i = 0; i < vertices.length; i++) {
+                    var xy = vertices.getAt(i);
+                    contentString = "<br />" + "Coordinate: " + i + "<br />" + xy.lat() + "," + xy.lng();
+                    console.log(contentString);
+                }
+            };
+
+            // 添加事件 圆
+            google.maps.event.addListener(drawing, 'circlecomplete', function (circle) {
+                var radius = circle.getRadius();
+            });
+
+            google.maps.event.addListener(drawing, 'rectanglecomplete', function (rectangle) {
+                var bounds = rectangle.getBounds();
+            });
+
+            // 添加事件 多边形
+            google.maps.event.addListener(drawing, 'polygoncomplete', function (polygon) {
+                var vertices = polygon.getPath();
+                showArrays(vertices);
+
+                if (!polygon.__hastrigger) {
+                    // 拖动完成后触发
+                    google.maps.event.addListener(polygon, 'dragend', function () {
+                        showArrays(vertices);
+                    });
+                    polygon.__hastrigger = true;
+                }
+            });
+
+            // 添加事件 对于所有的叠加层
+            google.maps.event.addListener(drawing, 'overlaycomplete', function (event) {
+                var type = event.type;
+                switch (type) {
+                    case google.maps.drawing.OverlayType.CIRCLE:
+                        console.log('CIRCLE');
+                        break;
+                    case google.maps.drawing.OverlayType.RECTANGLE:
+                        console.log('RECTANGLE');
+                        break;
+                    case google.maps.drawing.OverlayType.POLYGON:
+                        console.log('POLYGON');
+                        break;
+                    default:
+                        console.log('no item');
+                }
+            });
+
+
+            drawing.setMap(map);
+        }
+
+        // 防火墙问题，将 google js 地址切换到国内
+        // 国内 http://ditu.google.cn/maps/api/js
+        // 国外 http://maps.googleapis.com/maps/api/js
+        function loadScript() {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "http://ditu.google.cn/maps/api/js?sensor=false&callback=initialize&v.3.17&libraries=drawing";
+            document.body.appendChild(script);
+        }
+
+        window.onload = loadScript;
+
+    </script>
+</head>
+<body>
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+</body>
+</html>
+
