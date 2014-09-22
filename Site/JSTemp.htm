@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -14,14 +14,13 @@
     <style type="text/css">
         div#div_message {
         }
+
+
     </style>
 
     <script type="text/javascript">
 
- 
-
     </script>
-
 </head>
 <body>
     <div id="div_message"></div>
@@ -29,34 +28,22 @@
         <div class="header"></div>
 
         <div class="main">
-            <input type="button" id="button_DoIt" value="DoIt"/>
-
-            <p id="p_info">Hello Javascript!</p>
-
-
-            <p id="results"><b>Results: </b> </p>
-            <form>
-                <select name="single">
-                    <option>Single</option>
-                    <option>Single2</option>
-                </select>
-                <select name="multiple" multiple="multiple">
-                    <option selected="selected">Multiple</option>
-                    <option>Multiple2</option>
-                    <option selected="selected">Multiple3</option>
-                </select><br />
-                <input type="checkbox" name="check" value="check1" /> check1
-                <input type="checkbox" name="check" value="check2" checked="checked" /> check2
-                <input type="radio" name="radio" value="radio1" checked="checked" /> radio1
-                <input type="radio" name="radio" value="radio2" /> radio2
-            </form>
-
+            <input type="button" id="button_DoIt" value="DoIt" />
+            <ul>
+                <li>a</li>
+                <li>b</li>
+            </ul>
+            <ul>
+                <li>c</li>
+                <li>d</li>
+            </ul>
         </div>
+
+
 
         <script type="text/javascript">
 
             // 用户自定义函数
-
 
             // 页面加载时执行
             $(function () {
@@ -69,13 +56,14 @@
 
             // Event Bind
             $(function () {
+
                 $("#button_DoIt").bind("click", function () {
-                    $("#results").append("<tt>" + $("form").serialize() + "</tt>");
+                    $('ul>li:first-child').css('color', 'red');
                 });
             });
 
         </script>
-        
+
 
 
     </div>

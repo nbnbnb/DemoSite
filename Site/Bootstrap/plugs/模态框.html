@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>模态框</title>
     <!-- Bootstrap -->
     <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -19,42 +19,46 @@
     <![endif]-->
 
     <style type="text/css">
-        .part-left {
-            width: 50%;
-            height: 400px;
-            background-color: yellow;
-        }
-
-        .part-right {
-            width: 28%;
-            height: 400px;
-            background-color: green;
-        }
     </style>
 
 </head>
 <body>
 
-    <!-- Large modal -->
-    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
-    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                ...
-            </div>
-        </div>
-    </div>
-    <!-- Small modal -->
-    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
-    <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                ...
-            </div>
-        </div>
-    </div>
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Launch demo modal
+    </button>
 
-    <button class="btn btn-primary" id="toggleBtn">Toggle</button>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <pre>
+        务必为 .modal 添加 role="dialog" 属性
+        aria-labelledby="myModalLabel" 属性用于只想模态框的标题栏
+        aria-hidden="true" 用于通知辅助性工具略过模态框的 DOM元素。
+
+        可以在 modal-dialog 类添加 modal-lg 或 modal-sm 用来设置大模态框和小模态框
+        通过删除 modal fade 中的 fade 可以删除动画
+
+        模态框弹出时，会为 body 元素添加 .modal-open 类，从而覆盖页面默认的滚动行为
+        并且还会自动生成一个 .modal-backdrop 元素用于提供一个可点击区域，点击此区域就可关闭模态框
+    </pre>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -66,17 +70,12 @@
 
     <script>
         $(function () {
-            $("#toggleBtn").on("click", function () {
-                //$('.bs-example-modal-sm').modal({
-                //    show:false
-                //});
+            // Event Bind
 
-                setTimeout(function () {
-                    $('.bs-example-modal-sm').modal('show');
-                }, 2000);
-
-                //
+            $('#myModal').on('show.bs.modal', function (e) {
+                console.log(e.relatedTarget.innerHTML);
             });
+
         });
     </script>
 </body>
