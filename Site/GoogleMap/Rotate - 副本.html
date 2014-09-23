@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>Rotate Image</title>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map_canvas {
+            height: 350%;
+            width: 350%;
+        }
+    </style>
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script src="../Scripts/jQueryRotate.js"></script>
+    <script type="text/javascript">
+
+        function kh(i, j, k) {
+            var a;
+            var b;
+            if (j != null && k != null) {
+                a = j;
+                b = k;
+            } else {
+                a = 12.9540112248064;
+                b = 77.6991748809814;
+            }
+            if (i != null) {
+                var angleDegrees = i;
+            } else {
+                angleDegrees = 0;
+            }
+            var angle = 45;
+
+            var myLatlng = new google.maps.LatLng(a, b);
+            var mapOptions = {
+                zoom: 16,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            var arrowIcon = new Image();
+            arrowIcon.src = "../Image/CarNew.png";
+            var image = '../Image/add.jpg';
+            var myLatLng = new google.maps.LatLng(a, b);
+            var beachMarker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                icon: {
+                    path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
+                    scale: 2,
+                    rotation: angleDegrees
+                }
+            });
+            document.getElementById("HiddenField1").value = a;
+            document.getElementById("HiddenField2").value = b;
+        }
+
+        function initialize() {
+            var newark = new google.maps.LatLng(40.740, -74.18);
+
+            var imageUrl = 'A-09.png';
+
+            var lenToLat = function (leng) {
+                var L = 10002150;
+                return 90 * leng / L;
+            };
+
+            var lenToLng = function (lat, leng) {
+                var L = 20037508;
+                var latL = L * Math.cos(Math.PI / 180 * lat);
+                return 180 * leng / latL;
+            };
+
+            var mapOptions = {
+                zoom: 20,
+                center: newark,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var getWidthHeight = function (src) {
+                var image = new Image(),
+                    w,
+                    h;
+                image.src = 'A-09.png';
+                w = image.width;
+                h = image.height;
+                return { width: w, height: h };
+            };
+
+            var wh = getWidthHeight(imageUrl);
+
+            var antipoleLat = newark.lat() + lenToLat((wh.height / wh.width) * 60);
+            var antipoleLng = newark.lng() + lenToLng(newark.lat(), 60);
+
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+            new google.maps.Marker({
+                position: newark,  // 左下角
+                map: map,
+                title: '左下角'
+            });
+
+            var northeast = new google.maps.LatLng(antipoleLat, antipoleLng);
+
+            new google.maps.Marker({
+                position: northeast, // 右上角
+                map: map,
+                title: '右上角'
+            });
+
+            var imageBounds = new google.maps.LatLngBounds(
+                newark,
+                northeast);
+
+            var oldmap = new google.maps.GroundOverlay(
+                "A-09.png",
+                imageBounds);
+
+            oldmap.setMap(map);
+
+            var drawingManager = new google.maps.drawing.DrawingManager({
+                //drawingMode: google.maps.drawing.OverlayType.MARKER,  // 设置默认的绘图模式
+                drawingControl: true,
+                drawingControlOptions: {
+                    position: google.maps.ControlPosition.TOP_CENTER, // 设置标记的位置
+                    // 设置在地图上显示的控制模式【标记+圆】，默认会显示手型
+                    drawingModes: [google.maps.drawing.OverlayType.MARKER, google.maps.drawing.OverlayType.CIRCLE]
+                },
+
+                // 根据每一种模式，设置其选项，命名格式为 [type]Options
+                markerOptions: {
+                    //icon: new google.maps.MarkerImage('Windows.png')
+                },
+                circleOptions: {
+                    fillColor: '#ffff00',
+                    fillOpacity: 1,
+                    strokeWeight: 5,
+                    clickable: false,
+                    zIndex: 1,
+                    editable: true
+                }
+            });
+
+            // 将自定义控件添加到地图中
+            drawingManager.setMap(map);
+        }
+
+        // 防火墙问题，将 google js 地址切换到国内
+        // 国内 http://ditu.google.cn/maps/api/js
+        // 国外 http://maps.googleapis.com/maps/api/js
+        function loadScript() {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "http://ditu.google.cn/maps/api/js?sensor=TRUE&callback=initialize&v.3.17&libraries=drawing";
+            document.body.appendChild(script);
+        }
+
+        window.onload = loadScript;
+
+        window.setTimeout(function () {
+            // $("#map_canvas").rotate({ angle: 45 });
+
+            $("#map_canvas").rotate({
+                //angle: 45,
+                //center: ["0%", "0%"],
+                bind: {
+                    click: function () {
+                        //$(this).rotate({
+                        //    angle: 0,
+                        //    center: ["50%", "100%"],
+                        //    animateTo: 180
+                        //})
+
+                        //$(this).rotate({ angle: 30 + new Date().getMilliseconds() });
+                    }
+                }
+            });
+
+
+            setTimeout(function () {
+                //$("#map_canvas").style.left
+            }, 1000);
+
+        }, 2000);
+
+    </script>
+</head>
+<body>
+
+    <div style="margin:auto; width:60%; height:60%; border: 1px solid red; overflow:hidden;">
+        <div id="map_canvas"></div>
+    </div>
+
+    
+</body>
+</html>
+
