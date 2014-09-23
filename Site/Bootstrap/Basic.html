@@ -19,42 +19,14 @@
     <![endif]-->
 
     <style type="text/css">
-        .part-left {
-            width: 50%;
-            height: 400px;
-            background-color: yellow;
-        }
-
-        .part-right {
-            width: 28%;
-            height: 400px;
-            background-color: green;
+        div {
+            /*border:1px solid red;*/
         }
     </style>
 
 </head>
 <body>
-
-    <!-- Large modal -->
-    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
-    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                ...
-            </div>
-        </div>
-    </div>
-    <!-- Small modal -->
-    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
-    <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                ...
-            </div>
-        </div>
-    </div>
-
-    <button class="btn btn-primary" id="toggleBtn">Toggle</button>
+    <h1>Custom heading</h1>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -63,21 +35,5 @@
     <script src="/Bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
-
-    <script>
-        $(function () {
-            $("#toggleBtn").on("click", function () {
-                //$('.bs-example-modal-sm').modal({
-                //    show:false
-                //});
-
-                setTimeout(function () {
-                    $('.bs-example-modal-sm').modal('show');
-                }, 2000);
-
-                //
-            });
-        });
-    </script>
 </body>
 </html>

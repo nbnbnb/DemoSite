@@ -41,7 +41,7 @@ var CalendarMonth = function (monthNum, numDays, parent) {
 
     this.days = [];
 
-    for (var i = 0, len = numDays; i < len; i++) {
+    for(var i=0,len=numDays;i<len;i++){
         this.days[i] = calendarDay;
     }
 };
@@ -68,6 +68,9 @@ CalendarDay.prototype = {
 var calendarDay = new CalendarDay();
 
 var TooltipManager = (function () {
+
+
+
     /* Tooltip class. un-optimized */
     var Tooltip = function () {
         this.delayTimeout = null;
@@ -145,7 +148,7 @@ var DialogBoxManager = (function () {
     var created = [];
 
     return {
-        displayDialogBox: function (header, body, footer) {
+        displayDialogBox: function (header,body,footer) {
             var inUse = this.numberInUse();
             // 只有在不能重用现有实例的情况下才创建实例
             if (inUse > created.length) {

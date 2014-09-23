@@ -24,15 +24,6 @@
         <asp:Label runat="server" ID="Label_Message" />
         <asp:Button runat="server" ID="Button_Click" Text="Server Click" />
         <input type="button" value="Client Click" onclick="showTime()" />
-
-
-        <form method="post" action="Temp.aspx">
-            <input name="infos" value="1" />
-            <input name="infos" value="2" />
-            <input name="infos" value="3" />
-            <input name="infos" value="4" />
-            <input type="submit" value="Submit" />
-        </form>
     </div>
     </form>
 </body>

@@ -45,10 +45,10 @@ var MethodProfiler = function (component) {
             continue;
         }
 
-        // 然后再判断是否为原型函数
+        // 然后在判断是否为原型函数
+
 
         var that = this;
-
         (function (methodName) {
             that[methodName] = function () {
                 that.startTimer(methodName);
@@ -57,7 +57,7 @@ var MethodProfiler = function (component) {
                 that.displayTime(methodName, that.getElapsedTime(methodName));
                 return returnValue;
             };
-        })(key);  // 消除闭包影响
+        })(key);
     }
 
 };

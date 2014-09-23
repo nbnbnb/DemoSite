@@ -28,7 +28,7 @@ var ads = getAds();
 
 for (var i = 0, len = ads.length; i < len; i++) {
     var startCommand = new StartAd(ads[i]);
-    var stopCommand = new StopAd(ads[i]);
+    var stopCommand = new stopCommand(ads[i]);
 
     new UIButton('Start' + ads[i].name, startCommand);
     new UIButton('Stop' + ads[i].name, stopCommand);
@@ -38,7 +38,7 @@ for (var i = 0, len = ads.length; i < len; i++) {
 
 function makeStart(adObject) {
     return function () {
-        adObject.start();
+        adObject.statr();
     };
 }
 
