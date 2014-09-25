@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>工具提示</title>
+    <!-- Bootstrap -->
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap theme -->
+    <link href="/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/Bootstrap/js/html5shiv.min.js"></script>
+      <script src="/Bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+    </style>
+
+</head>
+<body>
+
+
+    <div class="container">
+
+        <br /><br /><br /><br />
+
+        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
+        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
+
+        <a href="#" data-toggle="tooltip" data-placement="right">Hover over me</a>
+
+        <div class="has-tooltip">
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Bootstrap/js/jquery.min.js"></script>
+    <script src="/Bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script>
+        $(function () {
+            // 出于性能的原因 
+            // tooltip 和 popover 需要手动进行激活
+
+            // 在 body 中激活 tooltip
+            // 条件是符合 selector 选择器
+            // 这样所用动态添加到 body 中的元素，只要符合 selector 条件，就好激活 tooltip 功能
+            $('body').tooltip({
+                selector: '[rel="tooltip"]'
+            });
+
+            setTimeout(function () {
+                var button = $('<button rel="tooltip" class="btn btn-block btn-success has-popover" data-title="Dynamic" data-content="This button was added dynamically by JavaScript" data-placement="top">Working dynamically added button</button>');
+                button.appendTo('.has-tooltip');
+
+            }, 1000);
+
+            $('button[data-toggle=tooltip]').tooltip({
+                trigger: 'hover' // 鼠标移开后将会自动关闭
+            });
+
+            $('a[data-toggle=tooltip]').tooltip({
+                title:'custom title to red', // 如果在元素上设置了 title 属性，此处的 title 设置将不会起作用
+                template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="color:red;"></div></div>'
+            });
+        });
+    </script>
+</body>
+</html>
