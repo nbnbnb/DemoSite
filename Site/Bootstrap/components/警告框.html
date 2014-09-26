@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>警告框</title>
+    <!-- Bootstrap -->
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap theme -->
+    <link href="/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/Bootstrap/js/html5shiv.min.js"></script>
+      <script src="/Bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+        div {
+            /*border:1px solid red;*/
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="alert alert-success" role="alert">Well done! You successfully read this important alert message. </div>
+        <div class="alert alert-info" role="alert">Heads up! This alert needs your attention, but it's not super important. </div>
+        <div class="alert alert-warning" role="alert">Warning! Better check yourself, you're not looking too good. </div>
+        <div class="alert alert-danger" role="alert">Oh snap! Change a few things up and try submitting again. </div>
+
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <!--确保在所有设备上的正确行为：务必给 <button> 元素添加 data-dismiss="alert" 属性-->
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <strong>Warning!</strong> Better check yourself, you're not looking too good.
+        </div>
+
+        <div class="alert alert-success" role="alert">
+            Well done! You successfully read<a href="#" class="alert-link"> this important alert message.</a>
+        </div>
+        <div class="alert alert-info" role="alert">
+            Heads up! This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
+            
+        </div>
+        <div class="alert alert-warning" role="alert">
+            Warning! Better check yourself, you're <a href="#" class="alert-link">not looking too good.</a>
+        </div>
+        <div class="alert alert-danger" role="alert">
+            Oh snap! <a href="#" class="alert-link">Change a few things up and try submitting again.</a>
+        </div>
+
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Bootstrap/js/jquery.min.js"></script>
+    <script src="/Bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

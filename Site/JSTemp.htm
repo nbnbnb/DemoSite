@@ -29,14 +29,9 @@
 
         <div class="main">
             <input type="button" id="button_DoIt" value="DoIt" />
-            <ul>
-                <li>a</li>
-                <li>b</li>
-            </ul>
-            <ul>
-                <li>c</li>
-                <li>d</li>
-            </ul>
+
+            <div id="hello"></div>
+
         </div>
 
 
@@ -58,7 +53,7 @@
             $(function () {
 
                 $("#button_DoIt").bind("click", function () {
-                    $('ul>li:first-child').css('color', 'red');
+                    $('#hello').load('js.html');
                 });
             });
 
