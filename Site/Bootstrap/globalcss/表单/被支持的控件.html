@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <title>被支持的控件</title>
+    <!-- Bootstrap -->
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap theme -->
+    <link href="/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/Bootstrap/js/html5shiv.min.js"></script>
+      <script src="/Bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+
+    <div class="container-fluid">
+
+        <p><pre>输入框：包括大部分表单控件、文本输入域控件，还支持所有 HTML5 类型的输入控件： text、password、datetime、datetime-local、date、month、time、week、number、email、url、search、tel 和 color。</pre></p>
+
+        <form role="form" class="form-horizontal">
+            <div class="form-group">
+                <label for="text" class="control-label col-sm-2">text</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="text" placeholder="text">
+                </div>
+                <label for="password" class="control-label col-sm-2">password</label>
+                <div class="col-sm-2">
+                    <input type="password" class="form-control" id="password" placeholder="password">
+                </div>
+                <label for="datetime" class="control-label col-sm-2">datetime</label>
+                <div class="col-sm-2">
+                    <input type="datetime" class="form-control" id="datetime" placeholder="datetime">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="datetime-local" class="control-label col-sm-2">datetime-local</label>
+                <div class="col-sm-2">
+                    <input type="datetime-local" class="form-control" id="datetime-local" placeholder="datetime-local">
+                </div>
+                <label for="date" class="control-label col-sm-2">date</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="date" placeholder="date">
+                </div>
+                <label for="month" class="control-label col-sm-2">month</label>
+                <div class="col-sm-2">
+                    <input type="month" class="form-control" id="month" placeholder="month">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="time" class="control-label col-sm-2">time</label>
+                <div class="col-sm-2">
+                    <input type="time" class="form-control" id="time" placeholder="time">
+                </div>
+                <label for="week" class="control-label col-sm-2">week</label>
+                <div class="col-sm-2">
+                    <input type="week" class="form-control" id="week" placeholder="week">
+                </div>
+                <label for="number" class="control-label col-sm-2">number</label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" id="number" placeholder="number">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="control-label col-sm-2">email</label>
+                <div class="col-sm-2">
+                    <input type="email" class="form-control" id="email" placeholder="email">
+                </div>
+                <label for="url" class="control-label col-sm-2">url</label>
+                <div class="col-sm-2">
+                    <input type="url" class="form-control" id="url" placeholder="url">
+                </div>
+                <label for="search" class="control-label col-sm-2">search</label>
+                <div class="col-sm-2">
+                    <input type="search" class="form-control" id="search" placeholder="search">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tel" class="control-label col-sm-2">tel</label>
+                <div class="col-sm-2">
+                    <input type="tel" class="form-control" id="tel" placeholder="tel">
+                </div>
+                <label for="color" class="control-label col-sm-2">color</label>
+                <div class="col-sm-2">
+                    <input type="color" class="form-control" id="color" placeholder="color">
+                </div>
+            </div>
+        </form>
+
+        <p><pre>文本域：支持多行文本的表单控件。可根据需要改变 rows 属性。</pre></p>
+        <textarea class="form-control" rows="3"></textarea>
+
+        <p><pre>多选和单选框：如果也希望将悬停于上方的鼠标设置为“禁止点击”的样式，请将 .disabled 类赋予 .radio、.radio-inline、.checkbox、.checkbox-inline 或 &lt;fieldset>。</pre></p>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                Option one is this and that&mdash;be sure to include why it's great
+            </label>
+        </div>
+        <div class="checkbox disabled">
+            <label>
+                <input type="checkbox" value="" disabled>
+                Option two is disabled
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                Option one is this and that&mdash;be sure to include why it's great
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                Option two can be something else and selecting it will deselect option one
+            </label>
+        </div>
+        <div class="radio disabled">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                Option three is disabled
+            </label>
+        </div>
+
+        <p><pre>通过将 .checkbox-inline 或 .radio-inline 类应用到一系列的多选框（checkbox）或单选框（radio）控件上，可以使这些控件排列在一行。</pre></p>
+        <p>
+            <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+            </label>
+        </p>
+
+        <p><pre>下拉列表：使用默认选项或添加 multiple 属性可以同时显示多个选项。</pre></p>
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <select multiple class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Bootstrap/js/jquery.min.js"></script>
+    <script src="/Bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Bootstrap/js/Holder.js"></script>
+
+
+
+    <script>
+        $(function () {
+            $('div.container div').each(function (index, ele) {
+                this['data-background-src'] = '?holder.js/100%x100%/random';
+                Holder.run({ images: this });
+            });
+
+            Holder.addTheme("bright", { background: "white", foreground: "gray", size: 12 }).run();
+
+        });
+    </script>
+</body>
+</html>

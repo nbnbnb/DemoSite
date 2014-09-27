@@ -3,38 +3,42 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>具有响应式特性的嵌入内容</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <title>禁用状态</title>
     <!-- Bootstrap -->
     <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Bootstrap theme -->
     <link href="/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="/Bootstrap/js/html5shiv.min.js"></script>
       <script src="/Bootstrap/js/respond.min.js"></script>
     <![endif]-->
-    <style type="text/css">
-        div {
-            /*border:1px solid red;*/
-        }
-    </style>
+
+
 </head>
 <body>
-    <div class="jumbotron">
-        <div class="container">
-            <!--超级提示： 不需要为 <iframe> 元素设置 frameborder="0" 属性，因为我们已经替你这样做了！-->
-            <!-- 16:9 aspect ratio -->
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="http://player.youku.com/embed/XMzA5ODYwOTE2"></iframe>
-            </div>
-            <!-- 4:3 aspect ratio -->
-            <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="http://player.youku.com/embed/XMzA5ODYwOTE2"></iframe>
-            </div>
-        </div>
+
+    <div class="container">
+        <blockquote>
+            通过将按钮的背景色做 50% 的褪色处理就可以呈现出无法点击的效果。
+            <br />
+            为 <code>&lt;button&gt;</code> 元素添加 disabled 属性，使其表现出禁用状态。
+            <br />
+            为基于 <code>&lt;a&gt;</code> 元素创建的按钮添加 .disabled 类。
+        </blockquote>
+        <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
+        <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+
+        <a href="http://www.baidu.com" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
+        <a href="http://www.sina.com.cn" class="btn btn-default btn-lg disabled" role="button">Link</a>
+
     </div>
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -42,5 +46,8 @@
     <script src="/Bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Bootstrap/js/Holder.js"></script>
+
+
 </body>
 </html>

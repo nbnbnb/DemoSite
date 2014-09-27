@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-    <title>Basic</title>
+    <title>clearfix</title>
     <!-- Bootstrap -->
     <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -18,19 +18,23 @@
       <script src="/Bootstrap/js/respond.min.js"></script>
     <![endif]-->
 
-    <style>
 
-    </style>
 </head>
 <body>
-    
-    <div class="container">
-        <blockquote>
-            READ
-        </blockquote>
-        <h3>Start</h3>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+            <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+            <!--With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a .clearfix and our responsive utility classes.-->
+            <!-- Add the extra clearfix for only the required viewport -->
+            <div class="clearfix visible-xs-block"></div>
+            <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+            <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+        </div>
+
     </div>
-    
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -40,7 +44,17 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
     <script src="/Bootstrap/js/Holder.js"></script>
+    <script src="/Scripts/underscore.js"></script>
 
-    
+    <script>
+        $(function () {
+            var colors = ['olive', 'teal', 'aqua', 'silver', 'red', 'blue', 'yellow', 'green', 'gray', 'maroon', 'fuchsia', 'purple'],
+                max = colors.length;
+
+            $('div.container-fluid div[class!=row]').each(function (index, ele) {
+                this.style.backgroundColor = colors[_.random(max)];
+            });
+        });
+    </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-    <title>Basic</title>
+    <title>页面主体</title>
     <!-- Bootstrap -->
     <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -18,17 +18,16 @@
       <script src="/Bootstrap/js/respond.min.js"></script>
     <![endif]-->
 
-    <style>
 
-    </style>
 </head>
 <body>
     
     <div class="container">
-        <blockquote>
-            READ
-        </blockquote>
-        <h3>Start</h3>
+
+        <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+        <p class="lead">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+
     </div>
     
 
@@ -42,5 +41,17 @@
     <script src="/Bootstrap/js/Holder.js"></script>
 
     
+
+    <script>
+        $(function () {
+            $('div.container div').each(function (index, ele) {
+                this['data-background-src'] = '?holder.js/100%x100%/random';
+                Holder.run({ images: this });
+            });
+
+            Holder.addTheme("bright", { background: "white", foreground: "gray", size: 12 }).run();
+            
+        });
+    </script>
 </body>
 </html>

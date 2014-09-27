@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <title>列表</title>
+    <!-- Bootstrap -->
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap theme -->
+    <link href="/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/Bootstrap/js/html5shiv.min.js"></script>
+      <script src="/Bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+    
+    <div class="container">
+        <ul>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Consectetur adipiscing elit</li>
+            <li>Integer molestie lorem at massa</li>
+            <li>Facilisis in pretium nisl aliquet</li>
+            <li>Nulla volutpat aliquam velit 
+                <ul>
+                    <li>Phasellus iaculis neque</li>
+                    <li>Purus sodales ultricies</li>
+                    <li>Vestibulum laoreet porttitor sem</li>
+                    <li>Ac tristique libero volutpat at</li>
+                </ul>
+            </li>
+            <li>Faucibus porta lacus fringilla vel</li>
+            <li>Aenean sit amet erat nunc</li>
+            <li>Eget porttitor lorem</li>
+        </ul>
+        <hr />
+        <ol>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Consectetur adipiscing elit</li>
+            <li>Integer molestie lorem at massa</li>
+            <li>Facilisis in pretium nisl aliquet</li>
+            <li>
+                Nulla volutpat aliquam velit
+                <ol>
+                    <li>Phasellus iaculis neque</li>
+                    <li>Purus sodales ultricies</li>
+                    <li>Vestibulum laoreet porttitor sem</li>
+                    <li>Ac tristique libero volutpat at</li>
+                </ol>
+            </li>
+            <li>Faucibus porta lacus fringilla vel</li>
+            <li>Aenean sit amet erat nunc</li>
+            <li>Eget porttitor lorem</li>
+        </ol>
+        <hr />
+        <!--移除样式-->
+        <ol>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Consectetur adipiscing elit</li>
+            <li>Integer molestie lorem at massa</li>
+            <li>Facilisis in pretium nisl aliquet</li>
+            <li>
+                Nulla volutpat aliquam velit
+                <ol class="list-unstyled">
+                    <li>Phasellus iaculis neque</li>
+                    <li>Purus sodales ultricies</li>
+                    <li>Vestibulum laoreet porttitor sem</li>
+                    <li>Ac tristique libero volutpat at</li>
+                </ol>
+            </li>
+            <li>Faucibus porta lacus fringilla vel</li>
+            <li>Aenean sit amet erat nunc</li>
+            <li>Eget porttitor lorem</li>
+        </ol>
+        <hr />
+        <!--内联列表-->
+        <ol class="list-inline">
+            <li>Lorem ipsum</li>
+            <li>Phasellus iaculis</li>
+            <li>Nulla volutpat</li>
+        </ol>
+        <hr />
+        <!--描述-->
+        <dl>
+            <dt>Description lists</dt>
+            <dd>A description list is perfect for defining terms.</dd>
+            <dt>Euismod</dt>
+            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+            <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+            <dt>Malesuada porta</dt>
+            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+        </dl>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>Description lists</dt>
+            <dd>A description list is perfect for defining terms.</dd>
+            <dt>Euismod</dt>
+            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+            <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+            <!-- 通过 text-overflow 属性，自动截断左侧太长的短语-->
+            <dt>Malesuada porta Malesuada porta Malesuada porta Malesuada porta</dt>
+            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+        </dl>
+    </div>
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Bootstrap/js/jquery.min.js"></script>
+    <script src="/Bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Bootstrap/js/Holder.js"></script>
+
+    
+
+    <script>
+        $(function () {
+            $('div.container div').each(function (index, ele) {
+                this['data-background-src'] = '?holder.js/100%x100%/random';
+                Holder.run({ images: this });
+            });
+
+            Holder.addTheme("bright", { background: "white", foreground: "gray", size: 12 }).run();
+            
+        });
+    </script>
+</body>
+</html>

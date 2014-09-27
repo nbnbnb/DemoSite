@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <title>基本实例</title>
+    <!-- Bootstrap -->
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap theme -->
+    <link href="/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/Bootstrap/js/html5shiv.min.js"></script>
+      <script src="/Bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+    
+    <div class="container">
+
+        <blockquote>
+            <p>不要将表单组直接和输入框组混合使用。建议将输入框组嵌套到表单组中使用。</p>
+        </blockquote>
+        
+
+        <form role="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">File input</label>
+                <input type="file" id="exampleInputFile">
+                <p class="help-block">Example block-level help text here.</p>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Check me out
+                </label>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
+    </div>
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Bootstrap/js/jquery.min.js"></script>
+    <script src="/Bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Bootstrap/js/Holder.js"></script>
+
+    
+
+    <script>
+        $(function () {
+            $('div.container div').each(function (index, ele) {
+                this['data-background-src'] = '?holder.js/100%x100%/random';
+                Holder.run({ images: this });
+            });
+
+            Holder.addTheme("bright", { background: "white", foreground: "gray", size: 12 }).run();
+            
+        });
+    </script>
+</body>
+</html>

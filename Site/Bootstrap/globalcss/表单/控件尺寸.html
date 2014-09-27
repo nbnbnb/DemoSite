@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <title>控件尺寸</title>
+    <!-- Bootstrap -->
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap theme -->
+    <link href="/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/Bootstrap/js/html5shiv.min.js"></script>
+      <script src="/Bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+    
+    <div class="container">
+
+        <blockquote>
+            通过 <code>.input-lg</code> 类似的类可以为控件设置高度，通过 <code>.col-lg-*</code> 类似的类可以为控件设置宽度。
+        </blockquote>
+        
+        <form role="form">
+            <input class="form-control input-lg" type="text" placeholder=".input-lg">
+            <input class="form-control" type="text" placeholder="Default input">
+            <input class="form-control input-sm" type="text" placeholder=".input-sm">
+            <select class="form-control input-lg">
+                <option>.input-lg</option>
+            </select>
+            <select class="form-control">
+                <option>Default select</option>
+            </select>
+            <select class="form-control input-sm">
+                <option>.input-sm</option>
+            </select>
+        </form>
+        <hr />
+        <blockquote>
+            通过添加<code>.form-group-lg</code> 或 <code>.form-group-sm</code> 类，为 <code>.form-horizontal</code> 包裹的 <code>label</code> 元素和表单控件快速设置尺寸。
+        </blockquote>
+        <form class="form-horizontal" role="form">
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+                </div>
+            </div>
+        </form>
+        <hr />
+        <blockquote>
+            用栅格系统中的列（column）包裹输入框或其任何父元素，都可很容易的为其设置宽度。
+        </blockquote>
+        <div class="row">
+            <div class="col-xs-2">
+                <input type="text" class="form-control" placeholder=".col-xs-2" />
+            </div>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" placeholder=".col-xs-3" />
+            </div>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" placeholder=".col-xs-4" />
+            </div>
+        </div>
+
+    </div>
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Bootstrap/js/jquery.min.js"></script>
+    <script src="/Bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Bootstrap/js/Holder.js"></script>
+
+</body>
+</html>

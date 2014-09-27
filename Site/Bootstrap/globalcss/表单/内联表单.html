@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <title>内联表单</title>
+    <!-- Bootstrap -->
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap theme -->
+    <link href="/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/Bootstrap/js/html5shiv.min.js"></script>
+      <script src="/Bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+
+    <div class="container">
+
+        <p>
+            <pre>为 &lt;form> 元素添加 .form-inline 类可使其内容左对齐并且表现为 inline-block 级别的控件。只适用于视口（viewport）至少在 768px 宽度时（视口宽度再小的话就会使表单折叠）。</pre>
+        </p>
+
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">@</div>
+                    <input class="form-control" type="email" placeholder="Enter email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="exampleInputPassword2">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-default">Sign in</button>
+        </form>
+
+
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Bootstrap/js/jquery.min.js"></script>
+    <script src="/Bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Bootstrap/js/Holder.js"></script>
+
+</body>
+</html>

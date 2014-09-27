@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <title>内联文本元素</title>
+    <!-- Bootstrap -->
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap theme -->
+    <link href="/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/Bootstrap/js/html5shiv.min.js"></script>
+      <script src="/Bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+    
+    <div class="container">
+        <p>You can use the mark tag to <mark>highlight</mark> text.</p>
+        <p><del>This line of text is meant to be treated as deleted text.</del></p>
+        <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
+        <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+        <p><u>This line of text will render as underlined</u></p>
+        <p>This line of text will render as underlined<small> This line of text is meant to be treated as fine print.</small></p>
+        <p>This line of text will render as underlined<strong> This line of text is meant to be treated as fine print.</strong></p>
+        <p>This line of text will render as underlined<em> This line of text is meant to be treated as fine print.</em></p>
+
+        <!--在 HTML5 中可以放心使用 <b> 和 <i> 标签。<b> 用于高亮单词或短语，不带有任何着重的意味；而 <i> 标签主要用于发言、技术词汇等。-->
+        <p>This line of text will render as underlined<b> This line of text is meant to be treated as fine print.</b></p>
+        <p>This line of text will render as underlined<i> This line of text is meant to be treated as fine print.</i></p>
+    </div>
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Bootstrap/js/jquery.min.js"></script>
+    <script src="/Bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Bootstrap/js/Holder.js"></script>
+
+    
+
+    <script>
+        $(function () {
+            $('div.container div').each(function (index, ele) {
+                this['data-background-src'] = '?holder.js/100%x100%/random';
+                Holder.run({ images: this });
+            });
+
+            Holder.addTheme("bright", { background: "white", foreground: "gray", size: 12 }).run();
+            
+        });
+    </script>
+</body>
+</html>

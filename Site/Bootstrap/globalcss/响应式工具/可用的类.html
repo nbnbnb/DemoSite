@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <title>可用的类</title>
+    <!-- Bootstrap -->
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap theme -->
+    <link href="/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/Bootstrap/js/html5shiv.min.js"></script>
+      <script src="/Bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        .useful-util .is-hidden {
+            background-color: #f9f9f9;
+            color: #ccc;
+        }
+
+        .useful-util th small {
+            color: #ccc;
+        }
+
+        .useful-util td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container useful-util">
+        <blockquote>
+            通过单独或联合使用以下列出的类，可以针对不同屏幕尺寸隐藏或显示页面内容。
+        </blockquote>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>超小屏幕<br /><small>手机(&lt;768px)</small></th>
+                    <th>小屏幕<br /><small>平板(>=768px)</small></th>
+                    <th>中等屏幕<br /><small>桌面(>=992px)</small></th>
+                    <th>大屏幕<br /><small>桌面(>=1200px)</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.visible-xs-*</code></td>
+                    <td class="info">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                </tr>
+                <tr>
+                    <td><code>.visible-sm-*</code></td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="info">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                </tr>
+                <tr>
+                    <td><code>.visible-md-*</code></td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="info">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                </tr>
+                <tr>
+                    <td><code>.visible-lg-*</code></td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="info">可见</td>
+                </tr>
+                <tr>
+                    <td><code>.hidden-xs</code></td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="info">可见</td>
+                    <td class="info">可见</td>
+                    <td class="info">可见</td>
+                </tr>
+                <tr>
+                    <td><code>.hidden-sm</code></td>
+                    <td class="info">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="info">可见</td>
+                    <td class="info">可见</td>
+                </tr>
+                <tr>
+                    <td><code>.hidden-md</code></td>
+                    <td class="info">可见</td>
+                    <td class="info">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                    <td class="info">可见</td>
+                </tr>
+                <tr>
+                    <td><code>.hidden-lg</code></td>
+                    <td class="info">可见</td>
+                    <td class="info">可见</td>
+                    <td class="info">可见</td>
+                    <td class="is-hidden">隐藏</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>类组</th>
+                    <th>CSS<code>display</code></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.visible-*-block</code></td>
+                    <td><code>display:block;</code></td>
+                </tr>
+                <tr>
+                    <td><code>.visible-*-inline</code></td>
+                    <td><code>display:inline;</code></td>
+                </tr>
+                <tr>
+                    <td><code>.visible-*-inline-block</code></td>
+                    <td><code>display:inline-block;</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Bootstrap/js/jquery.min.js"></script>
+    <script src="/Bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Bootstrap/js/Holder.js"></script>
+
+
+</body>
+</html>

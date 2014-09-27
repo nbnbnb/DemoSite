@@ -3,38 +3,33 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>具有响应式特性的嵌入内容</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <title>用户输入</title>
     <!-- Bootstrap -->
     <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Bootstrap theme -->
     <link href="/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="/Bootstrap/js/html5shiv.min.js"></script>
       <script src="/Bootstrap/js/respond.min.js"></script>
     <![endif]-->
-    <style type="text/css">
-        div {
-            /*border:1px solid red;*/
-        }
-    </style>
+
+
 </head>
 <body>
-    <div class="jumbotron">
-        <div class="container">
-            <!--超级提示： 不需要为 <iframe> 元素设置 frameborder="0" 属性，因为我们已经替你这样做了！-->
-            <!-- 16:9 aspect ratio -->
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="http://player.youku.com/embed/XMzA5ODYwOTE2"></iframe>
-            </div>
-            <!-- 4:3 aspect ratio -->
-            <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="http://player.youku.com/embed/XMzA5ODYwOTE2"></iframe>
-            </div>
-        </div>
+
+    <div class="container">
+        <p>
+            To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
+            To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
+        </p>
     </div>
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -42,5 +37,20 @@
     <script src="/Bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Bootstrap/js/Holder.js"></script>
+
+
+
+    <script>
+        $(function () {
+            $('div.container div').each(function (index, ele) {
+                this['data-background-src'] = '?holder.js/100%x100%/random';
+                Holder.run({ images: this });
+            });
+
+            Holder.addTheme("bright", { background: "white", foreground: "gray", size: 12 }).run();
+
+        });
+    </script>
 </body>
 </html>

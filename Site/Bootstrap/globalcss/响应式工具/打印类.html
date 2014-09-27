@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-    <title>Basic</title>
+    <title>打印类</title>
     <!-- Bootstrap -->
     <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -19,18 +19,55 @@
     <![endif]-->
 
     <style>
+        .is-hidden {
+            background-color: #f9f9f9;
+            color: #ccc;
+        }
 
+        td.center {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    
+
     <div class="container">
         <blockquote>
-            READ
+            和常规的响应式类一样，使用下面的类可以针对打印机隐藏或显示某些内容。
         </blockquote>
-        <h3>Start</h3>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>class</th>
+                    <th>浏览器</th>
+                    <th>打印机</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <code>.visible-print-block</code><br />
+                        <code>.visible-print-inline</code><br />
+                        <code>.visible-print-inline-block</code>
+                    </td>
+                    <td class="is-hidden center">
+                        隐藏
+                    </td>
+                    <td class="info center">
+                        可见
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>.hidden-print</code></td>
+                    <td class="info center">可见</td>
+                    <td class="is-hidden center">隐藏</td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
-    
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -41,6 +78,6 @@
     <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
     <script src="/Bootstrap/js/Holder.js"></script>
 
-    
+
 </body>
 </html>

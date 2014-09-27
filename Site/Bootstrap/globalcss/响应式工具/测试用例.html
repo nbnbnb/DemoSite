@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <title>测试用例</title>
+    <!-- Bootstrap -->
+    <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap theme -->
+    <link href="/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/Bootstrap/js/html5shiv.min.js"></script>
+      <script src="/Bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        span {
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: block;
+            text-align:center;
+        }
+
+        .show {
+            color: #468847;
+            background-color: #dff0d8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <blockquote>
+            调整你的浏览器大小，或者用其他设备打开页面，都可以测试这些响应式工具类。
+        </blockquote>
+
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <span class="hidden-xs">超小屏幕</span>
+                <span class="visible-xs-block show">✔ 在超小屏幕上可见</span>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <span class="hidden-sm">小屏幕</span>
+                <span class="visible-sm-block show">✔ 在小屏幕上可见</span>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <span class="hidden-md">中等屏幕</span>
+                <span class="visible-md-block show">✔ 在中等屏幕上可见</span>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <span class="hidden-lg">大屏幕</span>
+                <span class="visible-lg-block show">✔ 大屏幕上可见</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <span class="hidden-xs hidden-sm">超小屏幕和小屏幕</span>
+                <span class="visible-xs-block visible-sm-block show">✔ 在超小屏幕和小屏幕上可见</span>
+            </div>
+            <div class="col-xs-6">
+                <span class="hidden-md hidden-lg">中等屏幕和大屏幕</span>
+                <span class="visible-md-block visible-lg-block show">✔ 在中等屏幕和大屏幕上可见</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <span class="hidden-xs hidden-md">超小屏幕和中等屏幕</span>
+                <span class="visible-xs-block visible-md-block show">✔ 在超小屏幕和中等屏幕上可见</span>
+            </div>
+            <div class="col-xs-6">
+                <span class="hidden-sm hidden-lg">小屏幕和大屏幕</span>
+                <span class="visible-sm-block visible-lg-block show">✔ 在小屏幕和大屏幕上可见</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <span class="hidden-xs hidden-lg">超小屏幕和大屏幕</span>
+                <span class="visible-xs-block visible-lg-block show">✔ 在超小屏幕和大屏幕上可见</span>
+            </div>
+            <div class="col-xs-6">
+                <span class="hidden-sm hidden-md">小屏幕和中等屏幕</span>
+                <span class="visible-sm-block visible-md-block show">✔ 在小屏幕和中等屏幕上可见</span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <span class="hidden-xs">超小屏幕</span>
+                <span class="visible-xs-block show">✔ 在超小屏幕上隐藏</span>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <span class="hidden-sm">小屏幕</span>
+                <span class="visible-sm-block show">✔ 在小屏幕上隐藏</span>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <span class="hidden-md">中等屏幕</span>
+                <span class="visible-md-block show">✔ 在中等屏幕上隐藏</span>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <span class="hidden-lg">大屏幕</span>
+                <span class="visible-lg-block show">✔ 在大屏幕上隐藏</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <span class="hidden-xs hidden-sm">超小屏幕和小屏幕</span>
+                <span class="visible-xs-block visible-sm-block show">✔ 在超小屏幕和小屏幕上隐藏</span>
+            </div>
+            <div class="col-xs-6">
+                <span class="hidden-md hidden-lg">中等屏幕和大屏幕</span>
+                <span class="visible-md-block visible-lg-block show">✔ 在中等屏幕和大屏幕上隐藏</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <span class="hidden-xs hidden-md">超小屏幕和中等屏幕</span>
+                <span class="visible-xs-block visible-md-block show">✔ 在超小屏幕和中等屏幕上隐藏</span>
+            </div>
+            <div class="col-xs-6">
+                <span class="hidden-sm hidden-lg">小屏幕和大屏幕</span>
+                <span class="visible-sm-block visible-lg-block show">✔ 在小屏幕和大屏幕上隐藏</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <span class="hidden-xs hidden-lg">超小屏幕和大屏幕</span>
+                <span class="visible-xs-block visible-lg-block show">✔ 在超小屏幕和大屏幕上隐藏</span>
+            </div>
+            <div class="col-xs-6">
+                <span class="hidden-sm hidden-md">小屏幕和中等屏幕</span>
+                <span class="visible-sm-block visible-md-block show">✔ 在小屏幕和中等屏幕上隐藏</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Bootstrap/js/jquery.min.js"></script>
+    <script src="/Bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Bootstrap/js/Holder.js"></script>
+
+
+</body>
+</html>

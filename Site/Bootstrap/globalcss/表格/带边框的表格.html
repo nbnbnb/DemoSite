@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-    <title>Basic</title>
+    <title>带边框的表格</title>
     <!-- Bootstrap -->
     <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -18,17 +18,48 @@
       <script src="/Bootstrap/js/respond.min.js"></script>
     <![endif]-->
 
-    <style>
 
-    </style>
 </head>
 <body>
     
     <div class="container">
-        <blockquote>
-            READ
-        </blockquote>
-        <h3>Start</h3>
+        <table class="table table-bordered">
+            <caption>Optional table caption.</caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2">1</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mod</td>
+                </tr>
+                <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@TwBootstrap</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
     
 
@@ -41,6 +72,5 @@
     <script src="/Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
     <script src="/Bootstrap/js/Holder.js"></script>
 
-    
 </body>
 </html>

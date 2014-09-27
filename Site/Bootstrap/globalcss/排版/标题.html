@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-    <title>Basic</title>
+    <title>标题</title>
     <!-- Bootstrap -->
     <link href="/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -18,17 +18,29 @@
       <script src="/Bootstrap/js/respond.min.js"></script>
     <![endif]-->
 
-    <style>
 
-    </style>
 </head>
 <body>
     
     <div class="container">
-        <blockquote>
-            READ
-        </blockquote>
-        <h3>Start</h3>
+
+        <h1>h1. Bootstrap heading <small>Semibold  36px</small></h1>
+        <h2>h2. Bootstrap heading <small>Semibold  30px</small></h2>
+        <h3>h3. Bootstrap heading <small>Semibold  24px</small></h3>
+        <h4>h4. Bootstrap heading <small>Semibold  18px</small></h4>
+        <h5>h5. Bootstrap heading <small>Semibold  14px</small></h5>
+        <h6>h6. Bootstrap heading <small>Semibold  12px</small></h6>
+
+        <!--给内联的文本赋予标题样式-->
+        <p>
+            <span class="h1">This is h1</span>
+            <span class="h2">This is h2</span>
+            <span class="h3">This is h3</span>
+            <span class="h4">This is h4</span>
+            <span class="h5">This is h5</span>
+            <span class="h6">This is h6</span>
+        </p>
+
     </div>
     
 
@@ -42,5 +54,17 @@
     <script src="/Bootstrap/js/Holder.js"></script>
 
     
+
+    <script>
+        $(function () {
+            $('div.container div').each(function (index, ele) {
+                this['data-background-src'] = '?holder.js/100%x100%/random';
+                Holder.run({ images: this });
+            });
+
+            Holder.addTheme("bright", { background: "white", foreground: "gray", size: 12 }).run();
+            
+        });
+    </script>
 </body>
 </html>
