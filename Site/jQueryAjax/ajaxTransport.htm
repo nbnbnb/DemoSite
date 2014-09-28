@@ -2,25 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>JSTemp</title>
-    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+    <title>ajaxPrefilter</title>
+    <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
     <link href="/Styles/ui-darkness/jquery-ui-1.8.19.custom.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Scripts/unit-common.js"></script>
     <script type="text/javascript" src="/Scripts/ZJinLib.js"></script>
     <script type="text/javascript" src="/Scripts/jquery-1.8.0.js"></script>
     <script type="text/javascript" src="/Scripts/jquery-ui-1.8.19.custom.min.js"></script>
 
-    <script src="JSTemp.js"></script>
     <style type="text/css">
         div#div_message {
         }
-
-
     </style>
 
-    <script type="text/javascript">
-
-    </script>
 </head>
 <body>
     <div id="div_message"></div>
@@ -49,19 +43,45 @@
                 $("input[type='button']").button();
             });
 
+            $.ajaxTransport("image", function (s) {
+                if (s.type === "GET" && s.async) {
+                    var image;
+                    return {
+                        send: function (_, callback) {
+                            image = new Image();
+                            function done(status) {
+                                if (image) {
+                                    var statusText = (status == 200) ? "success" : "error",
+                                    tmp = image;
+                                    image = image.onreadystatechange = image.onerror = image.onload = null;
+                                    callback(status, statusText, { image: tmp });
+                                }
+                            }
+
+                            image.onreadystatechange = image.onload = function () {
+                                done(200);
+                            };
+                            image.onerror = function () {
+                                done(404);
+                            };
+                            image.src = s.url;
+                        },
+                        abort: function () {
+                            if (image) {
+                                image = image.onreadystatechange = image.onerror = image.onload = null;
+                            }
+                        }
+                    };
+                }
+            });
+
             // Event Bind
             $(function () {
 
                 $("#button_DoIt").bind("click", function () {
-                    
-
 
                 });
 
-                $(document.documentElement).on('keydown', function (event) {
-                    console.log(event.which);
-                });
- 
             });
 
         </script>

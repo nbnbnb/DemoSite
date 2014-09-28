@@ -1,0 +1,38 @@
+{
+	"url" : "ajax_getScript.js",
+	"isLocal" : false,
+	"global" : true,
+	"type" : "get",
+	"contentType" : "application/x-www-form-urlencoded; charset=UTF-8",
+	"processData" : true,
+	"async" : true,
+	"accepts" : {
+		"xml" : "application/xml, text/xml",
+		"html" : "text/html",
+		"text" : "text/plain",
+		"json" : "application/json, text/javascript",
+		"*" : "*/*",
+		"script" : "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+	},
+	"contents" : {
+		"xml" : {},
+		"html" : {},
+		"json" : {},
+		"script" : {}
+	},
+	"responseFields" : {
+		"xml" : "responseXML",
+		"text" : "responseText"
+	},
+	"converters" : {
+		"text html" : true
+	},
+	"flatOptions" : {
+		"context" : true,
+		"url" : true
+	},
+	"jsonp" : "callback",
+	"dataTypes" : [
+		"*"
+	],
+	"crossDomain" : false
