@@ -52,15 +52,53 @@
 
                 $("#button_DoIt").bind("click", function () {
 
-                    $.get('http://www.zhangjin.me:3000', function (data) {
+                    $.get('http://www.zhangjin.me:3000', { name: 'zhangjin' }, function (data, textStatus, jqXHR) {
                         alert(typeof data);
-                    }, 'jsonp');
-
+                    }, 'jsonp'); // 返回类型格式 xml, html, script, json, text, jsonp【跨域脚本必须使用 jsonp】
+                    // jsonp 可以看做是对 script 的一种封装
                 });
+                
+                // 可以指定对那些数据类型进行过滤
+                // * 表示所有的类型
+                // 可用的类型有 xml html script json jsonp text
+                // 如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断，比如XML MIME类型就被识别为XML
+                // 在1.4中，JSON就会生成一个JavaScript对象，而script则会执行这个脚本
+
+                // 类型映射
+                // "xml" : "application/xml, text/xml",
+                // "html" : "text/html",
+                // "text" : "text/plain",
+                // "json" : "application/json, text/javascript",
+                // "*" : "*/*",
+                // "script" : "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+
+                // 其中 text/javascript 同时映射到了  json 和 script
+
+                // 类型转换器 
+                //converters: {
+ 
+                //    // Convert anything to text
+                //    "* text": window.String,
+ 
+                //    // Text to html (true = no transformation)
+                //    "text html": true,
+ 
+                //    // Evaluate text as a json expression
+                //    "text json": jQuery.parseJSON,
+ 
+                //    // Parse text as xml
+                //    "text xml": jQuery.parseXML
+                //}
 
                 var currentRequests = {};
-
-                $.ajaxPrefilter('*', function (options, originalOptions, jqXHR) {
+                $.ajaxPrefilter('xml html json text', function (options, originalOptions, jqXHR) {
+                    console.log('catch');
+                    if (options.abortOnRetry) {
+                        if (currentRequests[options.url]) {
+                            currentRequests[options.url].abort();
+                        }
+                        currentRequests[options.url] = jqXHR;
+                    }
 
                     // options 代表所有的参数信息
                     // originalOptions 代表所有自定义的参数信息
@@ -74,8 +112,8 @@
                     // 使用场景【重新设置url】
                     // options.url = "http://mydomain.net/proxy/" + encodeURIComponent(options.url);
 
-                    // 可以修改返回的数据类型，jsonp 使用的数据类型为【script】
-                    // 可使用的数据类型有 xml html script json jsonp
+                    // 可以将请求重定向到另一个数据类型，并且返回该数据类型
+                    // 可使用的数据类型有 xml html script json jsonp text
                     // return 'script';
                 });
             });
