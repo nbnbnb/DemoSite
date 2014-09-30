@@ -20,8 +20,5 @@
     </telerik:RadScriptBlock>
 
     <asp:Label runat="server" ID="Label_Message" />
-
     <asp:Button runat="server" ID="Button_Click" Text="Server Click" />
-
-    <a href="kkk.aspx">无法找到此页</a>
 </asp:Content>

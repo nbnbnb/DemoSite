@@ -28,7 +28,7 @@
         function initialize() {
             var newark = new google.maps.LatLng(40.740, -74.18);
 
-            var imageUrl = '1-1.png';
+            var imageUrl = 'A-2.png';
 
             var lenToLat = function (leng) {
                 var L = 10002150;
@@ -47,72 +47,71 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
-            var getWidthHeight = function (src) {
-                var image = new Image(),
-                    w,
-                    h;
+            var getWidthHeight = function (src,callback) {
+                var image = new Image();
+                $(image).load(function () {
+                    callback(image.width, image.height);
+                });
                 image.src = imageUrl;
-                w = image.width;
-                h = image.height;
-                return { width: w, height: h };
             };
 
-            var wh = getWidthHeight(imageUrl);
+            getWidthHeight(imageUrl, function (width, height) {
 
-            var antipoleLat = newark.lat() + lenToLat((wh.height / wh.width) * 60);
-            var antipoleLng = newark.lng() + lenToLng(newark.lat(), 60);
+                var antipoleLat = newark.lat() + lenToLat((height / width) * 60);
+                var antipoleLng = newark.lng() + lenToLng(newark.lat(), 60);
 
-            map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+                map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-            new google.maps.Marker({
-                position: newark,  // 左下角
-                map: map,
-                title: '左下角'
+                new google.maps.Marker({
+                    position: newark,  // 左下角
+                    map: map,
+                    title: '左下角'
+                });
+
+                var northeast = new google.maps.LatLng(antipoleLat, antipoleLng);
+
+                new google.maps.Marker({
+                    position: northeast, // 右上角
+                    map: map,
+                    title: '右上角'
+                });
+
+                var imageBounds = new google.maps.LatLngBounds(
+                    newark,
+                    northeast);
+
+                var oldmap = new google.maps.GroundOverlay(
+                    imageUrl,
+                    imageBounds);
+
+                oldmap.setMap(map);
+
+                var drawingManager = new google.maps.drawing.DrawingManager({
+                    //drawingMode: google.maps.drawing.OverlayType.MARKER,  // 设置默认的绘图模式
+                    drawingControl: true,
+                    drawingControlOptions: {
+                        position: google.maps.ControlPosition.TOP_CENTER, // 设置标记的位置
+                        // 设置在地图上显示的控制模式【标记+圆】，默认会显示手型
+                        drawingModes: [google.maps.drawing.OverlayType.MARKER, google.maps.drawing.OverlayType.CIRCLE]
+                    },
+
+                    // 根据每一种模式，设置其选项，命名格式为 [type]Options
+                    markerOptions: {
+                        //icon: new google.maps.MarkerImage('Windows.png')
+                    },
+                    circleOptions: {
+                        fillColor: '#ffff00',
+                        fillOpacity: 1,
+                        strokeWeight: 5,
+                        clickable: false,
+                        zIndex: 1,
+                        editable: true
+                    }
+                });
+
+                // 将自定义控件添加到地图中
+                drawingManager.setMap(map);
             });
-
-            var northeast = new google.maps.LatLng(antipoleLat, antipoleLng);
-
-            new google.maps.Marker({
-                position: northeast, // 右上角
-                map: map,
-                title: '右上角'
-            });
-
-            var imageBounds = new google.maps.LatLngBounds(
-                newark,
-                northeast);
-
-            var oldmap = new google.maps.GroundOverlay(
-                imageUrl,
-                imageBounds);
-
-            oldmap.setMap(map);
-
-            var drawingManager = new google.maps.drawing.DrawingManager({
-                //drawingMode: google.maps.drawing.OverlayType.MARKER,  // 设置默认的绘图模式
-                drawingControl: true,
-                drawingControlOptions: {
-                    position: google.maps.ControlPosition.TOP_CENTER, // 设置标记的位置
-                    // 设置在地图上显示的控制模式【标记+圆】，默认会显示手型
-                    drawingModes: [google.maps.drawing.OverlayType.MARKER, google.maps.drawing.OverlayType.CIRCLE]
-                },
-
-                // 根据每一种模式，设置其选项，命名格式为 [type]Options
-                markerOptions: {
-                    //icon: new google.maps.MarkerImage('Windows.png')
-                },
-                circleOptions: {
-                    fillColor: '#ffff00',
-                    fillOpacity: 1,
-                    strokeWeight: 5,
-                    clickable: false,
-                    zIndex: 1,
-                    editable: true
-                }
-            });
-
-            // 将自定义控件添加到地图中
-            drawingManager.setMap(map);
         }
 
         // 防火墙问题，将 google js 地址切换到国内
@@ -192,7 +191,7 @@
     </script>
 </head>
 <body>
-    <div id="map_container" style="margin:auto; width:800px; height:600px; border: 1px solid red; overflow:hidden;">
+    <div id="map_container" style="margin:auto; width:50%; height:50%; border: 1px solid red; overflow:hidden;">
         <div id="map_canvas" style="width:200%; height:200%;margin-left:-50%; margin-top:-50%; position:relative;"></div>
     </div>
 
