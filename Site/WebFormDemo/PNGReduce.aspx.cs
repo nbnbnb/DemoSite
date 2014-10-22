@@ -59,6 +59,5 @@ public partial class WebFormDemo_PNGReduce : System.Web.UI.Page
         process.Start();
         process.StandardInput.WriteLine(arg);
         process.StandardInput.WriteLine("exit");
-
     }
 }

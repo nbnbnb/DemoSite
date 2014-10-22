@@ -34,6 +34,7 @@
                 Click me
             </button>
 
+            <button data-bind="click:checkThis">Check This</button>
         </div>
 
 
@@ -59,6 +60,10 @@
                     alert(element.tagName);
                     var ele = event.target || event.srcElement; // DOM or IE
                     alert(ele === element);
+                },
+                checkThis: function () {
+                    alert(this.id);
+                    alert(JSON.stringify(this, null, 2));
                 }
             });
 

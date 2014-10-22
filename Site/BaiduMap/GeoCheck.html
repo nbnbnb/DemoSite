@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>GeoInfo</title>
+</head>
+<body>
+
+    <script>
+        if (window.navigator.geolocation) {
+            var options = {
+                // 指示浏览器获取高精度的位置，默认为false
+                enableHighAcuracy: true,
+                // 指定获取地理位置的超时时间，默认不限时，单位为毫秒
+                timeout: 5000,
+                // 最长有效期，在重复获取地理位置时，此参数指定多久再次获取位置。
+                maximumAge: 3000
+            };
+            window.navigator.geolocation.getCurrentPosition(handleSuccess, handleError, options);
+        } else {
+            alert("浏览器不支持html5来获取地理位置信息");
+        }
+
+        function handleSuccess(position) {           
+            // 获取到当前位置经纬度  本例中是chrome浏览器取到的是google地图中的经纬度
+            var lng = position.coords.longitude;  // 121.399696 经度 【-180~180】
+            var lat = position.coords.latitude;   // 31.045601  纬度 【-90~90】
+
+             console.log(lng);
+             console.log(lat);
+        }
+
+
+        function handleError(error) {
+            switch (error.code) {
+                case error.TIMEOUT:
+                    showError("A timeout occured! Please try again!");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    showError('We can\'t detect your location. Sorry!');
+                    break;
+                case error.PERMISSION_DENIED:
+                    showError('Please allow geolocation access for this to work.');
+                    break;
+                case error.UNKNOWN_ERROR:
+                    showError('An unknown error occured!');
+                    break;
+            }
+        }
+
+        function showError(message) {
+            alert(JSON.stringify(message, null, 2));
+        }
+    </script>
+</body>
+</html>
