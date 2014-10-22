@@ -132,6 +132,11 @@
             // 南西 【左下角】
             // 转换为距离左上角[0,0]的像素
             var sw = overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest());
+           
+            // 相对于初始【div 容器】进来的像素偏移，拖动时不会改变
+            console.log(overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest()));
+            // 相对于外部容器的像素偏移，会随着地图的拖动改变
+            console.log(overlayProjection.fromLatLngToContainerPixel(this.bounds_.getSouthWest()));
 
             // 北东 【右上角】
             // 转换为距离左上角[0,0]的像素
