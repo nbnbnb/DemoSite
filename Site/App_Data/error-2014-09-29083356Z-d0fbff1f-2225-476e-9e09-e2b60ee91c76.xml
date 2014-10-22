@@ -1,0 +1,151 @@
+﻿<error errorId="d0fbff1f-2225-476e-9e09-e2b60ee91c76" application="/LM/W3SVC/2/ROOT" host="ZHANGJIN-PC" type="System.Web.HttpCompileException" message="e:\Git\DemoSite\Site\AsyncHandler.ashx(92): error CS1955: 不能像使用方法那样使用不可调用的成员“string.Length”。" source="System.Web" detail="System.Web.HttpCompileException (0x80004005): e:\Git\DemoSite\Site\AsyncHandler.ashx(92): error CS1955: 不能像使用方法那样使用不可调用的成员“string.Length”。&#xD;&#xA;   在 System.Web.Compilation.AssemblyBuilder.Compile()&#xD;&#xA;   在 System.Web.Compilation.BuildProvidersCompiler.PerformBuild()&#xD;&#xA;   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)&#xD;&#xA;   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)&#xD;&#xA;   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)&#xD;&#xA;   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)&#xD;&#xA;   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)&#xD;&#xA;   在 System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" time="2014-09-29T08:33:56.0348717Z" statusCode="500" webHostHtmlMessage="&lt;!DOCTYPE html&gt;&#xD;&#xA;&lt;html&gt;&#xD;&#xA;    &lt;head&gt;&#xD;&#xA;        &lt;title&gt;编译错误&lt;/title&gt;&#xD;&#xA;        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;&#xD;&#xA;        &lt;style&gt;&#xD;&#xA;         body {font-family:&quot;Verdana&quot;;font-weight:normal;font-size: .7em;color:black;} &#xD;&#xA;         p {font-family:&quot;Verdana&quot;;font-weight:normal;color:black;margin-top: -5px}&#xD;&#xA;         b {font-family:&quot;Verdana&quot;;font-weight:bold;color:black;margin-top: -5px}&#xD;&#xA;         H1 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:18pt;color:red }&#xD;&#xA;         H2 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:14pt;color:maroon }&#xD;&#xA;         pre {font-family:&quot;Consolas&quot;,&quot;Lucida Console&quot;,Monospace;font-size:11pt;margin:0;padding:0.5em;line-height:14pt}&#xD;&#xA;         .marker {font-weight: bold; color: black;text-decoration: none;}&#xD;&#xA;         .version {color: gray;}&#xD;&#xA;         .error {margin-bottom: 10px;}&#xD;&#xA;         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }&#xD;&#xA;         @media screen and (max-width: 639px) {&#xD;&#xA;          pre { width: 440px; overflow: auto; white-space: pre-wrap; word-wrap: break-word; }&#xD;&#xA;         }&#xD;&#xA;         @media screen and (max-width: 479px) {&#xD;&#xA;          pre { width: 280px; }&#xD;&#xA;         }&#xD;&#xA;        &lt;/style&gt;&#xD;&#xA;    &lt;/head&gt;&#xD;&#xA;&#xD;&#xA;    &lt;body bgcolor=&quot;white&quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;span&gt;&lt;H1&gt;“/”应用程序中的服务器错误。&lt;hr width=100% size=1 color=silver&gt;&lt;/H1&gt;&#xD;&#xA;&#xD;&#xA;            &lt;h2&gt; &lt;i&gt;编译错误&lt;/i&gt; &lt;/h2&gt;&lt;/span&gt;&#xD;&#xA;&#xD;&#xA;            &lt;font face=&quot;Arial, Helvetica, Geneva, SunSans-Regular, sans-serif &quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; 说明: &lt;/b&gt;在编译向该请求提供服务所需资源的过程中出现错误。请检查下列特定错误详细信息并适当地修改源代码。&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; 编译器错误消息: &lt;/b&gt;CS1955: 不能像使用方法那样使用不可调用的成员“string.Length”。&lt;br&gt;&lt;br&gt;&#xD;&#xA;&lt;b&gt;源错误:&lt;/b&gt;&lt;br&gt;&lt;br&gt;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&lt;td&gt;&#xD;&#xA;                              &lt;/td&gt;&lt;/tr&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;行 90:         {&#xD;&#xA;行 91:             StreamReader sr = new StreamReader(stream);&#xD;&#xA;&lt;font color=red&gt;行 92:             Length = sr.ReadToEnd().Length();&#xD;&#xA;&lt;/font&gt;行 93:         }&#xD;&#xA;行 94:         &lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;源文件:&lt;/b&gt; e:\Git\DemoSite\Site\AsyncHandler.ashx&#xD;&#xA;            &amp;nbsp;&amp;nbsp; &lt;b&gt;行:&lt;/b&gt;  92&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&lt;br&gt;&lt;div class=&quot;expandable&quot; onclick=&quot;OnToggleTOCLevel1('compilerOutputDiv')&quot;&gt;显示详细的编译器输出:&lt;/div&gt;&#xD;&#xA;&lt;div id=&quot;compilerOutputDiv&quot; style=&quot;display: none;&quot;&gt;&#xD;&#xA;            &lt;br&gt;&lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;c:\windows\system32\inetsrv&amp;gt; &amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe&amp;quot; /t:library /utf8output /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\20775dbc\917abc77_69c2cf01\Microsoft.Data.Edm.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\App_Code.q9vur1_k.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.ServiceModel.Web\v4.0_4.0.0.0__31bf3856ad364e35\System.ServiceModel.Web.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Web.Services\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.ServiceModel.Activation\v4.0_4.0.0.0__31bf3856ad364e35\System.ServiceModel.Activation.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\b63d1972\23cfa677_69c2cf01\Microsoft.AspNet.SignalR.SystemWeb.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\d8d97735\39737477_69c2cf01\Elmah.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Activities\v4.0_4.0.0.0__31bf3856ad364e35\System.Activities.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.Web.Infrastructure\v4.0_1.0.0.0__31bf3856ad364e35\Microsoft.Web.Infrastructure.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\c3f0eae0\b61d2b78_69c2cf01\Microsoft.Owin.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Data.Entity\v4.0_4.0.0.0__b77a5c561934e089\System.Data.Entity.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.ServiceModel.Activities\v4.0_4.0.0.0__31bf3856ad364e35\System.ServiceModel.Activities.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.VisualStudio.Web.PageInspector.Loader\v4.0_1.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.Web.PageInspector.Loader.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\7afc2632\7bb4a077_69c2cf01\Microsoft.AspNet.SignalR.Core.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Security\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Security.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\ca8ae2af\b0ea5f78_69c2cf01\System.Spatial.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Data.DataSetExtensions\v4.0_4.0.0.0__b77a5c561934e089\System.Data.DataSetExtensions.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorlib.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.CSharp\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.CSharp.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_64\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Web.DynamicData\v4.0_4.0.0.0__31bf3856ad364e35\System.Web.DynamicData.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\App_GlobalResources.3ztz9yjl.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.ComponentModel.DataAnnotations\v4.0_4.0.0.0__31bf3856ad364e35\System.ComponentModel.DataAnnotations.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\8b260bb7\a8182478_69c2cf01\Microsoft.Data.Services.Client.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\3e6eaf27\7ed69977_69c2cf01\log4net.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Web.Extensions\v4.0_4.0.0.0__31bf3856ad364e35\System.Web.Extensions.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Serialization\v4.0_4.0.0.0__b77a5c561934e089\System.Runtime.Serialization.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\14bb2d30\52006179_61c2cf01\Telerik.Web.UI.Skins.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Web.ApplicationServices\v4.0_4.0.0.0__31bf3856ad364e35\System.Web.ApplicationServices.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Data.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Data.Linq.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\27197156\19e63278_69c2cf01\Microsoft.Owin.Security.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.WorkflowServices\v4.0_4.0.0.0__31bf3856ad364e35\System.WorkflowServices.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_64\System.Web\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\a3b2b528\813c2f78_69c2cf01\Microsoft.Owin.Host.SystemWeb.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_64\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Drawing\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.IdentityModel\v4.0_4.0.0.0__b77a5c561934e089\System.IdentityModel.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\App_global.asax.0v2ao0zm.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\92715ab8\ff584778_69c2cf01\Newtonsoft.Json.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\b9f3e8b6\5666f577_69c2cf01\Microsoft.Data.OData.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\ea4678f1\6d547179_61c2cf01\Telerik.Web.UI.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\9d5c34f0\70040878_69c2cf01\Microsoft.Data.Services.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Web.WebPages.Deployment\v4.0_2.0.0.0__31bf3856ad364e35\System.Web.WebPages.Deployment.dll&amp;quot; /R:&amp;quot;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.ServiceModel\v4.0_4.0.0.0__b77a5c561934e089\System.ServiceModel.dll&amp;quot; /R:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\assembly\dl3\c997d13a\1f3b4c78_69c2cf01\Owin.dll&amp;quot; /out:&amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\App_Web_asynchandler.ashx.cdcab7d2.nbpilvib.dll&amp;quot; /D:DEBUG /debug+ /optimize- /w:4 /nowarn:1659;1699;1701;612;618 /warnaserror-  &amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\App_Web_asynchandler.ashx.cdcab7d2.nbpilvib.0.cs&amp;quot; &amp;quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\68755050\c20b933b\App_Web_asynchandler.ashx.cdcab7d2.nbpilvib.1.cs&amp;quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Microsoft(R) Visual C# 编译器版本 4.0.30319.18408&#xD;&#xA;&#xD;&#xA;用于 Microsoft(R) .NET Framework 4.5&#xD;&#xA;版权所有 (C) Microsoft Corporation。保留所有权利。&#xD;&#xA;&#xD;&#xA;e:\Git\DemoSite\Site\AsyncHandler.ashx(92,37): error CS1955: 不能像使用方法那样使用不可调用的成员“string.Length”。&#xD;&#xA;&lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &#xD;&#xA;&#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&lt;br&gt;&lt;div class=&quot;expandable&quot; onclick=&quot;OnToggleTOCLevel1('dynamicCodeDiv')&quot;&gt;显示完整的编译源:&lt;/div&gt;&#xD;&#xA;&lt;div id=&quot;dynamicCodeDiv&quot; style=&quot;display: none;&quot;&gt;&#xD;&#xA;            &lt;br&gt;&lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;行 1:    #pragma checksum &amp;quot;E:\Git\DemoSite\Site\AsyncHandler.ashx&amp;quot; &amp;quot;{ff1816ec-aa5e-4d10-87f7-6f4963833460}&amp;quot; &amp;quot;B1D24D7FEA38B401679EE5209490CE0BCC1468C3&amp;quot;&#xD;行 2:    &#xD;行 3:    #line 1 &amp;quot;E:\Git\DemoSite\Site\AsyncHandler.ashx&amp;quot;&#xD;行 4:    &#xD;行 5:    &#xD;行 6:    using System;&#xD;行 7:    using System.Web;&#xD;行 8:    using System.Threading.Tasks;&#xD;行 9:    using System.Net;&#xD;行 10:   using System.IO;&#xD;行 11:   using System.Threading;&#xD;行 12:   &#xD;行 13:   public class AsyncHandler : IHttpAsyncHandler&#xD;行 14:   {&#xD;行 15:   &#xD;行 16:       private MyAsyncResult myResult;&#xD;行 17:   &#xD;行 18:       public IAsyncResult BeginProcessRequest(HttpContext context, AsyncCallback cb, object extraData)&#xD;行 19:       {&#xD;行 20:           myResult = new MyAsyncResult(context, cb, extraData);&#xD;行 21:           return myResult;&#xD;行 22:       }&#xD;行 23:   &#xD;行 24:       public void EndProcessRequest(IAsyncResult result)&#xD;行 25:       {&#xD;行 26:           myResult.HttpContext.Response.Write(myResult.Length);&#xD;行 27:       }&#xD;行 28:   &#xD;行 29:       public bool IsReusable&#xD;行 30:       {&#xD;行 31:           get { return false; }&#xD;行 32:       }&#xD;行 33:   &#xD;行 34:       public void ProcessRequest(HttpContext context)&#xD;行 35:       {&#xD;行 36:   &#xD;行 37:       }&#xD;行 38:   }&#xD;行 39:   &#xD;行 40:   public class MyAsyncResult : IAsyncResult&#xD;行 41:   {&#xD;行 42:       private HttpContext _context;&#xD;行 43:       private AsyncCallback _cb;&#xD;行 44:       private object _extraData;&#xD;行 45:       private bool _isCompleted;&#xD;行 46:       private WebRequest _request;&#xD;行 47:   &#xD;行 48:   &#xD;行 49:   &#xD;行 50:   &#xD;行 51:       public MyAsyncResult(HttpContext context, AsyncCallback cb, object extraData)&#xD;行 52:       {&#xD;行 53:           _context = context;&#xD;行 54:           _cb = cb;&#xD;行 55:           _extraData = extraData;&#xD;行 56:           _isCompleted = false;&#xD;行 57:           _request = HttpWebRequest.Create(&amp;quot;http://www.sina.com.cn&amp;quot;);&#xD;行 58:   &#xD;行 59:           Process();&#xD;行 60:       }&#xD;行 61:   &#xD;行 62:       public HttpContext HttpContext&#xD;行 63:       {&#xD;行 64:           get { return _context; }&#xD;行 65:       }&#xD;行 66:   &#xD;行 67:       public int Length&#xD;行 68:       {&#xD;行 69:           get;&#xD;行 70:           private set;&#xD;行 71:       }&#xD;行 72:   &#xD;行 73:       private void Process()&#xD;行 74:       {&#xD;行 75:           _request.BeginGetResponse(ReadCompleted, _extraData);&#xD;行 76:       }&#xD;行 77:   &#xD;行 78:       private void ReadCompleted(IAsyncResult ar)&#xD;行 79:       {&#xD;行 80:   &#xD;行 81:   &#xD;行 82:           // 最佳实践&#xD;行 83:           // 不要忘记调用此方法&#xD;行 84:           _request.EndGetResponse(ar);&#xD;行 85:   &#xD;行 86:           for (int i = 0; i &amp;lt; 100; i++)&#xD;行 87:           {&#xD;行 88:               _context.Response.Write(i);&#xD;行 89:               _context.Response.Write(&amp;quot;&amp;lt;br /&amp;gt;&amp;quot;);&#xD;行 90:           }&#xD;行 91:           WebResponse response = _request.EndGetResponse(ar);&#xD;行 92:           using (Stream stream = response.GetResponseStream())&#xD;行 93:           {&#xD;行 94:               StreamReader sr = new StreamReader(stream);&#xD;行 95:               Length = sr.ReadToEnd().Length();&#xD;行 96:           }&#xD;行 97:           &#xD;行 98:   &#xD;行 99:           _cb(this);  // 告诉 IHttpAsyncHandler 后台线程事件已处理完成，现在可以调用 EndProcessRequest 方法了&#xD;行 100:          _isCompleted = true;&#xD;行 101:      }&#xD;行 102:  &#xD;行 103:      public object AsyncState&#xD;行 104:      {&#xD;行 105:          get&#xD;行 106:          {&#xD;行 107:              return _extraData;&#xD;行 108:          }&#xD;行 109:      }&#xD;行 110:  &#xD;行 111:      public WaitHandle AsyncWaitHandle&#xD;行 112:      {&#xD;行 113:          get&#xD;行 114:          {&#xD;行 115:              return null;&#xD;行 116:          }&#xD;行 117:      }&#xD;行 118:  &#xD;行 119:      public bool CompletedSynchronously&#xD;行 120:      {&#xD;行 121:          get&#xD;行 122:          {&#xD;行 123:              return false;&#xD;行 124:          }&#xD;行 125:      }&#xD;行 126:  &#xD;行 127:      public bool IsCompleted&#xD;行 128:      {&#xD;行 129:          get&#xD;行 130:          {&#xD;行 131:              return _isCompleted;&#xD;行 132:          }&#xD;行 133:      }&#xD;行 134:  }&#xD;行 135:  &#xD;行 136:  #line default&#xD;行 137:  #line hidden&#xD;行 138:  &lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &#xD;&#xA;&#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&#xD;&#xA;    &lt;script type=&quot;text/javascript&quot;&gt;&#xD;&#xA;    function OnToggleTOCLevel1(level2ID)&#xD;&#xA;    {&#xD;&#xA;      var elemLevel2 = document.getElementById(level2ID);&#xD;&#xA;      if (elemLevel2.style.display == 'none')&#xD;&#xA;      {&#xD;&#xA;        elemLevel2.style.display = '';&#xD;&#xA;      }&#xD;&#xA;      else {&#xD;&#xA;        elemLevel2.style.display = 'none';&#xD;&#xA;      }&#xD;&#xA;    }&#xD;&#xA;    &lt;/script&gt;&#xD;&#xA;                          &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;    &lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&#xD;&#xA;">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:zh-cn,zh;q=0.8,en;q=0.5,en-us;q=0.3&#xD;&#xA;HTTP_HOST:localhost:9999&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: zh-cn,zh;q=0.8,en;q=0.5,en-us;q=0.3&#xD;&#xA;Host: localhost:9999&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\Git\DemoSite\Site\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/AsyncHandler.ashx" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\Git\DemoSite\Site\AsyncHandler.ashx" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="17005" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/AsyncHandler.ashx" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="9999" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/7.5" />
+    </item>
+    <item name="URL">
+      <value string="/AsyncHandler.ashx" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="zh-cn,zh;q=0.8,en;q=0.5,en-us;q=0.3" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:9999" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0" />
+    </item>
+  </serverVariables>
+</error>
