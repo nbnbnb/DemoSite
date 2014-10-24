@@ -1,0 +1,181 @@
+﻿body, html, #allmap {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: "微软雅黑";
+}
+
+/*MapTextView.aspx*/
+.textview > .main-content {
+    padding: 0 10px;
+    font-family: 微软雅黑;
+    color: #6D6D6D;
+}
+
+    .textview > .main-content > div {
+        background-color: white;
+        padding: 10px 5px;
+    }
+
+    .textview > .main-content > .stat > p {
+        padding: 5px 15px;
+        margin: 0;
+        position: relative;
+    }
+
+        .textview > .main-content > .stat > p > .viewMap {
+            margin: 0 auto;
+            right:15px;        
+            top:2px;   
+            text-align: center;            
+            /*border-radius: 4px;
+            border: 1px solid #22A8E6;*/
+            color: #22A8E6;
+            position:absolute;
+            border-bottom:1px dotted #22A8E6;
+        }
+
+
+    .textview > .main-content > .route {
+        margin-top: 10px;
+        height: 100%;
+        padding: 0;
+    }
+        .textview > .main-content > .route > .start {
+            border-bottom: 1px solid #eee;
+        }
+
+            .textview > .main-content > .route > .start > span {
+                display: inline-block;
+                width: 40px;
+                line-height: 40px;
+                background: url(../images/b-map.png) no-repeat scroll 2px -345px;
+                background-size: 77px auto;
+            }
+
+        .textview > .main-content > .route > .details > p {
+            padding: 1px 20px 10px 30px;
+            border-bottom: 1px solid #eee;
+            line-height: 22px;
+        }
+
+            .textview > .main-content > .route > .details > p > b {
+                margin-left: -18px;
+            }
+			
+		.textview > .main-content > .route > .end{
+			margin-top:-5px;
+            background: #fff url(../images/b-map.png) no-repeat scroll 3px -388px;
+            background-size: 77px auto;
+            padding-left:40px;
+            padding-right:11px;
+            margin-bottom:10px;
+		}		
+
+/*MapPicView.aspx*/
+.float {
+    position: absolute;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 0 5px rgba(214,212,209, 1);
+    -moz-box-shadow: 0 0 5px rgba(214,212,209, 1);
+}
+
+    .float.locate {
+        width: 35px;
+        height: 35px;
+        right:29px;
+    }
+
+    .float.locate.start {
+        top: 88px;
+        background: url(../images/b-map.png) no-repeat scroll -7px -56px;
+        background-size: 77px auto;
+    }
+
+    .float.locate.end {
+        top: 128px;
+        background: url(../images/b-map.png) no-repeat scroll -7px -6px;
+        background-size: 77px auto;
+    }
+
+    .float.wrap.locate.start {
+        top: 134px;
+    }
+
+    .float.wrap.locate.end {
+        top: 175px;
+    }
+
+    .float.control {
+        left: 10%;
+        bottom: 20px;
+        width: 80%;
+        line-height: 40px;
+        background-color: white;
+    }
+
+        .float.control > .top {
+            padding: 0 0 0 20px;
+            margin: 0;
+            position: relative;
+            border-bottom: 1px solid #eee;
+            font-size:0.9em;
+        }
+
+            .float.control > .top > a:link, a:visited {
+                color: #22A8E6;
+                text-decoration: none;
+                position: absolute;
+                right: 10px;
+                top:1px;
+            }
+
+        .float.control > .bottom > span {
+            display: inline-block;
+            line-height: 16px;
+            padding-left: 25px;
+        }
+
+        .float.control > .bottom {
+            text-align: center;
+        }
+
+            .float.control > .bottom > .border {
+                padding-right: 15px;
+                border-right: 1px solid #eee;
+            }
+
+            .float.control > .bottom > .walk {
+                background: url(../images/b-map.png) no-repeat scroll -8px -105px;
+                background-size: 77px auto;
+            }
+
+                .float.control > .bottom > .walk.highlight {
+                    background: url(../images/b-map.png) no-repeat scroll -8px -135px;
+                    background-size: 77px auto;
+                    color: #22A8E6;
+                }
+
+            .float.control > .bottom > .bus {
+                background: url(../images/b-map.png) no-repeat scroll -8px -162px;
+                background-size: 77px auto;
+                margin-left: 3px;
+            }
+
+                .float.control > .bottom > .bus.highlight {
+                    background: url(../images/b-map.png) no-repeat scroll -8px -191px;
+                    background-size: 77px auto;
+                    color: #22A8E6;
+                }
+
+            .float.control > .bottom > .drive {
+                background: url(../images/b-map.png) no-repeat scroll -8px -220px;
+                background-size: 77px auto;
+                margin-left: 3px;
+            }
+
+                .float.control > .bottom > .drive.highlight {
+                    background: url(../images/b-map.png) no-repeat scroll -8px -249px;
+                    background-size: 77px auto;
+                    color: #22A8E6;
+                }

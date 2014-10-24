@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>Scale&Move</title>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        #map_canvas {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+    <script src="/Scripts/jquery-1.4.1.js"></script>
+    <script src="/Scripts/css-transform.js"></script>
+    <script src="/Scripts/css-rotate.js"></script>
+    <script src="/Scripts/CookieUtil.js"></script>
+
+    <script type="text/javascript">
+
+        // 旋转
+        function rotate(x, y, xm, ym, a) {
+            var cos = Math.cos,
+                sin = Math.sin,
+
+                a = a * Math.PI / 180, // Convert to radians because that's what
+                                       // JavaScript likes
+
+                // Subtract midpoints, so that midpoint is translated to origin
+                // and add it in the end again
+                xr = (x - xm) * cos(a) - (y - ym) * sin(a) + xm,
+                yr = (x - xm) * sin(a) + (y - ym) * cos(a) + ym;
+
+            return [xr, yr];
+        }
+
+        // 放大
+
+
+        var map = null;
+        function initialize() {
+
+            // 南西【左下角】
+            var southewest = new google.maps.LatLng(40.740, -74.18);
+
+            var imageUrl = 'A-2.png';
+
+            // 纬度转换
+            var lenToLat = function (leng) {
+                var L = 10002150;
+                return 90 * leng / L;
+            };
+
+            // 经度转换
+            var lenToLng = function (lat, leng) {
+                var L = 20037508;
+                var latL = L * Math.cos(Math.PI / 180 * lat);
+                return 180 * leng / latL;
+            };
+
+            var mapOptions = {
+                zoom: 20,  // 缩放级别最大 21
+                center: southewest, // 设置左下角为地图的中心
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var getWidthHeight = function (src, callback) {
+                var image = new Image();
+                $(image).load(function () {
+                    callback(image.width, image.height);
+                });
+                image.src = imageUrl;
+            };
+
+            getWidthHeight(imageUrl, function (width, height) {
+
+                // 回调中包含了图片的宽度和高度
+
+                // 将左下角坐标根据长宽偏移计算出右上角坐标
+                // 60表示缩放参数，表示两点之间的物理距离（米）
+                // 值越大，缩放级别越大
+                var antipoleLat = southewest.lat() + lenToLat((height / width) * 60),
+                    antipoleLng = southewest.lng() + lenToLng(southewest.lat(), 60),
+                    // 北东【右上角】
+                    northeast = new google.maps.LatLng(antipoleLat, antipoleLng);
+
+                map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+                new google.maps.Marker({
+                    position: southewest,  // 西南
+                    map: map,
+                    title: '左下角'
+                });
+
+                new google.maps.Marker({
+                    position: northeast, // 北东
+                    map: map,
+                    title: '右上角'
+                });
+
+                // 放大
+                function zoomOut(lat, lng, meter) {
+                    var a = lat + lenToLat((height / width) * meter)
+                    var b = lng + lenToLng(lat, meter);
+                    return new google.maps.LatLng(a, b);
+                }
+
+                // 上下移
+                function moveTopBottom(lat0, lat1, meter) {
+                    var angle = lenToLat(meter);
+                    var a = lat0 - angle;
+                    var b = lat1 - angle;
+                    return [a, b];
+                }
+
+                // 左右移
+                function moveLeftRight(lng0, lng1, lat0, meter) {
+                    var angle = lenToLng(lat0, meter);
+                    var a = lng0 - angle;
+                    var b = lng1 - angle;
+                    return [a, b];
+                }
+
+                var imageBounds = new google.maps.LatLngBounds(
+                    southewest,
+                    northeast);  // 缩放时，改变此坐标
+
+                // 将图片放置在地图上
+                var overlay = new google.maps.GroundOverlay(
+                    imageUrl,
+                    imageBounds);
+                overlay.setMap(map);
+
+                setTimeout(function () {
+
+                    // 从地图中清空
+                    overlay.setMap(null);
+
+                    /* 放大缩小
+                    imageBounds = new google.maps.LatLngBounds(
+                        southewest,
+                        zoomOut(northeast.lat(), northeast.lng(),2));  // 后面的参数为缩放比例【米】
+                    */
+
+                    /* 上下移动
+                    var topbottom = moveTopBottom(southewest.lat(), northeast.lat(), 2);
+
+                    imageBounds = new google.maps.LatLngBounds(
+                        new google.maps.LatLng(topbottom[0], southewest.lng()),
+                        new google.maps.LatLng(topbottom[1], northeast.lng()));
+                    */
+
+                    // 左右移动
+                    var leftright = moveLeftRight(southewest.lng(), northeast.lng(), southewest.lat(), 2);
+
+                    imageBounds = new google.maps.LatLngBounds(
+                        new google.maps.LatLng(southewest.lat(), leftright[0]),
+                        new google.maps.LatLng(northeast.lat(), leftright[1]));
+
+                    overlay = new google.maps.GroundOverlay(
+                        imageUrl,
+                        imageBounds);
+                    overlay.setMap(map);
+
+                }, 3000);
+            });
+        }
+
+        // 防火墙问题，将 google js 地址切换到国内
+        // 国内 http://ditu.google.cn/maps/api/js
+        // 国外 http://maps.googleapis.com/maps/api/js
+        function loadScript() {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "http://ditu.google.cn/maps/api/js?sensor=TRUE&callback=initialize&v.3.17&libraries=drawing";
+            document.body.appendChild(script);
+        }
+
+        window.onload = loadScript;
+
+    </script>
+</head>
+<body>
+    <div id="map_canvas"></div>
+</body>
+</html>

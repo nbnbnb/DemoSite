@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <link href="../Styles/bmapview.css" rel="stylesheet" />
+    <title>酒店导航</title>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mNKo9VLn4a7oONWaOSTT9j3w"></script>
+    <script src="../Scripts/jquery-2.1.1.js"></script>
+    <script src="../Scripts/underscore.js"></script>
+    <script src="../Scripts/convertor.js"></script>
+    <script src="../Scripts/knockout-3.2.0.js"></script>
+    <script src="../Scripts/BMapPage.js"></script>
+
+</head>
+<body>
+    <div id="allmap"></div>
+    <div data-bind="click:locateStart,css:{wrap:isWarp}" class="float locate start"></div>
+    <div data-bind="click:locateEnd,css:{wrap:isWarp}" class="float locate end"></div>
+    <div class="float control">
+
+        <div data-bind="visible:showStat" class="top">
+            <span data-bind="text:minute"></span>&nbsp;&nbsp;<span data-bind="    text:mile"></span>
+            <a data-bind="click:goTextView" href="#">文字详情 ></a>
+        </div>
+
+        <div class="bottom">
+            <span data-bind="click:walk, css:{highlight:selectedIndex()===1}" class="walk border">步行</span>
+            <span data-bind="click:bus, css:{highlight:selectedIndex()===2}" class="bus border">公交</span>
+            <span data-bind="click:drive, css:{highlight:selectedIndex()===3}" class="drive">驾车</span>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+
+        $(function () {
+            var begin_lng = 121.399696;
+            var begin_lat = 31.200186;
+            var end_lng = 121.48146003484726;
+            var end_lat = 31.230006850768724;
+            var hotelName = "汉庭酒店上海人民广场店（原大沪饭店）";
+            var isWarp = false;
+            var memberId = "030668625";
+            BMapPage.PicViewInit(begin_lng, begin_lat, end_lng, end_lat, hotelName, isWarp, memberId);
+        });
+    </script>
+
+</body>
+</html>
