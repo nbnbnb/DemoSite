@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <title>jQuery 1.4.1</title>
+    <title>Finally Rotate</title>
     <style type="text/css">
         html {
             height: 100%;
@@ -18,9 +18,6 @@
         }
     </style>
     <script src="/Scripts/jquery-1.4.1.js"></script>
-    <script src="/Scripts/css-transform.js"></script>
-    <script src="/Scripts/css-rotate.js"></script>
-    <script src="/Scripts/CookieUtil.js"></script>
 
     <script type="text/javascript">
 
@@ -122,6 +119,7 @@
                     editable: true
                 });
 
+          
                 poly.setMap(map);
 
                 google.maps.event.addListener(floor, 'click', function (event) {
@@ -135,10 +133,11 @@
                 google.maps.event.addListener(poly, 'click', function () {
                     alert(this);
                 });
+
+                console.log(map.fromLatLngToContainerPixel(newark));
+                console.log(map.fromLatLngToContainerPixel(northeast));
+
             });
-
-        
-
         };
 
         // 防火墙问题，将 google js 地址切换到国内
@@ -153,71 +152,6 @@
 
         window.onload = loadScript;
 
-        $(function () {
-            var mapdiv = $('#map_canvas'),
-             getOptions = function (center) {
-                 return {
-                     rotate: mapdiv.rotate(),
-                     lat: center.lat(),
-                     lng: center.lng()
-                 }
-             },
-             change = function (type) {
-                 var center = map.getCenter();
-                 switch (type) {
-                     case 82:
-                     case 'rotate_right':
-                         mapdiv.animate({ rotate: '+=1deg' }, 0); break;  // R
-                     case 76: case 'rotate_left':
-                         mapdiv.animate({ rotate: '-=1deg' }, 0); break;  // L
-                     case 40: case 'move_down':
-                         map.panBy(0, -5); break; // Down
-                     case 38: case 'move_up':
-                         map.panBy(0, 5); break; // Up
-                     case 39: case 'move_right':
-                         map.panBy(-5, 0); break; // Right
-                     case 37: case 'move_left':
-                         map.panBy(5, 0); break; // Left
-                     case 107: case 'bigger': case 187:
-                         map.setZoom(map.getZoom() + 1); break;  // +
-                     case 109: case 'smaller': case 189:
-                         map.setZoom(map.getZoom() - 1); break;  // -
-                     case 'save':
-                         CookieUtil.set('map', JSON.stringify(getOptions(center)), new Date(new Date().setMonth(12)))
-                         break;
-                     case 'load':
-                         var options = JSON.parse(CookieUtil.get('map'));
-                         if (options) {
-                             mapdiv.rotate(options.rotate);
-                             map.setCenter({ lat: options.lat, lng: options.lng });
-                         } else {
-                             console.log('no options');
-                         }
-                     case 'reset':
-                         CookieUtil.unset('map');
-                         break;
-                 }
-
-             };
-
-
-            $(document.documentElement).bind('keydown', function (event) {
-                change(event.which);
-            });
-
-
-            $('div.op').live('click', function (event) {
-                change(event.target.id);
-            });
-
-            setTimeout(function () {
-                change('load');
-            }, 3000);
-
-
-
-        });
-
     </script>
 </head>
 <body>
@@ -228,17 +162,7 @@
     <div class="op">
         <input type="button" value="左旋" id="rotate_left" />
         <input type="button" value="右旋" id="rotate_right" />
-        <br />
-        <input type="button" value="上移" id="move_up" />
-        <input type="button" value="下移" id="move_down" />
-        <input type="button" value="左移" id="move_left" />
-        <input type="button" value="右移" id="move_right" />
-        <br />
-        <input type="button" value="保存" id="save" />
-        <input type="button" value="重置" id="reset" />
     </div>
-
-
 
 </body>
 </html>
