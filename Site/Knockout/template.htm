@@ -10,7 +10,6 @@
     <script src="/Scripts/underscore.js"></script>
 </head>
 
-
 <body>
     <div id="div_message"></div>
     <div class="page">
@@ -50,14 +49,14 @@
                 this.buyer = { name: 'Franklin', credits: 250 };
                 this.seller = { name: 'Mario', credits: 5800 };
                 this.people = [
-                 { name: 'Franklin', credits: 250 },
-                 { name: 'Mario', credits: 5800 }
+                     { name: 'Franklin', credits: 250 },
+                     { name: 'Mario', credits: 5800 }
                 ],
                 this.seasons = ko.observableArray([
-                { name: 'Spring', months: ['March', 'April', 'May'] },
-                { name: 'Summer', months: ['June', 'July', 'August'] },
-                { name: 'Autumn', months: ['September', 'October', 'November'] },
-                { name: 'Winter', months: ['December', 'January', 'February'] }
+                    { name: 'Spring', months: ['March', 'April', 'May'] },
+                    { name: 'Summer', months: ['June', 'July', 'August'] },
+                    { name: 'Autumn', months: ['September', 'October', 'November'] },
+                    { name: 'Winter', months: ['December', 'January', 'February'] }
                 ])
             }
             ko.applyBindings(new MyViewModel());

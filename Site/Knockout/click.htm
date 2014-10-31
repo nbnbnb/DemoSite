@@ -34,7 +34,7 @@
                 Click me
             </button>
 
-            <button data-bind="click:checkThis">Check This</button>
+            <button id="btking" data-bind="click:clickThis">Click This</button>
         </div>
 
 
@@ -61,9 +61,12 @@
                     var ele = event.target || event.srcElement; // DOM or IE
                     alert(ele === element);
                 },
-                checkThis: function () {
-                    alert(this.id);
-                    alert(JSON.stringify(this, null, 2));
+                clickThis: function (data, event) {
+                    // 默然传递两个参数
+                    // 第一个可以表示为 forEach 中的 $data 对象
+                    // 第二个为 DOM event 对象【IE 和 FF 的 event 对象不一致】
+                    // this 对象表示 Model【不是 DOM 对象】
+                    alert(event.target.id);
                 }
             });
 
@@ -71,7 +74,6 @@
             $(function () {
                 // 加载导航条
                 $(".header").load("/navigator.htm .header #div_nav", function () { });
-
             });
 
             // Event Bind
