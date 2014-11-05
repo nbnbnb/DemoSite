@@ -2,11 +2,15 @@
 
 QUnit.config.urlConfig.push(
     {
-        id: 'stringLib',
-        label: 'stringLib',
-        tooltip: 'Just stringLib'
+        id: 'custom_flat',
+        label: 'Custom Flag', // 添加到 Checkbox 列表中
+        tooltip: 'Custom Yes-No Flat'
     }
 );
+
+// 将会在测试字符串的前面添加 module
+// 例如：begin test: A basic test
+module('begin test');
 
 test("A basic test", function () {
     ok(true, "this test is fine");
@@ -17,8 +21,10 @@ test("A basic test", function () {
 module("stringLib");
 
 test("will get vowel count", function () {
+    // 如果勾选了 Check for Globals
+    // 则会提示 Introduced global variable(s): count
+    // 前提没有勾选 No try-catch
     var count = stringLib.vowels("hello");
-
     equal(count, 2, "We expect 2 vowels in hello");
 });
 
@@ -71,6 +77,7 @@ test('deepEqual test', function () {
     deepEqual(obj, { foo: "bar" }, 'Two object can be the same in value');
 });
 
+// 参数 2 表示需要调用 assert 动作两次
 asyncTest('asynchronous test: one second later!', 2, function () {
     //expect(2);
     setTimeout(function () {
@@ -82,6 +89,9 @@ asyncTest('asynchronous test: one second later!', 2, function () {
 });
 
 test('global pollution', function () {
+    // 如果勾选了 Check for Globals
+    // 则会提示 Introduced global variable(s): count
+    // 前提没有勾选 No try-catch
     window.pollute = true;
     ok(pollute, 'nasty pollution');
 });
