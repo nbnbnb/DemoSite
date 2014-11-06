@@ -29,7 +29,7 @@
         function initialize() {
             var newark = new google.maps.LatLng(40.740, -74.18);
 
-            var imageUrl = '01-04.png';
+            var imageUrl = 'A-2.png';
 
             var lenToLat = function (leng) {
                 var L = 10002150;
@@ -43,7 +43,7 @@
             };
 
             var mapOptions = {
-                zoom: 21,  // 缩放级别最大 21
+                zoom: 20,  // 缩放级别最大 21
                 center: newark,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
@@ -58,8 +58,8 @@
 
             getWidthHeight(imageUrl, function (width, height) {
 
-                var antipoleLat = newark.lat() + lenToLat((height / width) * 60);  // 上移
-                var antipoleLng = newark.lng() + lenToLng(newark.lat(), 60);  // 右移
+                var antipoleLat = newark.lat() + lenToLat((height / width) * 60);
+                var antipoleLng = newark.lng() + lenToLng(newark.lat(), 60);
 
                 map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
