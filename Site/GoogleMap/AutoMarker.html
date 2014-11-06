@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>Scale&Move</title>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        #map_canvas {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+    <script src="/Scripts/jquery-1.4.1.js"></script>
+    <script src="/Scripts/css-transform.js"></script>
+    <script src="/Scripts/css-rotate.js"></script>
+    <script src="/Scripts/CookieUtil.js"></script>
+
+    <script type="text/javascript">
+
+
+        var map = null;
+        function initialize() {
+
+            // 南西【左下角】
+            var southewest = new google.maps.LatLng(40.740, -74.18);
+
+            var imageUrl = '01-04.png';
+            //var imageUrl = '01-04.png';
+
+            var lenToLat = function (leng) {
+                var L = 10002150;
+                return 90 * leng / L;
+            };
+
+            var lenToLng = function (lat, leng) {
+                var L = 20037508;
+                var latL = L * Math.cos(Math.PI / 180 * lat);
+                return 180 * leng / latL;
+            };
+           
+            var mapOptions = {
+                zoom: 22,  // 缩放级别最大 22
+                center: southewest, // 设置左下角为地图的中心
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var getWidthHeight = function (src, callback) {
+                var image = new Image();
+                $(image).load(function () {
+                    callback(image.width, image.height);
+                });
+                image.src = imageUrl;
+            };
+
+            getWidthHeight(imageUrl, function (width, height) {
+
+                // 回调中包含了图片的宽度和高度
+
+                // 将左下角坐标根据长宽偏移计算出右上角坐标
+                // 60是一个缩放参数
+                // 值越大，缩放级别越大
+                var antipoleLat = southewest.lat() + lenToLat((height / width) * 60),
+                    antipoleLng = southewest.lng() + lenToLng(southewest.lat(), 60),
+                    // 北东【右上角】
+                    northeast = new google.maps.LatLng(antipoleLat, antipoleLng);
+
+                map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+                new google.maps.Marker({
+                    position: southewest,  // 西南
+                    map: map,
+                    title: '左下角'
+                });
+
+                new google.maps.Marker({
+                    position: northeast, // 北东
+                    map: map,
+                    title: '右上角'
+                });
+
+                var imageBounds = new google.maps.LatLngBounds(
+                    southewest,
+                    northeast);  // 缩放时，改变此坐标
+
+                // 将图片放置在地图上
+                var overlay = new google.maps.GroundOverlay(
+                    imageUrl,
+                    imageBounds);
+                overlay.setMap(map);
+
+                var triangleCoords = [
+new google.maps.LatLng(40.740081458162269313289702937, -74.179747877943736034489808955),
+new google.maps.LatLng(40.739996719805546202149407935, -74.179747157595003851731208409),
+new google.maps.LatLng(40.739997266504621835124506613, -74.179693131440090144836167471),
+new google.maps.LatLng(40.740079818065042414364406904, -74.179693851788822327594768017)
+                ];
+
+                var poly = new google.maps.Polygon({
+                    paths: triangleCoords,
+                    strokeColor: "#FF0000",
+                    strokeOpacity: 0.2,
+                    strokeWeight: 3,
+                    fillColor: "#FF0000",
+                    fillOpacity: 0.1,
+                    editable: true,
+                    draggable: true
+                });
+
+                poly.setMap(map);
+
+                google.maps.event.addListener(overlay, 'click', function (event) {
+                    var path = poly.getPath();
+                    console.log(event.latLng);
+                    // Because path is an MVCArray, we can simply append a new coordinate
+                    // and it will automatically appear
+                    path.push(event.latLng);  // 当将第二个点push 到 path 中时，才会显示线条
+                });
+
+
+            });
+        }
+
+        // 防火墙问题，将 google js 地址切换到国内
+        // 国内 http://ditu.google.cn/maps/api/js
+        // 国外 http://maps.googleapis.com/maps/api/js
+        function loadScript() {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "http://ditu.google.cn/maps/api/js?sensor=TRUE&callback=initialize&v.3.17&libraries=drawing";
+            document.body.appendChild(script);
+        }
+
+        window.onload = loadScript;
+
+    </script>
+</head>
+<body>
+    <div id="map_canvas"></div>
+</body>
+</html>
