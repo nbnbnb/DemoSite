@@ -4,51 +4,47 @@
     <meta charset="UTF-8">
     <title>Knockout Tutorial -  extender</title>
     <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
-
     <script type="text/javascript" src="/Scripts/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="/Scripts/knockout.js"></script>
     <script src="/Scripts/underscore.js"></script>
 </head>
-
 <body>
     <div id="div_message"></div>
     <div class="page">
         <div class="header"></div>
-
         <div class="main">
             <input data-bind="value:userName,valueUpdate:'afterkeydown'" type="text" />
             <span data-bind="text:userName"></span>
         </div>
-
         <script type="text/javascript">
 
-            ko.extenders.logChange = function (target, options) {
+            ko.extenders.logChange = function (target, args) {
 
                 // target 是 observable 对象
 
                 // options 是传递过来的自定义参数
                 target.subscribe(function (newValue) {
                     // newValue 是 observable 对象监视的值
-                    console.log(options + ": " + newValue);
+                    console.log(args + ": " + newValue);
                 });
 
-                // 总是返回原始的 observable 对象
+                // 总是应返回原始的 observable 对象
+                // 【也可以返回新的可观察对象】
                 return target; //always return the original observables value
             };
 
             // 用户自定义函数
             ko.applyBindings({
-                userName: ko.observable('ZhangJin').extend({ logChange: 'New Name:' })
+                userName: ko.observable('ZhangJin').extend({ logChange: "Mylog" })
             });
 
             // 页面加载时执行
             $(function () {
                 // 加载导航条
-                $(".header").load("/navigator.htm .header #div_nav", function () { });
+                $(".header").load("/navigator.htm .header #div_nav");
             });
 
         </script>
-
     </div>
 </body>
 </html>

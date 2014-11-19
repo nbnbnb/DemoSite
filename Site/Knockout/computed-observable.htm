@@ -12,12 +12,13 @@
     <div id="div_message"></div>
     <div class="page">
         <div class="header"></div>
-
         <div class="main">
             <p>First name: <input data-bind="value: firstName" /></p>
             <p>Last name: <input data-bind="value: lastName" /></p>
             <h2>
                 Hello,
+                <input data-bind="value: fullName" />!
+                <input data-bind="value: fullName" />!
                 <input data-bind="value: fullName" />!
             </h2>
             <!--此处需要使用 value-->
@@ -25,7 +26,6 @@
                 <input type="button" data-bind="click:clientClick" value="Client Click" />
             </p>
         </div>
-
 
         <script type="text/javascript">
 
@@ -54,10 +54,11 @@
 
                 this.clientClick = function () {
 
-                    // read 不会重新计算，打算write还是会重新对firstName和LastName进行绑定
-                    //self.fullName.dispose();
-                    alert(self.fullName.getDependenciesCount());  // r如果dispose,则返回0
-                    alert(self.fullName.getSubscriptionsCount());
+                    // 当设置 dispose 时
+                    // read 不会重新计算，但是write还是会重新对firstName和LastName进行绑定
+                    // self.fullName.dispose();
+                    alert(self.fullName.getDependenciesCount());  // 如果dispose,则返回0  依赖 firstName 和 lastName
+                    alert(self.fullName.getSubscriptionsCount()); // 页面有3个 DOM 元素绑定了  fullName
                 };
 
             }
@@ -76,7 +77,6 @@
             });
 
         </script>
-
     </div>
 </body>
 </html>

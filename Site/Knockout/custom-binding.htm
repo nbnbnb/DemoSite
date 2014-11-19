@@ -6,23 +6,19 @@
     <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Scripts/jquery-1.8.0.js"></script>
     <script type="text/javascript" src="/Scripts/knockout.js"></script>
-
 </head>
 <body>
     <div id="div_message"></div>
     <div class="page">
         <div class="header"></div>
-
         <div class="main">
             <div data-bind="slideVisible: giftWrap, slideDuration:600">You have selected the option</div>
             <label><input type="checkbox" data-bind="checked: giftWrap" /> Gift wrap</label>
-
             <p>Name: <input data-bind="hasFocus: editingName" /></p>
             <!-- Showing that we can both read and write the focus state -->
             <div data-bind="visible: editingName">You're editing the name</div>
             <button data-bind="enable: !editingName(), click:function() { editingName(true); }">Edit name</button>
         </div>
-
 
         <script type="text/javascript">
             // 用户自定义函数
@@ -39,7 +35,8 @@
                     // Update the DOM element based on the supplied values here.
 
                     // First get the latest data that we're bound to
-                    var value = valueAccessor(), allBindings = allBindingsAccessor();
+                    var value = valueAccessor(),   // 得到的是一个可观察对象
+                        allBindings = allBindingsAccessor();  // 获取 data-bind 中设置的所有对象
 
                     // Next, whether or not the supplied model property is observable, get its current value
                     // 使用帮助方法获得实际值
@@ -50,7 +47,7 @@
                     var duration = allBindings.slideDuration || 400; // 400ms is default duration unless otherwise specified
 
                     // Now manipulate the DOM element
-                    if (valueUnwrapped == true)
+                    if (valueUnwrapped === true)
                         $(element).slideDown(duration); // Make the element visible
                     else
                         $(element).slideUp(duration);   // Make the element invisible
@@ -59,22 +56,30 @@
 
             ko.bindingHandlers.hasFocus = {
                 init: function (element, valueAccessor) {
+                    // 在此时设置DOM元素的初始化状态，并且绑定事件
                     // 设置光标进入和离开时的事件回调
                     $(element).focus(function () {
+                        console.log('in');
                         var value = valueAccessor();  // 此处的 value 是一个 observable
-                        value(true);
+                        console.log(value());
+                        value(true);  // 当 value 本来就为 true 时，则不会触发 update
                     });
                     $(element).blur(function () {
                         var value = valueAccessor();
                         value(false);
                     });
                 },
-                update: function (element, valueAccessor) {
+                update: function (element, valueAccessor) {   // 当可观察对象的值改变时，将会触发次方法【点击 Edit name】
                     var value = valueAccessor();
-                    if (ko.utils.unwrapObservable(value))
+                    if (ko.utils.unwrapObservable(value)) {
+                        console.log('update');
+                        element.focus();  // 触发 DOM 事件【如果光标已经获得了焦点，则不会在继续调用回调函数】
                         element.focus();  // 触发 DOM 事件
-                    else
+                        element.focus();  // 触发 DOM 事件
+                    }
+                    else {
                         element.blur();
+                    }
                 }
             };
 
@@ -86,10 +91,9 @@
             // 页面加载时执行
             $(function () {
                 // 加载导航条
-                $(".header").load("/navigator.htm .header #div_nav", function () { });
+                $(".header").load("/navigator.htm .header #div_nav");
             });
         </script>
-
     </div>
 </body>
 </html>

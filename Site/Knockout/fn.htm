@@ -34,10 +34,9 @@
         <script type="text/javascript">
 
             ko.observableArray.fn.filterByProperty = function (propName, matchValue) {
-
                 // 返回的一个可观察的对象【数组】
                 return ko.computed(function () {
-                    var allItems = this();  // 此处使用 this() 来获得可观察对象的值
+                    var allItems = this();  // 此处使用 this() 来获得可观察对象的原始值
                     var matchingItems = [];
                     for (var i = 0; i < allItems.length; i++) {
                         var current = allItems[i];
@@ -47,7 +46,7 @@
                     }
                     // 返回的是一个【数组】
                     return matchingItems;
-                }, this);
+                }, this);  // 传递进去的就是一个可观察数组【当作函数的上下文】
             };
 
             function Task(title, isDone) {
@@ -72,7 +71,7 @@
             // 页面加载时执行
             $(function () {
                 // 加载导航条
-                $(".header").load("/navigator.htm .header #div_nav", function () { });
+                $(".header").load("/navigator.htm .header #div_nav");
             });
         </script>
 
