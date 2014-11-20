@@ -57,15 +57,14 @@
 
             // 在 body 中激活 tooltip
             // 条件是符合 selector 选择器
-            // 这样所用动态添加到 body 中的元素，只要符合 selector 条件，就好激活 tooltip 功能
+            // 这样所有动态添加到 body 中的元素，只要符合 selector 条件，就可激活 tooltip 功能
             $('body').tooltip({
                 selector: '[rel="tooltip"]'
             });
 
             setTimeout(function () {
-                var button = $('<button rel="tooltip" class="btn btn-block btn-success has-popover" data-title="Dynamic" data-content="This button was added dynamically by JavaScript" data-placement="top">Working dynamically added button</button>');
+                var button = $('<button rel="tooltip" class="btn btn-block btn-success has-popover" data-title="Dynamic" data-placement="top">Working dynamically added button</button>');
                 button.appendTo('.has-tooltip');
-
             }, 1000);
 
             $('button[data-toggle=tooltip]').tooltip({
