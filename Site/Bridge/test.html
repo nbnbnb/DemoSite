@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>测试页面</title>
+
+    <script language="javascript">
+
+        function testFunc1(var1) {
+            return_var = "原创文章：" + var1;
+            window.demo.testFunc1(return_var);      // 调用Android代码中的 testFunc1 的函数
+            return return_var;
+        }
+		
+        function testFunc2(var1, var2) {
+            window.demo.testFunc2(var1, var2);      // 这里的参数就为返回到android的值
+        }
+
+        function callback(arg) {
+            alert('Android 回调 参数：' + arg);
+        }
+		
+		testFunc1('a');
+    </script>
+</head>
+<body>
+    <input type="button" onclick="testFunc1('a')" value="testFunc1" />
+    <input type="button" onclick="testFunc2('地图选房','callback')" value="testFunc2" />
+</body>
+</html>

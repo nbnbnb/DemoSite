@@ -29,9 +29,9 @@
         function initialize() {
 
             // 南西【左下角】
-            var southewest = new google.maps.LatLng(40.740, -74.18);
+            var southewest = new google.maps.LatLng(31.229556947497912, 121.48138649697125);
 
-            var imageUrl = '01-04.png';
+            var imageUrl = 'A-01.png';
             //var imageUrl = '01-04.png';
 
             var lenToLat = function (leng) {
@@ -96,11 +96,14 @@
                 overlay.setMap(map);
 
                 var triangleCoords = [
-new google.maps.LatLng(40.740081458162269313289702937, -74.179747877943736034489808955),
-new google.maps.LatLng(40.739996719805546202149407935, -74.179747157595003851731208409),
-new google.maps.LatLng(40.739997266504621835124506613, -74.179693131440090144836167471),
-new google.maps.LatLng(40.740079818065042414364406904, -74.179693851788822327594768017)
+new google.maps.LatLng(31.229856374436183662363308928 , 121.48171525744087043596467514),
+new google.maps.LatLng(31.229793303655568993056994920 , 121.48175765415301605779722374),
+new google.maps.LatLng(31.229808593541778609858525588 , 121.48179038143958460798375249),
+new google.maps.LatLng(31.229871664322393279164839596 , 121.48174947233137392025059155)
                 ];
+
+                alert(overlay.fromLatLngToContainerPixel(imageBounds[0]));
+                alert(overlay.fromLatLngToContainerPixel(imageBounds[1]));
 
                 var poly = new google.maps.Polygon({
                     paths: triangleCoords,
@@ -109,7 +112,7 @@ new google.maps.LatLng(40.740079818065042414364406904, -74.179693851788822327594
                     strokeWeight: 3,
                     fillColor: "#FF0000",
                     fillOpacity: 0.1,
-                    editable: true,
+                    editable: false,
                     draggable: true
                 });
 
