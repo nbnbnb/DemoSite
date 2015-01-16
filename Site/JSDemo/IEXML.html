@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>IE XML Demo</title>
+    <script src="../Scripts/jquery-2.1.1.min.js"></script>
 </head>
 <body>
 
@@ -11,13 +12,20 @@
         function createDocument() {
             try {
                 var xmldoc = new ActiveXObject("Microsoft.XMLDOM"); // MSXML2.DOMDocument
-                xmldoc.loadXML('<person Age="26" Name="ZhangJin"></person>');
-            } catch (e) {
+                xmldoc.loadXML('<person Age="26" Name="ZhangJin">this is the text</person>');
 
+                alert(xmldoc.documentElement.getAttribute('Name')); // 使用原生的方式 
+
+                alert($(xmldoc.documentElement).text());  // 使用 jQuery
+
+                alert(xmldoc.xml);
+
+            } catch (e) {
+                alert(e.message);
             }
         }
 
-        
+        createDocument();
     </script>
 </body>
 </html>
