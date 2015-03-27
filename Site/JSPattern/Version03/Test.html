@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Test</title>
+    <script src="BasicClass.js"></script>
+</head>
+<body>
+    <input type="text" id="input_name" />
+    <input type="text" id="input_age" />
+
+    <input type="button" value="Do It" onclick="doIt()" />
+
+    <script>
+        function doIt() {
+            var $eles = $('input_name', 'input_age')
+                .setStyle('color', 'red')
+                .setStyle('backgroundColor', 'blue');
+
+            setInterval(function () {
+                
+                if (!$eles.flag) {
+                    $eles.hide();
+                } else {
+                    $eles.show();
+                }
+
+                $eles.flag = !$eles.flag;
+
+            }, 1000);
+        }
+
+    </script>
+</body>
+</html>
