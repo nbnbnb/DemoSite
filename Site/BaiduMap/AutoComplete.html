@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mNKo9VLn4a7oONWaOSTT9j3w"></script>
+    <script src="autocomplete.js"></script>
+    <title>AutoComplete</title>
+</head>
+<body>
+    <div id="r-result">请输入：<input type="text" id="suggestId" size="20" style="width:350px;" /></div>
+    <label id="label_message" />
+</body>
+</html>
+<script type="text/javascript">
+    BMap.Convertor.autocomplete('suggestId', function (coords) {
+        console.log(coords.lng);
+        console.log(coords.lat);
+        document.getElementById('label_message').innerText = 'lng：' + coords.lng + '   lat：' + coords.lat;
+    });
+</script>
