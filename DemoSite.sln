@@ -39,6 +39,12 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost:9999", "ht
 		SlnRelativePath = "Site\"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Northwind", "Northwind", "{30B3835A-DC5E-4C40-8222-9C19D8494A90}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Database\SQL Server 2000 Sample Databases\instnwnd.sql = ..\..\Database\SQL Server 2000 Sample Databases\instnwnd.sql
+		..\..\Database\SQL Server 2000 Sample Databases\instpubs.sql = ..\..\Database\SQL Server 2000 Sample Databases\instpubs.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,5 +58,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{95D37B1F-8248-4F32-BB9F-79036EAFE8A5} = {9F9FB30D-E60F-4DF1-9886-38EB4D675DF5}
+		{30B3835A-DC5E-4C40-8222-9C19D8494A90} = {288F9433-B258-42C8-80E5-541B789D3983}
 	EndGlobalSection
 EndGlobal
