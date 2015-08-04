@@ -32,10 +32,11 @@ public partial class WCFDemo_Index : System.Web.UI.Page
 
     void Button_Add_Click(object sender, EventArgs e)
     {
-
         using (CalcServiceClient client = new CalcServiceClient("BasicHttpBinding_CalcService"))
         {
-            ClientShow(client.Add(GetA(), GetB()), client.InnerChannel.SessionId);
+            client.Open();
+            int res = client.Add(GetA(), GetB());
+            ClientShow(res, client.InnerChannel.SessionId);
         }
     }
 

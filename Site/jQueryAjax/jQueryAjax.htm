@@ -33,23 +33,16 @@
             <hr />
             <ul id="ul_message"></ul>
             <div id="div_callback"></div>
-
         </div>
     </div>
-
-
 
     <div id="dialog-modal" title="Waiting for data" style="display:none;">
         <p>Loading...</p>
     </div>
-
     <script type="text/javascript">
 
-        // 设置一个跨域url
-        // 此站点ip 绑定了 5656, 5657两个端口(默认5656)
-        // 测试跨域请求时设置为 5657， 非跨域时  5656
-        // 带(*) 为 Firefox12 在跨域请求下有问题
-        var file_url = location.protocol + "//" + location.hostname + "/jQueryAjax/";
+        var file_url = location.protocol + "//" + location.hostname + ":"
+            + location.port + "/jQueryAjax/";
 
         // 在发布版本中 要记得删除 console (IE 6不支持)
 
@@ -338,6 +331,5 @@
         //  http://www.iteye.com/topic/169765
 
     </script>
-
 </body>
 </html>
