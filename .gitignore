@@ -107,3 +107,5 @@ UpgradeLog*.XML
 
 # Beyond Compare 临时文件
 *.orig
+
+*/vwd.webinfo
