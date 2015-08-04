@@ -109,3 +109,4 @@ UpgradeLog*.XML
 *.orig
 
 */vwd.webinfo
+Site/App_Data/error-*
