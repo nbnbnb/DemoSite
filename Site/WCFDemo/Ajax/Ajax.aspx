@@ -53,7 +53,7 @@
                     </pre>
                 </fieldset>
                 <fieldset class="part">
-                    <legend>未启用JSONP后的格式</legend>
+                    <legend>未启用JSONP的格式</legend>
                     <pre>
                         {
                           "Age": 26,
@@ -77,7 +77,7 @@
                 alert(JSON.stringify(data, null, 2));
             }
 
-            var host = "http://localhost/WCFDemo/Ajax/AjaxService.svc/";
+            var host = "http://localhost:9999/WCFDemo/Ajax/AjaxService.svc/";
 
             $("#button_UserInfoGET").click(function () {
                 $.getJSON(host + "GetUserInfoWithGet", { userName: "张进" }, function (data) { showData(data); });

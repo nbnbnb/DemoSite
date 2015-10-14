@@ -11,7 +11,6 @@ using System.Web.Script.Serialization;
 
 namespace WCFDemo
 {
-
     [JavascriptCallbackBehavior(UrlParameterName = "callback")]
     public class AjaxService : IAjaxService
     {

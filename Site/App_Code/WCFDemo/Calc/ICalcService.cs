@@ -7,7 +7,7 @@ using System.Text;
 
 namespace WCFDemo
 {
-    [ServiceContract(Name="CalcService",Namespace="http://www.zhangjin.me/WCFDemo")]
+    [ServiceContract(Name = "CalcService", Namespace = "http://www.zhangjin.me/WCFDemo")]
     public interface ICalcService
     {
         [OperationContract]
@@ -15,6 +15,5 @@ namespace WCFDemo
 
         [OperationContract]
         int Subtraction(int a, int b);
-
     }
 }
