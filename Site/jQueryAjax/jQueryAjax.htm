@@ -45,14 +45,9 @@
 
     <script type="text/javascript">
 
-        // 设置一个跨域url
-        // 此站点ip 绑定了 5656, 5657两个端口(默认5656)
-        // 测试跨域请求时设置为 5657， 非跨域时  5656
-        // 带(*) 为 Firefox12 在跨域请求下有问题
-        var file_url = location.protocol + "//" + location.hostname + "/jQueryAjax/";
+        var file_url = location.protocol + "//" + location.host + "/jQueryAjax/";
 
         // 在发布版本中 要记得删除 console (IE 6不支持)
-
         $(function () {
             // 设置按钮的jQuery样式
             $("input[type='button']").button();
@@ -124,7 +119,7 @@
             });
 
             // ajax load
-            // 跨域(IE9 OK,Firefox12 No,IE6 OK)
+            // 跨域
             // 注意缓存问题(在查询参数后面加上时间戳)
             // 不带参数(null) Get方式请求，带参数时 POST方式请求
             $("#button_ajax_load").bind("click", null, function (event) {
@@ -134,7 +129,7 @@
             });
 
             // ajax get
-            // 跨域(IE9 OK,Firefox12 No,IE 6 OK)
+            // 跨域
             // 缓存问题 (IE 特别需要注意,只要Url不变，每次都缓存了)
             $("#button_ajax_get").bind("click", null, function (event) {
                 fnClearItems();
