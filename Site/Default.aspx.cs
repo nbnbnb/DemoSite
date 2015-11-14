@@ -24,7 +24,7 @@ public partial class _Default : System.Web.UI.Page
 
     void Button_Click_Click(object sender, EventArgs e)
     {
-
+        Console.WriteLine("gggggg");
     }
 
 }
