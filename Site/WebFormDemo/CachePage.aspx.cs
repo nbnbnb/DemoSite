@@ -8,8 +8,6 @@ using System.Web.UI.WebControls;
 
 public partial class WebFormDemo_CachePage : System.Web.UI.Page
 {
-
-
     protected void Page_Load(object sender, EventArgs e)
     {
         //Response.Cache.SetExpires(DateTime.Now.AddSeconds(60));
