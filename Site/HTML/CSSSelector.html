@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CSS Selector</title>
+    <meta charset="utf-8" />
+    <style>
+        [href="#abc"] {
+            color: red;
+        }
+
+        [exiSts] {
+            color: green;
+        }
+
+        [Title~="book"] {
+            color:blueviolet;
+        }
+
+        [titLe|="zh"] {
+            color:darksalmon;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a href="#abc">属性相等</a><br />
+        <span exists>属性存在</span><br />
+        <span title="book">用空格分割的属性值列表中的任意一个</span><br />
+        <span title="This book A">用空格分割的属性值列表中的任意一个</span><br />
+        <span title="This B book">用空格分割的属性值列表中的任意一个</span><br />
+        <span title="zh">用连字符-分割的属性值列表中的第一个</span><br />
+        <span title="zh-CN">用连字符-分割的属性值列表中的第一个</span><br />
+        <span title="Td-zh">用连字符-分割的属性值列表中的第一个</span>
+    </div>
+</body>
+</html>
