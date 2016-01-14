@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AsyncModelWithTask.aspx.cs" Inherits="WebFormDemo_AsyncModelWithTask" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Async="true" CodeFile="AsyncModelWithTask.aspx.cs" Inherits="WebFormDemo_AsyncModelWithTask" %>
 
 <!DOCTYPE html>
 

@@ -14,7 +14,6 @@ public partial class WebFormDemo_AsyncModel : System.Web.UI.Page
 {
     WebRequest request = HttpWebRequest.Create("http://www.sina.com.cn");
 
-    // 此模型需要在页面上设置 Async="true"
     // 此模型无法设置超时回调
     // 参考 http://www.cnblogs.com/scy251147/archive/2011/11/25/2263628.html
 

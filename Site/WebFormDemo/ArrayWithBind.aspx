@@ -10,6 +10,7 @@
 <body>
     <p>
         ASP.NET 1.1 绑定方式  DataBinder.Eval(Container.DataItem,"列名").ToString()
+        也可以使用这种方式绑定 object 对象的属性
     </p>
     <p>
         单值绑定方式 Container.DataItem
