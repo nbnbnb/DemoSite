@@ -14146,13 +14146,12 @@
             <param name="type">The type to create the accessor for</param>
             <returns>A DbContextAccessor, or null if one cannot be created for the Type (i.e. it does not inherit from DbContext)</returns>
         </member>
-        <member name="M:System.Data.Services.Providers.DbContextHelper.IsTypeOf(System.Type,System.String,System.String)">
+        <member name="M:System.Data.Services.Providers.DbContextHelper.IsTypeOf(System.Type,System.String)">
             <summary>
             Determines through reflection based on names if the type passed in a derived from the type name passed in.
             </summary>
             <param name="type">The type to have its derivation checked.</param>
             <param name="fromTypeName">The name of the type to check for derivation from</param>
-            <param name="assemblyInfo">The assemblyInfo of the type to check for derivation from</param>
             <returns>True if the type is of the type the TypeName refers to, False otherwise.</returns>
         </member>
         <member name="T:System.Data.Services.Providers.DbContextHelper.DbContextAccessor">
@@ -17663,6 +17662,23 @@
             Checks that $format is not on a $batch request
             </summary>
             <param name="service">Service to check.</param>
+        </member>
+        <member name="M:System.Data.Services.RequestUriProcessor.GetDelegateTypeForLambdaExpression(System.Linq.Expressions.Expression,System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            Gets the delegate type for constructing a lambda expression, given a parameter
+            and the body for the lambda.
+            </summary>
+            <param name="body">Expression representing the body of the lambda.</param>
+            <param name="param">Parameter for the lambda.</param>
+            <returns>The delegate type for the lambda.</returns>
+        </member>
+        <member name="M:System.Data.Services.RequestUriProcessor.GetTypeArgs(System.Linq.Expressions.Expression,System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            Get an array of types for a lambda delegate from parameter and body expressions.
+            </summary>
+            <param name="body">Expression representing the body of the lambda.</param>
+            <param name="param">Parameter for the lambda.</param>
+            <returns>Array of types for the lambda delegate.</returns>
         </member>
         <member name="T:System.Data.Services.UpdateOperations">
             <summary>Describes an action performed on a resource.</summary>
