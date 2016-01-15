@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NlogToSqlite.Elmah</name>
+    </assembly>
+    <members>
+        <member name="T:Nlog.Extensions.ElmahTarget">
+            <summary>
+            ElmahTarget
+            </summary>
+        </member>
+        <member name="M:Nlog.Extensions.ElmahTarget.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nlog.Extensions.ElmahTarget"/> class.
+            </summary>
+            <remarks>
+            The default value of the layout is: <code>${longdate}|${level:uppercase=true}|${logger}|${message}</code>
+            </remarks>
+        </member>
+        <member name="M:Nlog.Extensions.ElmahTarget.Write(NLog.LogEventInfo)">
+            <summary>
+            Writes logging event to the log target.
+            classes.
+            </summary>
+            <param name="logEvent">Logging event to be written out.</param>
+        </member>
+        <member name="P:Nlog.Extensions.ElmahTarget.ConnectionStringName">
+            <summary>
+            Gets or sets the name of the connection string.
+            </summary>
+            <value>
+            The name of the connection string.
+            </value>
+        </member>
+    </members>
+</doc>
