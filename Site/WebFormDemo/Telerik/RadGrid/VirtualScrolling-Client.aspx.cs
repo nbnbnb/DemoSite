@@ -6,10 +6,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Services;
 using DemoSite.Northwind.LinqToSQL;
+using DemoSite.DB;
 
 public partial class Telerik_RadGrid_VirtualScrolling_Client : System.Web.UI.Page
 {
-    static NorthwindDataContext db = MainDB.GetNorthwindDB();
+    static NorthwindDataContext db = NorthwindDB.GetNorthwindDB();
 
     // 注意，此处使用了静态变量
     // 静态变量只是在此类第一次访问时，进行编译，以后所有对象，都共享此实例

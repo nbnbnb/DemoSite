@@ -7,7 +7,7 @@ using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace WCFDemo
+namespace DemoSite.WCFDemo.Ajax
 {
 
     [ServiceContract]

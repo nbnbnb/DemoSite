@@ -4,7 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Web;
 
-namespace WCFDemo.Operate
+namespace DemoSite.WCFDemo.Operate
 {
 
     [ServiceContract(CallbackContract = typeof(IOperateServiceClientCallback))]

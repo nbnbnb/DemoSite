@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.Web;
 
 
-namespace WCFDemo
+namespace DemoSite.WCFDemo.Transfer
 {
     // 默认为类型名
    [MessageContract(WrapperName = "DoUpload")]

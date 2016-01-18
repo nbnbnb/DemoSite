@@ -8,7 +8,7 @@ using System.Web;
 namespace DemoSite.SignalRDemo
 {
     [HubName("progressBar")]
-    public class ProgressBar:Hub
+    public class ProgressBar : Hub
     {
 
     }

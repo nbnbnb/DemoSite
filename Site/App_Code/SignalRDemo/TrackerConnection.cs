@@ -11,9 +11,8 @@ namespace DemoSite.SignalRDemo
     /// <summary>
     /// TrackerConnection 的摘要说明
     /// </summary>
-    public class TrackerConnection:PersistentConnection
+    public class TrackerConnection : PersistentConnection
     {
-
         protected override System.Threading.Tasks.Task OnReceived(IRequest request, string connectionId, string data)
         {
             return Connection.Broadcast(data, connectionId);

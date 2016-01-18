@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace WCFDemo.Operate
+namespace DemoSite.WCFDemo.Operate
 {
     [ServiceContract(CallbackContract = typeof(IDoWorkCallback))]
     public interface IOperateService

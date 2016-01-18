@@ -9,7 +9,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Web.Script.Serialization;
 
-namespace WCFDemo
+namespace DemoSite.WCFDemo.Ajax
 {
     [JavascriptCallbackBehavior(UrlParameterName = "callback")]
     public class AjaxService : IAjaxService

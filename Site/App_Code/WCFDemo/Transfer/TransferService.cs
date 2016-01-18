@@ -8,7 +8,7 @@ using System.ServiceModel.Activation;
 using System.Text;
 using System.Web;
 
-namespace WCFDemo
+namespace DemoSite.WCFDemo.Transfer
 {
     public class TransferService : ITransferService
     {

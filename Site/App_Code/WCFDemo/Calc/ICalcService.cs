@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace WCFDemo
+namespace DemoSite.WCFDemo.Calc
 {
     [ServiceContract(Name = "CalcService", Namespace = "http://www.zhangjin.me/WCFDemo")]
     public interface ICalcService

@@ -5,7 +5,7 @@ using System.ServiceModel;
 using System.Web;
 
 
-namespace WCFDemo
+namespace DemoSite.WCFDemo.Transfer
 {
     [ServiceContract]
     public interface ITransferServiceClient

@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace WCFDemo
+namespace DemoSite.WCFDemo.Transfer
 {
     [ServiceContract]
     public interface ITransferService

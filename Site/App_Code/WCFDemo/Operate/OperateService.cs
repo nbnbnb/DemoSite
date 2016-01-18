@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace WCFDemo.Operate
+namespace DemoSite.WCFDemo.Operate
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     public class OperateService : IOperateService

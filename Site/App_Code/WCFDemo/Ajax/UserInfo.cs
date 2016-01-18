@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace WCFDemo
+namespace DemoSite.WCFDemo.Ajax
 {
     [DataContract]
     public class UserInfo

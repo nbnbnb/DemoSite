@@ -5,7 +5,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Web;
 
-namespace WCFDemo
+namespace DemoSite.WCFDemo.Transfer
 {
     public class TransferServiceClient : ClientBase<ITransferServiceClient>, ITransferServiceClient
     {

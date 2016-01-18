@@ -5,9 +5,8 @@ using System.Linq;
 using System.ServiceModel;
 using System.Web;
 
-namespace WCFDemo
+namespace DemoSite.WCFDemo.Transfer
 {
-
     // WrapperName属性一定要与服务器端的对应
     // 默认为服务端类型名
     [MessageContract(WrapperName = "DoUpload")]
