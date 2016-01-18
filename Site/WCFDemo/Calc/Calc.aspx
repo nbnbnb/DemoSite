@@ -15,12 +15,12 @@
             <p>
                 <asp:TextBox ID="TextBox_A" runat="server" Text="9" />
                 <asp:TextBox ID="TextBox_B" runat="server" Text="12" />
-                <asp:Button ID="Button_Add" runat="server" Text="Add(Http)" />
-                <asp:Button ID="Button_Substraction" runat="server" Text="Substraction(TCP)" />
-                <asp:Button ID="Button_Add2" runat="server" Text="Add(NamedPipe)" />
+                <asp:Button ID="HTTP_Add" runat="server" Text="Add(Http)" />
+                <asp:Button ID="TCP_Add" runat="server" Text="Add(TCP)" />
+                <asp:Button ID="NamedPipe_Add" runat="server" Text="Add(NamedPipe)" />
             </p>
 
-            <p><a href="http://blog.csdn.net/myloy/article/details/6979007" target="_blank">参考 http://blog.csdn.net/myloy/article/details/6979007</a></p>
+            <p><a href="http://blog.csdn.net/myloy/article/details/6979007" target="_blank">参考</a></p>
         </div>
     </form>
 

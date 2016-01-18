@@ -10,34 +10,36 @@ public partial class WCFDemo_Index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Button_Add.Click += Button_Add_Click;  // Do With Http
-        Button_Substraction.Click += Button_Substraction_Click; // Do With TCP
-        Button_Add2.Click += Button_Add2_Click; // Do With NamedPipe
+        HTTP_Add.Click += HTTP_Add_Click ;  // Do With Http
+        TCP_Add.Click += TCP_Add_Click; // Do With TCP
+        NamedPipe_Add.Click += NamedPipe_Add_Click; // Do With NamedPipe
     }
 
-    void Button_Add2_Click(object sender, EventArgs e)
-    {
-        using (CalcServiceClient client = new CalcServiceClient("NamedPipeBinding_CalcService"))
-        {
-            ClientShow(client.Add(GetA(), GetB()), client.InnerChannel.SessionId);
-        }
-    }
-
-    void Button_Substraction_Click(object sender, EventArgs e)
-    {
-        using (CalcServiceClient client = new CalcServiceClient("NetTcpBinding_CalcService"))
-        {
-            ClientShow(client.Subtraction(GetA(), GetB()), client.InnerChannel.SessionId);
-        }
-    }
-
-    void Button_Add_Click(object sender, EventArgs e)
+    void HTTP_Add_Click(object sender, EventArgs e)
     {
         using (CalcServiceClient client = new CalcServiceClient("BasicHttpBinding_CalcService"))
         {
             client.Open();
             int res = client.Add(GetA(), GetB());
             ClientShow(res, client.InnerChannel.SessionId);
+        }
+    }
+
+    void TCP_Add_Click(object sender, EventArgs e)
+    {
+        using (CalcServiceClient client = new CalcServiceClient("NetTcpBinding_CalcService"))
+        {
+            client.Open();
+            ClientShow(client.Subtraction(GetA(), GetB()), client.InnerChannel.SessionId);
+        }
+    }
+
+    void NamedPipe_Add_Click(object sender, EventArgs e)
+    {
+        using (CalcServiceClient client = new CalcServiceClient("NamedPipeBinding_CalcService"))
+        {
+            client.Open();
+            ClientShow(client.Add(GetA(), GetB()), client.InnerChannel.SessionId);
         }
     }
 

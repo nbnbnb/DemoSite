@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Ajax Demo</title>
     <script src="/Scripts/jquery-1.9.1.js"></script>
@@ -9,6 +9,7 @@
         .part {
             width: 40%;
             float: left;
+            height:320px;
         }
 
         .clear::after {
@@ -21,26 +22,25 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <p>
-                <input type="button" id="button_UserInfoGET" value="Retrieval UserInfo(GET)" />
-                <input type="button" id="button_UserInfoPOST" value="Retrieval UserInfo(POST)" />
-                <input type="button" id="button_UpdateUserInfoPOST" value="Update UserInfo(POST)" />
-                <input type="button" id="button_JSONP" value="Retrieval UserInfo(JSONP)" />
-            </p>
-            <fieldset class="clear">
-                <legend>Ajax With WCF</legend>
+    <div>
+        <p>
+            <input type="button" id="button_UserInfoGET" value="Retrieval UserInfo(GET)" />
+            <input type="button" id="button_UserInfoPOST" value="Retrieval UserInfo(POST)" />
+            <input type="button" id="button_UpdateUserInfoPOST" value="Update UserInfo(POST)" />
+            <input type="button" id="button_JSONP" value="Retrieval UserInfo(JSONP)" />
+        </p>
+        <fieldset class="clear">
+            <legend>Ajax With WCF</legend>
 
-                <fieldset class="part">
-                    <legend>启用JSONP后的格式</legend>
-                    <pre>
+            <fieldset class="part">
+                <legend>启用为 ASP.NET AJAX 包裹方式，最外面为一个 d</legend>
+                <pre>
                         {
                           "d": {
-                            "__type": "UserInfo:#WCFDemo",
+                            "__type": "UserInfo:#DemoSite.WCFDemo.Ajax",
                             "Age": 26,
                             "UserAddress": {
-                              "__type": "Address:#WCFDemo",
+                              "__type": "Address:#DemoSite.WCFDemo.Ajax",
                               "City": "WuHan",
                               "Country": "Ching",
                               "Province": "HuBei"
@@ -49,10 +49,10 @@
                           }
                         }
                     </pre>
-                </fieldset>
-                <fieldset class="part">
-                    <legend>未启用JSONP的格式</legend>
-                    <pre>
+            </fieldset>
+            <fieldset class="part">
+                <legend>非 ASP.NET AJAX 包裹方式</legend>
+                <pre>
                         {
                           "Age": 26,
                           "UserAddress": {
@@ -63,11 +63,10 @@
                           "UserName": "张进"
                         }
                     </pre>
-                </fieldset>
-
             </fieldset>
-        </div>
-    </form>
+
+        </fieldset>
+    </div>
     <script type="text/javascript">
         $(function () {
 
@@ -78,7 +77,8 @@
             var host = "AjaxService.svc/";
 
             $("#button_UserInfoGET").click(function () {
-                $.getJSON(host + "GetUserInfoWithGet", { userName: "张进" }, function (data) { showData(data); });
+                $.getJSON(host + "GetUserInfoWithGet", { userName: "张进", stamp: new Date().getTime() },
+                    function (data) { showData(data); });
             });
 
             $("#button_UserInfoPOST").click(function () {
@@ -86,7 +86,7 @@
                     type: "POST",
                     url: host + "GetUserInfoWithPost",
                     data: '{"userName":"张Jin"}', // 此处一定要传入的为字符串参数，而且要为标准的json字符串类型,并且参数名区分大小写
-                    contentType: "application/json;charaset=uft-8", // 内容类型一定要正确
+                    contentType: "application/json; charset=UTF-8", // 内容类型一定要正确
                     dataType: "json",
                     success: function (data) { showData(data); }
                 });
@@ -110,7 +110,7 @@
                 jQuery.ajax({
                     type: "POST",
                     url: host + "UpdateUserInfoWithPost",
-                    data: JSON.stringify(myInfo), // 此处一定要传入的为字符串参数，而且要为标准的json字符串类型(参数名区分大小写)
+                    data: JSON.stringify(myInfo), // 此处一定要传入的为字符串参数
                     contentType: "application/json;charaset=uft-8", // 内容类型一定要正确
                     dataType: "json",
                     success: function (data) { showData(data); }
@@ -118,9 +118,10 @@
             });
 
             $("#button_JSONP").click(function () {
-
-                // 注意，此处是如何传递参数的(userName)
-                $.getJSON(host + "GetUserInfoWithJSONP?callback=?", { userName: "ZhangJinJSONP" }, function (data) {
+                $.getJSON(host + "GetUserInfoWithJSONP?callback=?", {
+                    userName: "ZhangJinJSONP",
+                    stamp: new Date().getTime()
+                }, function (data) {
                     showData(data);
                 });
 
