@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="WCFDemo.AjaxService"  %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="DemoSite.WCFDemo.Ajax.AjaxService"  %>

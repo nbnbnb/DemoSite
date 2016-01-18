@@ -7,6 +7,9 @@ using System.Text;
 
 namespace DemoSite.WCFDemo.Calc
 {
+    /// <summary>
+    /// Namespace 影响客户端的 ReplyAction 和 Action
+    /// </summary>
     [ServiceContract(Name = "CalcService", Namespace = "http://www.zhangjin.me/WCFDemo")]
     public interface ICalcService
     {

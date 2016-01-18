@@ -12,6 +12,7 @@ using System.Web.Script.Serialization;
 namespace DemoSite.WCFDemo.Ajax
 {
     [JavascriptCallbackBehavior(UrlParameterName = "callback")]
+    [ServiceBehavior(ConfigurationName = "AjaxService")]
     public class AjaxService : IAjaxService
     {
         private UserInfo GetUserInfo(string userName)

@@ -8,12 +8,10 @@ using System.Text;
 
 namespace DemoSite.WCFDemo.Calc
 {
-    [ServiceBehavior(InstanceContextMode=InstanceContextMode.Single)]
     public class CalcService : ICalcService
     {
         public int Add(int a, int b)
         {
-            //File.WriteAllText(@"C:\log.txt", OperationContext.Current.SessionId);
             return a + b;
         }
 

@@ -9,8 +9,7 @@ using System.Text;
 
 namespace DemoSite.WCFDemo.Ajax
 {
-
-    [ServiceContract]
+    [ServiceContract(ConfigurationName = "IAjaxService")]
     public interface IAjaxService
     {
         [OperationContract]
@@ -35,7 +34,5 @@ namespace DemoSite.WCFDemo.Ajax
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
         UserInfo GetUserInfoWithJSONP(string userName);
-
     }
-
 }

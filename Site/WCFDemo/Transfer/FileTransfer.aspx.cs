@@ -1,11 +1,11 @@
-﻿using System;
+﻿using DemoSite.WCFDemo.Transfer;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WCFDemo;
 
 public partial class WCFDemo_FileTransfer : System.Web.UI.Page
 {
@@ -46,14 +46,14 @@ public partial class WCFDemo_FileTransfer : System.Web.UI.Page
             UploadRequestInfoClient fileInfo = proxy.DownloadFileClient(requestInfo);
 
             Response.BufferOutput = false;   // to prevent buffering 
-            
+
             Response.Clear();
             Response.ClearHeaders();
             Response.ContentType = "application/octet-stream";
             // 注意：需要编码文件名，避免乱码问题
             // 但是 Firefox 会乱码！！！
             Response.AddHeader("Content-Disposition", "attachment; filename=" + Server.UrlEncode(fileName));
- 
+
             int size = 1024 * 10;  // 10 KB
             byte[] buffer = new byte[size];
 
