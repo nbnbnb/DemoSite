@@ -9,7 +9,7 @@ namespace DemoSite.WCFDemo.Transfer
 {
     // 默认为类型名
     [MessageContract(WrapperName = "DoDownload")]
-    public class DownloadRequestInfo
+    public class DownloadRequest
     {
         [MessageHeader]
         public string FilePath;

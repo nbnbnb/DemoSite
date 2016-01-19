@@ -12,9 +12,9 @@ namespace DemoSite.WCFDemo.Transfer
     public interface ITransferService
     {
         [OperationContract]
-        UploadRequestInfo DownloadFile(DownloadRequestInfo request);
+        UploadAndDownloadFile DownloadFile(DownloadRequest request);
 
         [OperationContract]
-        void UploadFile(UploadRequestInfo request);
+        void UploadFile(UploadAndDownloadFile request);
     }
 }

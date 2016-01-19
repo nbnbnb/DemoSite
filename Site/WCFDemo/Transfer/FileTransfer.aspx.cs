@@ -40,36 +40,34 @@ public partial class WCFDemo_FileTransfer : System.Web.UI.Page
         try
         {
             TransferServiceClient proxy = new TransferServiceClient("basicHttpUpload");
-            DownloadRequestInfo requestInfo =
-                new DownloadRequestInfo
+            DownloadRequest requestInfo =
+                new DownloadRequest
                 {
                     FilePath = Path.Combine(Server.MapPath("~/TempFiles"), fileName)
                 };
 
-            UploadRequestInfo fileInfo = proxy.DownloadFile(requestInfo);
-
-            Response.BufferOutput = false;   // to prevent buffering 
+            UploadAndDownloadFile fileInfo = proxy.DownloadFile(requestInfo);
 
             Response.Clear();
             Response.ClearHeaders();
             Response.ContentType = "application/octet-stream";
             // 注意：需要编码文件名，避免乱码问题
             // 但是 Firefox 会乱码！！！
-            Response.AddHeader("Content-Disposition", "attachment; filename=" + Server.UrlEncode(fileName));
-
+            if (Request.Browser.IsBrowser("InternetExplorer"))
+            {
+                fileName = Server.UrlEncode(fileName);
+            }
+            Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
             int size = 1024 * 10;  // 10 KB
             byte[] buffer = new byte[size];
-
             while (size > 0)
             {
-                // 此次读取了多少字节
+                // 读取文件流到缓冲区
                 size = fileInfo.FileByteStream.Read(buffer, 0, buffer.Length);
-
-                // Verify that the client is connected.
                 if (Response.IsClientConnected)
                 {
+                    // 写入 HTTP 流
                     Response.OutputStream.Write(buffer, 0, size);
-
                     Response.Flush();
                 }
                 else
@@ -77,11 +75,14 @@ public partial class WCFDemo_FileTransfer : System.Web.UI.Page
                     break;
                 }
             }
+
+            // 关闭代理，保证服务也关闭
+            (proxy as IDisposable).Dispose();
+
             Response.End();
         }
         catch (Exception ex)
         {
-            // Trap the error, if any.
             Response.Write("Error : " + ex.Message);
         }
         finally
@@ -96,7 +97,7 @@ public partial class WCFDemo_FileTransfer : System.Web.UI.Page
         if (FileUpload_Main.HasFile)
         {
             TransferServiceClient clientUpload = new TransferServiceClient("basicHttpUpload");
-            UploadRequestInfo uploadRequestInfo = new UploadRequestInfo
+            UploadAndDownloadFile uploadRequestInfo = new UploadAndDownloadFile
             {
                 FilePath = Path.Combine(Server.MapPath("~/TempFiles"), FileUpload_Main.FileName),
                 Length = FileUpload_Main.PostedFile.InputStream.Length,

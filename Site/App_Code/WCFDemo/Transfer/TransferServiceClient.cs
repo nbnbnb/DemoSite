@@ -14,12 +14,12 @@ namespace DemoSite.WCFDemo.Transfer
         {
         }
 
-        public UploadRequestInfo DownloadFile(DownloadRequestInfo request)
+        public UploadAndDownloadFile DownloadFile(DownloadRequest request)
         {
             return base.Channel.DownloadFile(request);
         }
 
-        public void UploadFile(UploadRequestInfo request)
+        public void UploadFile(UploadAndDownloadFile request)
         {
             base.Channel.UploadFile(request);
         }

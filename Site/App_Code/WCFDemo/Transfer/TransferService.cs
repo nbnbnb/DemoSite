@@ -12,9 +12,9 @@ namespace DemoSite.WCFDemo.Transfer
 {
     public class TransferService : ITransferService
     {
-        public UploadRequestInfo DownloadFile(DownloadRequestInfo request)
+        public UploadAndDownloadFile DownloadFile(DownloadRequest request)
         {
-            UploadRequestInfo result = new UploadRequestInfo();
+            UploadAndDownloadFile result = new UploadAndDownloadFile();
             try
             {
                 string filePath = request.FilePath;
@@ -25,23 +25,23 @@ namespace DemoSite.WCFDemo.Transfer
                     throw new FileNotFoundException("File not found", request.FilePath);
                 }
 
-                //using (FileStream stream = File.OpenRead(filePath))
-                //{
-                //    result.FileName = request.FilePath;
-                //    result.Length = fileInfo.Length;
-                //    result.FileByteStream = stream;
-                //}
-
                 // 注意：此处不能使用上面的方式进行
                 // 因为流在客户端接收完成前，不能够关闭
-
-                FileStream stream = File.OpenRead(filePath);
-
+                // 所以此处将对象放在了内存中
                 result.FilePath = request.FilePath;
                 result.Length = fileInfo.Length;
+                /* 全部加载到内存中进行执行
+                   安全释放句柄
+                using (var fs = File.OpenRead(filePath))
+                {
+                    result.FileByteStream = new MemoryStream();
+                    fs.CopyTo(result.FileByteStream, 4096);
+                }
+                */
 
-                // 客户端将会读取此流对象
-                result.FileByteStream = stream;
+                // 使用文件流方式
+                // 问题是不能释放文件句柄 !!!!!!!
+                result.FileByteStream = File.OpenRead(filePath);
             }
             catch (UnauthorizedAccessException ex)
             {
@@ -51,7 +51,7 @@ namespace DemoSite.WCFDemo.Transfer
             return result;
         }
 
-        public void UploadFile(UploadRequestInfo request)
+        public void UploadFile(UploadAndDownloadFile request)
         {
             using (FileStream targetStream = File.OpenWrite(request.FilePath))
             {

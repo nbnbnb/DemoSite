@@ -5,12 +5,11 @@ using System.Linq;
 using System.ServiceModel;
 using System.Web;
 
-
 namespace DemoSite.WCFDemo.Transfer
 {
     // 默认为类型名
-   [MessageContract(WrapperName = "DoUpload")]
-    public class UploadRequestInfo : IDisposable
+    [MessageContract(WrapperName = "DoUpload")]
+    public class UploadAndDownloadFile : IDisposable
     {
         [MessageHeader(MustUnderstand = true)]
         public string FilePath;
