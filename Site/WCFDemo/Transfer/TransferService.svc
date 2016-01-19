@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="WCFDemo.TransferService" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="DemoSite.WCFDemo.Transfer.TransferService" %>

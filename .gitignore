@@ -109,3 +109,7 @@ UpgradeLog*.XML
 
 */vwd.webinfo
 Site/App_Data/error-*
+
+# TempFiles
+
+TempFiles/

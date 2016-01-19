@@ -10,11 +10,11 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <asp:FileUpload runat="server" ID="FileUpload_Main" />
+        <asp:Button runat="server" ID="Button_Upload" Text="Upload" />
+        <br /><br /><br />
         <asp:TextBox runat="server" ID="TextBox_FileName" /> 
         <asp:Button runat="server" ID="Button_Download" Text="Download" />
-        <br />
-        <asp:FileUpload runat="server" ID="FileUpload1" />
-        <asp:Button runat="server" ID="Button_Upload" Text="Upload" />
     </div>
     </form>
 </body>
