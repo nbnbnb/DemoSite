@@ -55,18 +55,20 @@ namespace DemoSite.WCFDemo.Transfer
         {
             using (FileStream targetStream = File.OpenWrite(request.FilePath))
             {
-                // int size = 1024 * 10;
-                //byte[] buf=new byte[size];
-                //size = request.FileByteStream.Read(buf, 0, size);
-                //while (size > 0)
-                //{
-                //    targetStream.Write(buf, 0, size);
-                //    size = request.FileByteStream.Read(buf, 0, size);
-                //}
-
-                // 此算法与上面的代码相同
-                // 推荐
+                // 推荐写法
                 request.FileByteStream.CopyTo(targetStream, 4096);
+
+                // 与上面的效果一致
+                /*
+                int size = 1024 * 4;
+                byte[] buf = new byte[size];
+                size = request.FileByteStream.Read(buf, 0, size);
+                while (size > 0)
+                {
+                    targetStream.Write(buf, 0, size);
+                    size = request.FileByteStream.Read(buf, 0, size);
+                }
+                **/
             }
         }
     }
