@@ -10,8 +10,25 @@ using System.Web;
 
 namespace DemoSite.WCFDemo.Transfer
 {
-    public class TransferService : ITransferService
+
+    /// <summary>
+    /// 由于服务使用的是单调模式，每个服务调用都会导致服务实例的创建
+    /// 当操作方法执行完后，Dispose 方法会自动执行以实现对服务实例的释放
+    /// 最终的服务实例将会变成垃圾对象，并被 GC 回收
+    /// </summary>
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
+    public class TransferService : ITransferService, IDisposable
     {
+        FileStream _fs = null;
+
+        public void Dispose()
+        {
+            if (_fs != null)
+            {
+                _fs.Close();
+            }
+        }
+
         public UploadAndDownloadFile DownloadFile(DownloadRequest request)
         {
             UploadAndDownloadFile result = new UploadAndDownloadFile();
@@ -30,18 +47,9 @@ namespace DemoSite.WCFDemo.Transfer
                 // 所以此处将对象放在了内存中
                 result.FilePath = request.FilePath;
                 result.Length = fileInfo.Length;
-                /* 全部加载到内存中进行执行
-                   安全释放句柄
-                using (var fs = File.OpenRead(filePath))
-                {
-                    result.FileByteStream = new MemoryStream();
-                    fs.CopyTo(result.FileByteStream, 4096);
-                }
-                */
+                _fs = File.OpenRead(filePath);
+                result.FileByteStream = _fs;
 
-                // 使用文件流方式
-                // 问题是不能释放文件句柄 !!!!!!!
-                result.FileByteStream = File.OpenRead(filePath);
             }
             catch (UnauthorizedAccessException ex)
             {
@@ -56,6 +64,7 @@ namespace DemoSite.WCFDemo.Transfer
             using (FileStream targetStream = File.OpenWrite(request.FilePath))
             {
                 // 推荐写法
+                // 分片拷贝字节流
                 request.FileByteStream.CopyTo(targetStream, 4096);
 
                 // 与上面的效果一致
