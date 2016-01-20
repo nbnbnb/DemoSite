@@ -12,6 +12,8 @@
     <div>
         <p>CustomerID： <asp:TextBox runat="server" ID="TextBox_CustomerID" /></p> 
         <p>OrderID: <asp:TextBox runat="server" ID="TextBox_OrderID" /></p>
+        <p>OrderID_Min: <asp:TextBox runat="server" ID="TextBox_OrderID_Min" /></p>
+        <p>OrderID_Max: <asp:TextBox runat="server" ID="TextBox_OrderID_Max" /></p>
         <asp:Button runat="server" Text="Search" />
         <asp:GridView runat="server" ID="GridView_Main" DataSourceID="LinqDataSource_Main" />
         <asp:LinqDataSource runat="server" ID="LinqDataSource_Main" TableName="Orders"
@@ -21,8 +23,8 @@
                 <asp:ControlParameter ControlID="TextBox_CustomerID" />
             </asp:SearchExpression>
             <asp:RangeExpression DataField="OrderID" MaxType="Inclusive" MinType="Inclusive">
-                <asp:ControlParameter ControlID="TextBox_OrderID" />
-                <asp:ControlParameter ControlID="TextBox_OrderID" />
+                <asp:ControlParameter ControlID="TextBox_OrderID_Min" />
+                <asp:ControlParameter ControlID="TextBox_OrderID_Max"  />
             </asp:RangeExpression>
             <asp:MethodExpression MethodName="MethodFilter" />
             <asp:CustomExpression OnQuerying="Custom_Querying">

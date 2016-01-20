@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SectionContainer.aspx.cs" Inherits="WebFormDemo.WebFormDemo_SectionContainer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CustomConfig.aspx.cs" Inherits="WebFormDemo.WebFormDemo_SectionContainer" %>
 
 <!DOCTYPE html>
 

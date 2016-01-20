@@ -25,5 +25,4 @@ public partial class WebFormDemo_CachePage : System.Web.UI.Page
     {
         return DateTime.Now.ToString();
     }
-
 }
