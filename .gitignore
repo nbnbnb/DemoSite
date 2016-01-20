@@ -111,5 +111,7 @@ UpgradeLog*.XML
 Site/App_Data/error-*
 
 # TempFiles
-
 TempFiles/
+
+#NLog DB
+LogDb.db
