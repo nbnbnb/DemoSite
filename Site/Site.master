@@ -38,6 +38,9 @@
                             <li style="position: relative; float: left;" class="static">
                                 <a tabindex="-1" class="level1 static" onclick="location.href=location.href;return false;" href="javascript:void(0);">Refresh</a>
                             </li>
+                            <li style="position: relative; float: left;" class="static">
+                                <a tabindex="-1" class="level1 static" href="elmah.axd" target="_blank">查看日志</a>
+                            </li>
                         </ul>
                     </div>
                     <div style="clear: left;"></div>
