@@ -115,3 +115,4 @@ TempFiles/
 
 #NLog DB
 LogDb.db
+Site/Logs/wcftrace.svclog
