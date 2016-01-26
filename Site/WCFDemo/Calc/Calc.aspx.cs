@@ -10,7 +10,7 @@ public partial class WCFDemo_Index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        HTTP_Add.Click += HTTP_Add_Click ;  // Do With Http
+        HTTP_Add.Click += HTTP_Add_Click;  // Do With Http
         TCP_Add.Click += TCP_Add_Click; // Do With TCP
         NamedPipe_Add.Click += NamedPipe_Add_Click; // Do With NamedPipe
     }
@@ -30,7 +30,7 @@ public partial class WCFDemo_Index : System.Web.UI.Page
         using (CalcServiceClient client = new CalcServiceClient("NetTcpBinding_CalcService"))
         {
             client.Open();
-            ClientShow(client.Subtraction(GetA(), GetB()), client.InnerChannel.SessionId);
+            ClientShow(client.Add(GetA(), GetB()), client.InnerChannel.SessionId);
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using DemoSite.WCFDemo.Transfer;
+﻿using DemoSite.Helper;
+using DemoSite.WCFDemo.Transfer;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -50,35 +51,13 @@ public partial class WCFDemo_FileTransfer : System.Web.UI.Page
             Response.Clear();
             Response.ClearHeaders();
             Response.ContentType = "application/octet-stream";
-            // 注意：需要编码文件名，避免乱码问题
-            // 但是 Firefox 会乱码！！！
-            if (Request.Browser.IsBrowser("InternetExplorer"))
-            {
-                fileName = Server.UrlEncode(fileName);
-            }
-            Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
+
+            Response.AddHeader("Content-Disposition", "attachment; filename=" + FileNameHelper.GetDownloadFileName(fileName));
 
             try
             {
                 UploadAndDownloadFile fileInfo = proxy.DownloadFile(requestInfo);
-                int size = 1024 * 10;  // 10 KB
-                byte[] buffer = new byte[size];
-                while (size > 0)
-                {
-                    // 读取文件流到缓冲区
-                    size = fileInfo.FileByteStream.Read(buffer, 0, buffer.Length);
-                    if (Response.IsClientConnected)
-                    {
-                        // 写入 HTTP 流
-                        Response.OutputStream.Write(buffer, 0, size);
-                        Response.Flush();
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
+                fileInfo.FileByteStream.CopyTo(Response.OutputStream, 1024 * 100);
                 proxy.Close();
             }
             catch (TimeoutException)
