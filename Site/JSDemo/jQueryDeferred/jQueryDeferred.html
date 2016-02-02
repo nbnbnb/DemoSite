@@ -35,7 +35,7 @@
         <input type="button" value="创建Deferred对象接口" id="button_do03" />
         <input type="button" value="使用多个Deferred对象" id="button_do04" />
         <br /><br />
-        <input type="button" value="Deferred.pipe【已弃用，用 when 代替】" id="button_do05" />
+        <input type="button" value="Deferred.pipe【已弃用】" id="button_do05" />
         <input type="button" value="Deferred.progress,notify" id="button_do06" />
         <input type="button" value="jQuery.promise" id="button_do07" />
         <input type="button" value="Deferred.when【代替 pipe】" id="button_do08" />
@@ -49,6 +49,62 @@
 
     </div>
     <div id="div_message"></div>
+
+    <fieldset>
+        <legend>Doc</legend>
+        <pre>
+            $.get 返回的是一个 jqXHR 对象，jqXHR 继承自 Deferred 对象
+使用 deferred.done() 附加连续的成功任务
+     var dfd=$.Deferred();
+     dfd
+          .done([fn1,fn2],fn3,[fn2,fn1])
+          .done(function(){console.log('finshed');});
+     
+使用 deferred.fail() 附加连续的失败任务【同上】
+使用 deferred.nofity(args) 来进行处理通知
+     附加到  deferred.then 和 deferred.progress 的回调将会触发
+使用  deferred.then( doneFilter [, failFilter ] [, progressFilter ] )
+     分别为 resolved、rejected 和 progress 时的事件回调
+使用 jQuery.when( deferreds )
+     可以传递多个  deferred 对象，返回 Promise 对象
+    传递单个
+$.when( $.ajax( "test.aspx" ) ).then(function( data, textStatus, jqXHR ) {
+     alert( jqXHR.status ); // Alerts 200
+});
+$.when( { testing: 123 } ).done(function( x ) {
+     alert( x.testing ); // Alerts "123"
+});
+$.when().then(function( x ) {
+     alert( "I fired immediately" );
+});
+     传递多个
+          
+var d1 = $.Deferred();
+var d2 = $.Deferred();
+var d3 = $.Deferred();
+$.when( d1, d2, d3 ).done(function ( v1, v2, v3 ) {
+console.log( v1 ); // v1 is undefined
+console.log( v2 ); // v2 is "abc"
+console.log( v3 ); // v3 is an array [ 1, 2, 3, 4, 5 ]
+});
+d1.resolve();
+d2.resolve( "abc" );
+d3.resolve( 1, 2, 3, 4, 5 );
+// 所有的请求完成后，才会调用 done 回调
+$.when( $.ajax( "/page1.php" ), $.ajax( "/page2.php" ) ).done(function( a1, a2 ) {
+// a1 and a2 are arguments resolved for the page1 and page2 ajax requests, respectively.
+// Each argument is an array with the following structure: [ data, statusText, jqXHR ]
+var data = a1[ 0 ] + a2[ 0 ]; // a1[ 0 ] = "Whip", a2[ 0 ] = " It"
+if ( /Whip It/.test( data ) ) {
+alert( "We got what we came for!" );
+}
+});
+// 每个请求完成后，都会调用 then 中指定的回调
+$.when( $.ajax( "/page1.php" ), $.ajax( "/page2.php" ) )
+     .then( myFunc, myFailure );  // 每个 ajax 完成后都会调用回调
+        </pre>
+    </fieldset>
+
     <script type="text/javascript">
         // 自定义函数
         function log(msg) {
@@ -64,13 +120,13 @@
                 task = function () {
                     log("I am working in Task 01");
 
-                    // 此方法，必须要在 resolve() 或 reject() 方法前执行
+                    // nofity 方法要在 resolve() 或 reject() 方法前执行
                     for (; i < max; i++) {
                         (function (index) {
                             setTimeout(function () {
                                 def.notify(index);  // 要在 resolve 完成之前调用
                                 flag++;
-                            }, 0)
+                            }, 10)
                         })(i);
                     }
 
@@ -89,6 +145,8 @@
         }
 
         function wait02(def) {
+
+            alert(this === def);
 
             var task = function () {
                 def.resolve('ok 02');
@@ -180,21 +238,14 @@
 
                 // 使用新式的 Ajax 方法
                 // 此处将会返回一个Promise对象【jqXHR】
-                var request = $.get("GetID.ashx");
-
-                // 此处又返回一个Promise对象(类似与Deferred对象)
-                request
-                    .pipe(function (data) {
+                $.get("GetID.ashx")
+                    .pipe(function (data) {   // 使用 pipe 方式
                         // 此Ajax调用，将会返回一个Promise对象
                         return $.post("GetName.ashx", { UserID: data });
                     })
                     .done(function (data) {
                         log("You Name is " + data);
                     });
-
-                // 注意，此Demo是如果演示 Ajax连续任务的
-                // 等待第一个Ajax请求返回的值，然后接着第二个Ajax请求,并返回一个Promise对象
-                // 最后在Promise对象上添加完成时的回调函数
             });
 
             $("#button_do06").bind("click", function () {
@@ -237,6 +288,11 @@
         });
 
         $('#button_do08').on('click', function () {
+
+            // 注意，此Demo是如何演示 Ajax 连续任务的
+            // 等待第一个Ajax请求返回的值，然后接着第二个Ajax请求,并返回一个Promise对象
+            // 最后在Promise对象上添加完成时的回调函数
+
             $.when($.get("GetID.ashx"))
                 .done(function (data) {
                     $.when($.post("GetName.ashx", { UserID: data }))
