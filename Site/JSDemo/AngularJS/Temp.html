@@ -9,20 +9,32 @@
 <body>
     <div ng-app="myApp">
         <div ng-controller="MyController">
-            <input type="text" ng-model="expr" placeholder="Enter an expression" />
-            <h2>{{parsedValue}}</h2>
+            <input type="text" ng-model="theirUrl" />
+            <div my-directive my-url="theirUrl" my-link-text="Click me to go to Baidu">
+
+            </div>
         </div>
     </div>
     <script>
 
         angular
             .module('myApp', [])
-            .controller('MyController', function ($scope, $parse) {
-                $scope.$watch('expr', function (newVal, oldVal, scope) {
-                    if (newVal !== oldVal) {
-                        $scope.parsedValue = newVal;
+            .directive('myDirective', function () {
+                return {
+                    restrict: 'A',
+                    replace: true,
+                    scope: {
+                        myUrl: '=',
+                        myLinkText: '@'
+                    },
+                    template: '<div><a href="{{myUrl}}">' + '{{myLinkText}}</a> <input type="text" ng-model=myUrl /></div>',
+                    controller: function ($scope) {
+                        
                     }
-                });
+                };
+            })
+            .controller('MyController', function ($scope) {
+                
             });
 
     </script>
