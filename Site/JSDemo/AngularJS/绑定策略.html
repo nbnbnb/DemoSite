@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>绑定策略</title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="MyController">
+            <input type="text" ng-model="to" ng-init="to='dashan1010zj@163.com'" />
+            <div my-directive ng-model="to" from-name="nbnbnb.zhang@gmail.com" get-title="title" get-content="contents" show-name="showName(name)">
+
+            </div>
+            <div>
+                {{contents}}
+            </div>
+        </div>
+    </div>
+    <script>
+
+        angular
+            .module('myApp', [])
+            .directive('myDirective', function () {
+                return {
+                    restrict: 'A',
+                    replace: true,
+                    scope: {
+                        ngModel: '=',
+                        getTitle: '&', // 不带参数  父级的属性被包装成了一个函数
+                        getContent: '&', // 不带参数  父级的属性被包装成了一个函数
+                        showName: '&',   // 带参数，链接到父级函数中
+                        fromName: '@'
+                    },
+                    priority: 100,
+                    template: '<div>Send Email： {{fromName}} to {{ngModel}}<br /><div>{{ title }}' + '<div><ul><li ng-repeat="x in contents">{{ x.text }}</li></ul><button ng-click="showName({name:name})">Show Name</button></div>',
+                    controller: function ($scope) {
+                        $scope.title = $scope.getTitle();  
+                        $scope.contents = $scope.getContent(); 
+                        $scope.name = '张进';
+                    }
+                };
+            })
+            .controller('MyController', function ($scope) {
+                $scope.title = "标题";
+                $scope.contents = [{ text: 1234 }, { text: 5678 }];
+                $scope.showName = function (name) {
+                    alert(name);
+                };
+            });
+
+    </script>
+</body>
+</html>
