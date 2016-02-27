@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Temp</title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="MyController">
+            <input type="text" ng-model="expr" placeholder="Enter an expression" />
+            <h2>{{parsedValue}}</h2>
+        </div>
+    </div>
+    <script>
+
+        angular
+            .module('myApp', [])
+            .controller('MyController', function ($scope, $parse) {
+                $scope.$watch('expr', function (newVal, oldVal, scope) {
+                    if (newVal !== oldVal) {
+                        $scope.parsedValue = newVal;
+                    }
+                });
+            });
+
+    </script>
+</body>
+</html>
