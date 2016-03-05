@@ -10,7 +10,11 @@
     <div ng-app="myApp">
         <div ng-controller="MyController">
             <input type="text" ng-model="to" ng-init="to='dashan1010zj@163.com'" />
-            <div my-directive ng-model="to" from-name="nbnbnb.zhang@gmail.com" get-title="title" get-content="contents" show-name="showName(name)">
+            <div my-directive ng-model="to" from-name="nbnbnb.zhang@gmail.com"
+                 get-title="title"
+                 get-content="contents"
+                 show-name="showNameOuter(zj)">
+                <!--与外部函数关联-->
 
             </div>
             <div>
@@ -27,25 +31,28 @@
                     restrict: 'A',
                     replace: true,
                     scope: {
-                        ngModel: '=',
+                        ngModel: '=',  // 双向绑定 隔离域中的 to 和 外部作用域中的 to 双向绑定
                         getTitle: '&', // 不带参数  父级的属性被包装成了一个函数
                         getContent: '&', // 不带参数  父级的属性被包装成了一个函数
-                        showName: '&',   // 带参数，链接到父级函数中
-                        fromName: '@'
+                        showName: '&',   // 带参数，链接到父级函数中，把隔离作用域中的数据传递到外部 scope 函数中
+                        fromName: '@'  // 读取标签中的值
                     },
                     priority: 100,
-                    template: '<div>Send Email： {{fromName}} to {{ngModel}}<br /><div>{{ title }}' + '<div><ul><li ng-repeat="x in contents">{{ x.text }}</li></ul><button ng-click="showName({name:name})">Show Name</button></div>',
+                    template: '<div>Send Email： {{fromName}} to {{ngModel}}<br /><div>{{ title }}' + '<div><ul><li ng-repeat="x in contents">{{ x.text }}</li></ul><button ng-click="showNameClick()">Show Name</button><button ng-click="showName({zj:name})">Show Name Direct</button></div>',
                     controller: function ($scope) {
-                        $scope.title = $scope.getTitle();  
-                        $scope.contents = $scope.getContent(); 
+                        $scope.title = $scope.getTitle();
+                        $scope.contents = $scope.getContent();
                         $scope.name = '张进';
+                        $scope.showNameClick = function () {
+                            $scope.showName({ zj: 'NBZhang' });  // 一定要以 object 的方式传递参数，不能是 $scope.showName('NBZhang')
+                        };
                     }
                 };
             })
             .controller('MyController', function ($scope) {
                 $scope.title = "标题";
                 $scope.contents = [{ text: 1234 }, { text: 5678 }];
-                $scope.showName = function (name) {
+                $scope.showNameOuter = function (name) {
                     alert(name);
                 };
             });

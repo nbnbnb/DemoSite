@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>嵌入</title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="MyController">
+            <div sidebox title="Links">
+                <ul>
+                    <li>First link</li>
+                    <li>Second link</li>
+                </ul>
+            </div>
+
+            <div sidebox title="TagCloud">
+                <div>
+                    <a href="">Graphics</a>
+                    <a href="">AngularJS</a>
+                    <a href="">D3</a>
+                    <a href="">Front-end</a>
+                    <a href="">Startup</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        angular
+            .module('myApp', [])
+            .directive('sidebox', function () {
+                return {
+                    restrict: 'EA',
+                    scope: {
+                        title: '@'
+                    },
+                    transclude: true,  // 设置嵌入，它告诉编译器，将从 DOM 中获取的内容放到它发现 ng-transclude 指令的地方
+                    template: '<div><div><h2>{{title}}</h2><div ng-transclude></div></div></div>'
+                };
+            })
+            .controller('MyController', function ($scope) {
+                $scope.name = 'AngularJS!';
+            });
+    </script>
+</body>
+</html>

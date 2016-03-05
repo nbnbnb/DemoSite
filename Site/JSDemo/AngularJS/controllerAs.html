@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Simple app</title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="MyController as btking">
+            <input ng-model="btking.name" type="text" placeholder="Your name" />
+            <h1>Hello {{btking.name}}</h1>
+
+            <div my-directive>
+
+            </div>
+        </div>
+
+    </div>
+    <script>
+        angular
+            .module('myApp', [])
+            .directive('myDirective', function () {
+                return {
+                    restrict: 'A',
+                    template: '<h4>{{myController.msg}}</h4>',
+                    controllerAs: 'myController', // 给匿名控制器设置别名
+                    controller: function () {   // 这是一个匿名控制器
+                        this.msg = 'Hello world!';  // 此处也是使用的 this 进行注册，而没有使用 $scope
+                    }
+                };
+            })
+            .controller('MyController', function ($scope) {
+                this.name = 'AngularJS!'; // 注意，此处使用的是 this
+                $scope.name = 'AngularJS!22222222222'; // 不需要 $scope 进行注册
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Router</title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/angular.js"></script>
+    <script src="../../Scripts/angular-route.js"></script>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="HomeController">
+
+        </div>
+
+    </div>
+    <script>
+        angular
+            .module('myApp', ['ngRoute'])
+            .config(['$routeProvider', function ($routeProvider) {
+                $routeProvider
+                    .when('/', {
+                        templateUrl: 'views/home.html',
+                        controller: 'HomeController'
+                    })
+                    .when('login', {
+                        templateUrl: 'views/login.html',
+                        controller: 'LoginController'
+                    })
+                    .otherwise({
+                        redirectTo: '/'
+                    });
+            }])
+            .controller('HomeController', function ($scope) {
+
+            });
+    </script>
+</body>
+</html>
