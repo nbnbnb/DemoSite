@@ -25,6 +25,8 @@ namespace DemoSite.Handler
             // 此行代码返回后，IIS 工作线程将会返回线程池中，处理其它的 HTTP 请求
             // MyAsyncResult 中的数据处理完成后，应该调用 cb 回调
             // cb 回调将会在内部调用 EndProcessRequest 完成最后的处理
+            // 返回的是一个 MyAsyncResult
+            // 执行 cb 时的回调参数，也要是同一对象
             myResult = new MyAsyncResult(context, cb, extraData);
             return myResult;
         }
