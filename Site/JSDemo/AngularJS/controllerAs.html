@@ -33,7 +33,7 @@
             })
             .controller('MyController', function ($scope) {
                 this.name = 'AngularJS!'; // 注意，此处使用的是 this
-                $scope.name = 'AngularJS!22222222222'; // 不需要 $scope 进行注册
+                $scope.name = 'AngularJS! does not Work!'; // // 使用了 as 之后，这个 $scope 已经无用了
             });
     </script>
 </body>

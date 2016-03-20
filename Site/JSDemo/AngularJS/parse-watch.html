@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>$parse-$watch</title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="MyController ">
+            <input ng-model="expr" type="text" placeholder="Enter an expressioin" />
+            <h2>{{parsedValue}}</h2>
+        </div>
+        <ul>
+            <li>输入 person.name 试试</li>
+        </ul>
+    </div>
+    <script>
+        angular
+            .module('myApp', [])
+            .controller('MyController',
+            ['$scope', '$parse', function ($scope, $parse) {
+                // 调用 $watch 监听表达式变化
+                $scope.$watch('expr', function (newVal, oldVal, scope) {
+                    console.log('newVal:' + newVal + '--oldVal：' + oldVal);
+                    if (newVal !== oldVal) {
+                        // 用该表达式设置 parseFun
+                        // 设置计算表达式的函数
+                        var parseFun = $parse(newVal);
+                        // 传入作用域，计算函数
+                        $scope.parsedValue = parseFun(scope);
+                    }
+                    console.log($scope === scope); // 这两个 socpe 是同一个对象
+                });
+
+                $scope.person = {
+                    name: 'ZhangJin'
+                };
+
+            }]);
+    </script>
+</body>
+</html>

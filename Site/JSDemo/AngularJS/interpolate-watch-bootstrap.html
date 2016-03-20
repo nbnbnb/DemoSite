@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>$interpolate-$watch with multi-bootstrap</title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/angular.js"></script>
+</head>
+<body>
+    <div id="myApp">
+        <div ng-controller="MyController ">
+            <input ng-model="to" type="email" placeholder="Recipient" />
+            <textarea ng-model="emailBody"></textarea>
+            <pre>{{previewText}}</pre>
+        </div>
+    </div>
+
+    <div id="myApp2">
+        <div ng-controller="MyController ">
+            <input ng-model="to" type="email" placeholder="Recipient" />
+            <textarea ng-model="emailBody"></textarea>
+            <pre>__previewText__</pre>
+        </div>
+    </div>
+    <script>
+        angular
+            .module('myApp', [])
+            .controller('MyController',
+            ['$scope', '$interpolate', function ($scope, $interpolate) {
+                $scope.to = '张进';
+                $scope.emailBody = '这封邮件是给{{to}}的。';
+
+                // 在 textarea 中输入指定标记时，将会进行实时更新
+                $scope.$watch('emailBody', function (body) {
+                    if (body) {
+                        var template = $interpolate(body);
+                        $scope.previewText = template({ to: $scope.to });
+                    };
+                });
+            }]);
+
+        // 创建自定义模块 emailParse
+        angular.module('emailParse', [])
+        .config(['$interpolateProvider', function ($interpolateProvider) {
+            // 进行自定义配置
+            $interpolateProvider.startSymbol('__');
+            $interpolateProvider.endSymbol('__');
+        }])
+        .factory('EmailParse', ['$interpolate', function ($interpolate) {
+            // 创建自定义服务
+            return {
+                parse: function (text, content) {
+                    var template = $interpolate(text);
+                    return template(content);
+                }
+            };
+        }]);
+
+        angular.module('myApp2', ['emailParse'])
+            .controller('MyController',
+            ['$scope', 'EmailParse', function ($scope, EmailParse) {
+                $scope.to = 'ZhangJin';
+                $scope.emailBody = 'This email is to __to__.';
+                $scope.$watch('emailBody', function (body) {
+                    if (body) {
+                        $scope.previewText = EmailParse.parse(body, { to: $scope.to });
+                    };
+                });
+            }]);
+
+        // 一定要在 ready 方法中进行启动 !!!
+        angular.element(document).ready(function () {
+            angular.bootstrap(document.getElementById('myApp'), ["myApp"]);
+            angular.bootstrap(document.getElementById('myApp2'), ["myApp2"]);
+        });
+    </script>
+</body>
+</html>

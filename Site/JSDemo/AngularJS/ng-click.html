@@ -2,23 +2,33 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Hello AngularJS</title>
+    <title>ng-click</title>
     <meta charset="utf-8" />
     <script src="../../Scripts/angular.js"></script>
 </head>
 <body>
     <div ng-app="myApp">
         <div ng-controller="MyController ">
-            <h2 ng-bind="name"></h2>
+            <h2>Current Count {{counter}}</h2>
+            <button ng-click="add()">Add</button>
+            <a ng-click="subtract()">Substrct</a>
         </div>
-
+        <div>
+            
+        </div>
     </div>
     <script>
         angular
             .module('myApp', [])
             .controller('MyController',
             ['$scope', function ($scope) {
-                $scope.name = 'Hello AngularJS!';
+                $scope.counter = 0;
+                $scope.add = function () {
+                    $scope.counter += 1;
+                };
+                $scope.subtract = function () {
+                    $scope.counter -= 1;
+                };
             }]);
     </script>
 </body>
