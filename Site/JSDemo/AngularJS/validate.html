@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FormValidate</title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/angular.js"></script>
+    <style type="text/css">
+        input.ng-invalid {
+            border: 1px solid red;
+        }
+
+        input.ng-valid {
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="MyController">
+            <form name="myForm" action="/Default.aspx">
+                <input type="text" name="name" ng-model="name" required placeholder="必填项" /><br />
+                <input type="text" name="min" ng-model="min" required ng-minlength="5" placeholder="最小长度 5" /><br />
+                <input type="text" name="max" ng-model="max" ng-maxlength="10" placeholder="最大长度 10" /><br />
+                <input type="email" name="email" ng-model="email" placeholder="邮件" /><br />
+                <input type="number" name="age" ng-model="age" placeholder="数字" /><br />
+                <input type="text" name="reg" ng-model="model" ng-pattern="reg" placeholder="正则表达式" /><br />
+                <input type="url" name="homepage" ng-model="homepage" placeholder="个人主页" /><br />
+
+                <h3>"最小长度 5" 验证信息</h3>
+                <ul>
+                    <li>是否未修改：{{myForm.min.$pristine}}</li>
+                    <li>是否修改：{{myForm.min.$dirty}}</li>
+                    <li>是否合法：{{myForm.min.$valid}}</li>
+                    <li>是否不合法：{{myForm.min.$invalid}}</li>
+                    <li>错误信息：{{myForm.min.$error}}</li>
+                </ul>
+
+                <input type="submit" value="提交" />
+            </form>
+        </div>
+
+    </div>
+    <script>
+        angular
+            .module('myApp', [])
+            .controller('MyController',
+            ['$scope', function ($scope) {
+                $scope.reg = '\\d+';
+            }]);
+    </script>
+</body>
+</html>

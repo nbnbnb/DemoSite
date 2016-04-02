@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>filter</title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="MyController ">
+            <h2 ng-bind="name|uppercase"></h2>
+            <h3>{{money|currency}}</h3>
+            <h4>{{name|uppercase}}</h4>
+            <h4>{{currentDate|date:'fullDate'}}</h4>
+            <h5>{{ ['Ari','Lerner','Likes','To','Eat','Pizza'] | filter:'e' }}</h5>
+            <h5>
+                {{
+                     [{
+                    'name': 'Ari',
+                    'City': 'San Francisco',
+                    'favorite food': 'Pizza'
+                    },{
+                    'name': 'Nate',
+                    'City': 'San Francisco',
+                    'favorite food': 'indian food'
+                    }] | filter:{'favorite food': 'Pizza'}
+                }}
+            </h5>
+            <!--使用 $，匹配任何一个值都行， 不区分大小写-->
+            <h5>
+                {{
+                     [{
+                    'name': 'Nate',
+                    'City': 'San Francisco',
+                    'favorite food': 'indian food'
+                    }] | filter:{$: 'Nate'}
+                }}
+            </h5>
+            <h5>
+                {{
+                     [{
+                    'name': 'Nate',
+                    'City': 'San Francisco',
+                    'favorite food': 'indian food'
+                    }] | filter:{$: 'San Francisco'}
+                }}
+            </h5>
+            <!--区分大小写，将第二个参数设置为 true-->
+            <h5>
+                {{
+                     [{
+                    'name': 'Nate',
+                    'City': 'San Francisco',
+                    'favorite food': 'indian food'
+                    }] | filter:{$: 'indian foOd'}:true
+                }}
+            </h5>
+            <hr />
+            <h5>{{ ['Ari','likes','to','travel'] | filter:isCapitalized }}</h5>
+            <h5>{{ {'name': 'Ari', 'City': 'SanFrancisco'} | json }}</h5>
+            <h5>{{ 'San Francisco is very cloudy' | limitTo:3 }}</h5><!--前三个字符-->
+            <h5>{{ 'San Francisco is very cloudy' | limitTo:-6 }}</h5> <!--最后的六个字符-->
+            <h5>{{ ['a','b','c','d','e','f'] | limitTo:1 }}</h5> <!--返回数组的第一个元素-->
+            <h5>{{ 123456789 | number }}</h5>
+            <h5>
+                {{
+                     [{
+                    'name': 'Ari',
+                    'status': 'awake'
+                    },{
+                    'name': 'Q',
+                    'status': 'sleeping'
+                    },{
+                    'name': 'Nate',
+                    'status': 'awake'
+                    }] | orderBy:'name'
+                }}
+            </h5>
+            <h5>
+                {{
+                     [{
+                    'name': 'Ari',
+                    'status': 'awake'
+                    },{
+                    'name': 'Q',
+                    'status': 'sleeping'
+                    },{
+                    'name': 'Nate',
+                    'status': 'awake'
+                    }] | orderBy:'name':true
+                }}
+            </h5>
+            <!--自定义过滤器-->
+            <h5>{{ 'ginger loves dog treats' | lowercase | capitalize }}</h5>
+            <input type="text" ng-model="address" placeholder="Enter a address" />
+        </div>
+
+    </div>
+    <script>
+        angular
+            .module('myApp', [])
+            .filter('capitalize', function () {
+                return function (input) {
+                    if (input) {
+                        return input[0].toUpperCase() + input.slice(1);
+                    }
+                };
+            })
+            .controller('MyController',
+            ['$scope', '$filter', function ($scope, $filter) {
+                $scope.name = 'Hello AngularJS!';
+                $scope.address = $filter('lowercase')('China ShangHai.');
+                $scope.money = 1234.56789;
+                $scope.currentDate = new Date();
+                $scope.isCapitalized = function (str) {
+                    return str[0] === str[0].toUpperCase();
+                };
+            }]);
+    </script>
+</body>
+</html>
