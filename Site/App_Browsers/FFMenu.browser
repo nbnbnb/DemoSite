@@ -1,0 +1,10 @@
+﻿<browsers>
+  <browser refID="Firefox">
+    <controlAdapters markupTextWriterType="System.Web.UI.XhtmlTextWriter" >
+      <adapter
+        controlType="System.Web.UI.WebControls.Menu"
+        adapterType="DemoSite.Adapters.FFMenuAdapter">
+      </adapter>
+    </controlAdapters>
+  </browser>
+</browsers>

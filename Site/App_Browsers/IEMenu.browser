@@ -1,0 +1,10 @@
+﻿<browsers>
+  <browser refID="IE"> <!--避免编译保持，将 IE 替换为 InternetExplorer-->
+    <controlAdapters markupTextWriterType="System.Web.UI.XhtmlTextWriter" >
+      <adapter
+        controlType="System.Web.UI.WebControls.Menu"
+        adapterType="DemoSite.Adapters.IEMenuAdapter">
+      </adapter>
+    </controlAdapters>
+  </browser>
+</browsers>
