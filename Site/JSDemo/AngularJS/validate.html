@@ -19,15 +19,15 @@
     <div ng-app="myApp">
         <div ng-controller="MyController">
             <form name="myForm" action="/Default.aspx">
-                <input type="text" name="name" ng-model="name" required placeholder="必填项" /><br />
+                <input type="text" ng-model="name" required placeholder="必填项" /><br />
                 <input type="text" name="min" ng-model="min" required ng-minlength="5" placeholder="最小长度 5" /><br />
-                <input type="text" name="max" ng-model="max" ng-maxlength="10" placeholder="最大长度 10" /><br />
-                <input type="email" name="email" ng-model="email" placeholder="邮件" /><br />
-                <input type="number" name="age" ng-model="age" placeholder="数字" /><br />
-                <input type="text" name="reg" ng-model="model" ng-pattern="reg" placeholder="正则表达式" /><br />
-                <input type="url" name="homepage" ng-model="homepage" placeholder="个人主页" /><br />
+                <input type="text"  ng-model="max" ng-maxlength="10" placeholder="最大长度 10" /><br />
+                <input type="email"  ng-model="email" placeholder="邮件" /><br />
+                <input type="number"  ng-model="number" placeholder="数字" /><br />
+                <input type="number" ng-model="age" ng-pattern="reg" placeholder="正则表达式-2x岁" /><br />
+                <input type="url"  ng-model="homepage" placeholder="个人主页" /><br />
 
-                <h3>"最小长度 5" 验证信息</h3>
+                <h3>"最小长度 5" 验证信息 【表单的 name="min"】</h3>
                 <ul>
                     <li>是否未修改：{{myForm.min.$pristine}}</li>
                     <li>是否修改：{{myForm.min.$dirty}}</li>
@@ -46,7 +46,7 @@
             .module('myApp', [])
             .controller('MyController',
             ['$scope', function ($scope) {
-                $scope.reg = '\\d+';
+                $scope.reg = '2\\d';  // 注意转义符写法，ng-pattern 必须绑定到变量
             }]);
     </script>
 </body>
