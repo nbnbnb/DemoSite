@@ -5,7 +5,7 @@
 // 不建议直接在prototype对象上直接添加方法
 Function.prototype.method = function (name, fn) {
     this.prototype[name] = fn;
-    return this;  // 为了支持链式调用，放回此函数对象 ZJin
+    return this;  // 为了支持链式调用，返回此函数对象 ZJin
 };
 
 (function () {
