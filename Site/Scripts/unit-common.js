@@ -6,7 +6,7 @@
 * 2，为类添加继承 -> UnitCommon.Helper.extend
 */
 
-// 确认不会覆写掉已近存在的对象
+// 确认不会覆写掉已经存在的对象
 window.UnitCommon = window.UnitCommon || {};
 UnitCommon.Helper = UnitCommon.Helper || {};
 
@@ -41,7 +41,7 @@ UnitCommon.Interface = function (name, methods) {
     this.name = name;
 
     // 此处新建一个对象，以避免外部对象修改时对此对象的影响
-    this.methods = methods.concat();
+    this.methods = methods.concat();  // 使用 concat() 方法复制数组
 
 };
 
@@ -60,7 +60,7 @@ UnitCommon.Interface.implementMethods = function (object) {
         throw new Error("传入的参数个数不正确");
     }
 
-    //  第一个参数默认为需要检测的对象，后面的参数为Interface类的实例
+    // 第一个参数默认为需要检测的对象，后面的参数为Interface类的实例
     // 判断传入的 Interface类的实例 是否合法
     for (var i = 1; i < arguments.length; i++) {
         var face = arguments[i];
@@ -88,20 +88,20 @@ UnitCommon.Interface.implementMethods = function (object) {
 
 /*************************** UnitCommon.Helper.extend Begin(类式继承)******************************************/
 // 使一个类继承另一个类
-UnitCommon.Helper.extend = function (subClass,superClass) {
+UnitCommon.Helper.extend = function (subClass, superClass) {
     // 避免实例化父类的开销，此处创建一个临时的对象
     var F = function () { };
     F.prototype = superClass.prototype;
     subClass.prototype = new F();
 
-    // 设置子类正确的constructor 属性
+    // 设置子类正确的 constructor 属性
     subClass.prototype.constructor = subClass;
 
-    // 给子类添加一个superclass属性，用于保存其父类对象
-    subClass.superclass = superClass;
+    // 给子类添加一个 superClass 属性，用于保存其父类对象
+    subClass.superClass = superClass;
 
-    // 确保超类prototype的constructor使为Object(),也保证其会被正确的设置
-    if (subClass.prototype.constructor == Object.prototype.constructor) {  // Object()
+    // 确保超类 prototype 的 constructor 即使为 Object,也保证其会被正确的设置
+    if (superClass.prototype.constructor === Object) {
         superClass.prototype.constructor = superClass;
     }
 };
