@@ -42,7 +42,7 @@
             }]);
 
         // 创建自定义模块 emailParse
-        angular.module('emailParse', [])
+        angular.module('emailParseMudule', [])
         .config(['$interpolateProvider', function ($interpolateProvider) {
             // 进行自定义配置
             $interpolateProvider.startSymbol('__');
@@ -58,7 +58,7 @@
             };
         }]);
 
-        angular.module('myApp2', ['emailParse'])
+        angular.module('myApp2', ['emailParseMudule'])
             .controller('MyController',
             ['$scope', 'EmailParse', function ($scope, EmailParse) {
                 $scope.to = 'ZhangJin';
