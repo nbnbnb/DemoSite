@@ -5,10 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Telerik Controls</title>
-    <% if (false)
-       {%>
-        <script src="/Scripts/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
-    <%} %>
 </head>
 <body>
     <form id="Form1" runat="server">
