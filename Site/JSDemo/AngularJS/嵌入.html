@@ -36,7 +36,7 @@
                 return {
                     restrict: 'EA',
                     scope: {
-                        title: '@'
+                        title: '@' // 读取标签属性中的值
                     },
                     transclude: true,  // 设置嵌入，它告诉编译器，将从 DOM 中获取的内容放到它发现 ng-transclude 指令的地方
                     template: '<div><div><h2>{{title}}</h2><div ng-transclude></div></div></div>'
