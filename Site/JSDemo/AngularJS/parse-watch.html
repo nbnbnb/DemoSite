@@ -11,9 +11,14 @@
         <div ng-controller="MyController ">
             <input ng-model="expr" type="text" placeholder="Enter an expressioin" />
             <h2>{{parsedValue}}</h2>
+
+            <pre>
+            {{person}}
+            </pre>
+
         </div>
         <ul>
-            <li>输入 person.name 试试</li>
+            <li>输入 person 或 person.name 试试</li>
         </ul>
     </div>
     <script>
@@ -23,19 +28,26 @@
             ['$scope', '$parse', function ($scope, $parse) {
                 // 调用 $watch 监听表达式变化
                 $scope.$watch('expr', function (newVal, oldVal, scope) {
-                    console.log('newVal:' + newVal + '--oldVal：' + oldVal);
+                    // $scope === scope 这两个 socpe 是同一个对象
                     if (newVal !== oldVal) {
                         // 用该表达式设置 parseFun
                         // 设置计算表达式的函数
-                        var parseFun = $parse(newVal);
-                        // 传入作用域，计算函数
-                        $scope.parsedValue = parseFun(scope);
+
+                        try {
+                            var parseFun = $parse(newVal);
+                            // 传入作用域，计算函数
+                            $scope.parsedValue = parseFun(scope);
+                        } catch (e) {
+                            // 当输入 . 时，  $parse(newVal) 将会触发异常
+                            console.log(e);
+                            $scope.parsedValue = '';
+                        }
                     }
-                    console.log($scope === scope); // 这两个 socpe 是同一个对象
                 });
 
                 $scope.person = {
-                    name: 'ZhangJin'
+                    name: 'ZhangJin',
+                    age: 30
                 };
 
             }]);
