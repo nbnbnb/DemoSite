@@ -11,7 +11,7 @@
         <div ng-controller="MyController">
             <input type="text" ng-model="to" ng-init="to='dashan1010zj@163.com'" />
             <div my-directive ng-model="to" from-name="nbnbnb.zhang@gmail.com"
-                 get-title="title"
+                 get-title="title" 
                  get-content="contents"
                  show-name="showNameOuter(zj)">
                 <!--与外部函数关联-->
@@ -23,7 +23,7 @@
         </div>
     </div>
     <script>
-
+        // 注意命名约定
         angular
             .module('myApp', [])
             .directive('myDirective', function () {
@@ -32,10 +32,10 @@
                     replace: true,
                     scope: {
                         ngModel: '=',  // 双向绑定 隔离域中的 to 和 外部作用域中的 to 双向绑定
-                        getTitle: '&', // 不带参数  父级的属性被包装成了一个函数
-                        getContent: '&', // 不带参数  父级的属性被包装成了一个函数
-                        showName: '&',   // 带参数，链接到父级函数中，把隔离作用域中的数据传递到外部 scope 函数中
-                        fromName: '@'  // 读取标签中的值
+                        getTitle: '&', // 不带参数  关联父级的属性，通过函数访问
+                        getContent: '&', // 不带参数  关联父级的属性，通过函数访问
+                        showName: '&',   // 带参数，关联父级的属性，通过函数访问
+                        fromName: '@'  // 读取当前标签中的值，直接映射为当前的  $socpe.fromName
                     },
                     priority: 100,
                     template: '<div>Send Email： {{fromName}} to {{ngModel}}<br /><div>{{ title }}' + '<div><ul><li ng-repeat="x in contents">{{ x.text }}</li></ul><button ng-click="showNameClick()">Show Name</button><button ng-click="showName({zj:name})">Show Name Direct</button></div>',
