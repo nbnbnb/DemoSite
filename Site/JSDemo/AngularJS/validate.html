@@ -27,7 +27,9 @@
                 <input type="number" ng-model="age" ng-pattern="reg" placeholder="正则表达式-2x岁" /><br />
                 <input type="url"  ng-model="homepage" placeholder="个人主页" /><br />
 
-                <h3>"最小长度 5" 验证信息 【表单的 name="min"】</h3>
+                <h3>【ng-pattern 必须要绑定到字段上，不能直接在属性中设置】</h3>
+
+                <h3>"最小长度 5" 验证信息 【表单的 name="min"，属性都附加在表单的字段上，通过表单名称和字段名称获取 myForm.min】</h3>
                 <ul>
                     <li>是否未修改：{{myForm.min.$pristine}}</li>
                     <li>是否修改：{{myForm.min.$dirty}}</li>
