@@ -8,17 +8,16 @@
 </head>
 <body>
     <div id="myApp">
-        <div ng-controller="MyController ">
-            <!--此处的 type 会有 email 验证，如果不是 email，将不会出发双向绑定-->
+        <div ng-controller="MyController">
+            <!--此处的 type 会有 email 验证，如果不是 email，将不会触发双向绑定-->
             <input ng-model="to" type="email" placeholder="Recipient" />
             <textarea ng-model="emailBody"></textarea>
             <pre>{{previewText}}</pre>
-            <pre>{{to}}</pre>
         </div>
     </div>
 
     <div id="myApp2">
-        <div ng-controller="MyController ">
+        <div ng-controller="MyController">
             <input ng-model="to" type="email" placeholder="Recipient" />
             <textarea ng-model="emailBody"></textarea>
             <pre>__previewText__</pre>
@@ -29,7 +28,7 @@
             .module('myApp', [])
             .controller('MyController',
             ['$scope', '$interpolate', function ($scope, $interpolate) {
-                $scope.to = '张进';
+                $scope.to = 'nbnbnb.zhang@gmail.com';
                 $scope.emailBody = '这封邮件是给{{to}}的。';
 
                 // 在 textarea 中输入指定标记时，将会进行实时更新
@@ -51,8 +50,8 @@
         .factory('EmailParse', ['$interpolate', function ($interpolate) {
             // 创建自定义服务
             return {
-                parse: function (text, content) {
-                    var template = $interpolate(text);
+                parse: function (body, content) {
+                    var template = $interpolate(body);
                     return template(content);
                 }
             };
@@ -61,7 +60,7 @@
         angular.module('myApp2', ['emailParseMudule'])
             .controller('MyController',
             ['$scope', 'EmailParse', function ($scope, EmailParse) {
-                $scope.to = 'ZhangJin';
+                $scope.to = 'dashan1010zj@163.com';
                 $scope.emailBody = 'This email is to __to__.';
                 $scope.$watch('emailBody', function (body) {
                     if (body) {
